@@ -16,6 +16,7 @@ class LoginPage extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   height: 50,
@@ -84,12 +85,21 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //
-                  SquereTile(imagePath: "assets/images/logins/google.png"),
-                  SquereTile(imagePath: "assets/images/logins/apple.png")
+                  SquereTile(imagePath: 'lib/images/google.png'),
+                  SizedBox(width: 25),
+                  SquereTile(imagePath: 'lib/images/apple.png')
+                ],),
+                SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [ 
+                  Text('Not A member?', style: TextStyle(color: Colors.grey[700]),),
+                  const SizedBox(width: 4,),
+                  Text('Register now', style: TextStyle(color: Colors.blue[400], fontWeight: FontWeight.bold),)
                 ],)
               ],
             ),
