@@ -5,20 +5,20 @@ import 'package:gemini_app/components/my_button.dart';
 import 'package:gemini_app/components/my_textfield.dart';
 import 'package:gemini_app/components/squere_tile.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  LoginPage({super.key, required this.onTap});
+  RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  void signUserIn() async {
+  void signUserUp() async {
     showDialog(
         context: context,
         builder: (context) {
@@ -26,14 +26,15 @@ class _LoginPageState extends State<LoginPage> {
             child: CircularProgressIndicator(),
           );
         });
-    wrongUserName() {
+
+    wrongRegister(String text) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Wrong username or password'),
+            title: const Text('Failed registration'),
             content: const Text(
-              'Try to change the username or password and try again!\n',
+              'The registration has failed for the following problem',
             ),
             actions: <Widget>[
               TextButton(
@@ -51,14 +52,14 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
 
-    wrongLogin() {
+      passwordMismatch() {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Error while logging'),
+            title: const Text('The passwords inserted are different'),
             content: const Text(
-              'Try to log in again if the problem continue contact the help page of the app!\n',
+              'Type the same password in the confirm password box!\n',
             ),
             actions: <Widget>[
               TextButton(
@@ -77,21 +78,19 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      if(confirmPasswordController.text == passwordController.text){
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
-      Navigator.pop(context);
+        Navigator.pop(context);
+      }else{
+        Navigator.pop(context);
+        passwordMismatch();
+      }
+
+      
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
-      print(e);
-      if (e.code == 'user-not-found' ||
-          e.code == 'invalid-email' ||
-          e.code == 'wrong-password' ||
-          e.code == 'invalid-credential') {
-        wrongUserName();
-      } else {
-        wrongLogin();
-      }
-      print('Error');
+      wrongRegister(e.code);
     }
   }
 
@@ -106,11 +105,11 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
-                Icon(Icons.lock, size: 100),
+                Icon(Icons.lock, size: 50),
                 SizedBox(
-                  height: 50,
+                  height: 25,
                 ),
                 Text(
                   'Welcome back you\'ve benn missed!',
@@ -130,26 +129,21 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Password',
                   obscureText: true,
                 ),
+                SizedBox(height: 10),
+                MyTextfield(
+                  controller: confirmPasswordController,
+                  hintText: 'Confirm Password',
+                  obscureText: true,
+                ),
                 SizedBox(
                   height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 25.0),
-                        child: Text(
-                          'Forgot password?',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ))
-                  ],
                 ),
                 SizedBox(
                   height: 25,
                 ),
                 MyButton(
-                  onTap: signUserIn,
-                  text: 'Sign in'
+                  onTap: signUserUp,
+                  text: 'Sign up'
                 ),
                 SizedBox(
                   height: 50,
@@ -190,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not A member?',
+                      'Already have an account?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(
@@ -199,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                     GestureDetector(
                       onTap: widget.onTap,
                       child: Text(
-                        'Register now',
+                        'Login now',
                         style: TextStyle(
                             color: Colors.blue[400],
                             fontWeight: FontWeight.bold),

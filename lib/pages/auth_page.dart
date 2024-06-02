@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gemini_app/main.dart';
 import 'package:gemini_app/pages/home_page.dart';
 import 'package:gemini_app/pages/login.dart';
+import 'package:gemini_app/pages/login_or_register.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -16,7 +17,7 @@ class AuthPage extends StatelessWidget {
           if(snapshot.hasData){
             return HomePage();
           }else{
-            return LoginPage();
+            return LoginOrRegisterPage();
           }}),
       );
   }

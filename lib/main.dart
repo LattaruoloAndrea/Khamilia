@@ -48,7 +48,7 @@ class MyHomePage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
 
     return Scaffold(
-      body: LoginPage()
+      body: AuthPage()
       );
   }
 }
