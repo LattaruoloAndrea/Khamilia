@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gemini_app/components/my_button.dart';
 import 'package:gemini_app/components/my_textfield.dart';
 import 'package:gemini_app/components/squere_tile.dart';
+import 'package:gemini_app/services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -174,9 +175,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SquereTile(imagePath: 'lib/images/google.png'),
-                    SizedBox(width: 25),
-                    SquereTile(imagePath: 'lib/images/apple.png')
+                    SquereTile(imagePath: 'lib/images/google.png', onTap: () => AuthService().signInWithGoogle()),
+                    // SizedBox(width: 25),
+                    // SquereTile(imagePath: 'lib/images/apple.png', onTap: () => AuthService().signInWithGoogle())
                   ],
                 ),
                 SizedBox(height: 50),

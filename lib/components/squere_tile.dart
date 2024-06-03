@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 
 class SquereTile extends StatelessWidget {
   final String imagePath;
-  
+  final Function()? onTap;
+
   const SquereTile({super.key,
   required this.imagePath,
+  required this.onTap
   });
   
 
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white),
@@ -19,6 +23,6 @@ class SquereTile extends StatelessWidget {
         color: Colors.grey[200],
       ),
       child: Image.asset(imagePath,height: 48),
-    );
+    ));
   }
 }

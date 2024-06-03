@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "637805349115-jac5a7gqhkea0cpq6sipusla1kbg4r4g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gemini.app.test",
+            "certificate_hash": "65d42b0bd4c5556430763f9622b75bf50e7e8cfe"
+          }
+        },
+        {
           "client_id": "637805349115-9gjk79plbjt26gomkuatn224m6lh9pjr.apps.googleusercontent.com",
           "client_type": 3
         }
