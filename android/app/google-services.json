@@ -7,9 +7,45 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:637805349115:android:5d28e45dd80978f2cdc85e",
+        "mobilesdk_app_id": "1:637805349115:android:24819bd138c15e48cdc85e",
         "android_client_info": {
           "package_name": "com.example.gemini_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637805349115-9gjk79plbjt26gomkuatn224m6lh9pjr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7TSS5vBvRqrT04L2EfjIA210jKfStk0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637805349115-9gjk79plbjt26gomkuatn224m6lh9pjr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637805349115-j94i9ivenehmmadpbr9kf44avfif5aj3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.geminiApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637805349115:android:5d28e45dd80978f2cdc85e",
+        "android_client_info": {
+          "package_name": "gemini.app.test"
         }
       },
       "oauth_client": [

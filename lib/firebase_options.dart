@@ -52,7 +52,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC7TSS5vBvRqrT04L2EfjIA210jKfStk0k',
-    appId: '1:637805349115:android:5d28e45dd80978f2cdc85e',
+    appId: '1:637805349115:android:24819bd138c15e48cdc85e',
     messagingSenderId: '637805349115',
     projectId: 'test-gemini-c7b7c',
     storageBucket: 'test-gemini-c7b7c.appspot.com',
@@ -64,6 +64,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '637805349115',
     projectId: 'test-gemini-c7b7c',
     storageBucket: 'test-gemini-c7b7c.appspot.com',
+    androidClientId: '637805349115-jac5a7gqhkea0cpq6sipusla1kbg4r4g.apps.googleusercontent.com',
     iosClientId: '637805349115-j94i9ivenehmmadpbr9kf44avfif5aj3.apps.googleusercontent.com',
     iosBundleId: 'com.example.geminiApp',
   );
@@ -74,6 +75,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '637805349115',
     projectId: 'test-gemini-c7b7c',
     storageBucket: 'test-gemini-c7b7c.appspot.com',
+    androidClientId: '637805349115-jac5a7gqhkea0cpq6sipusla1kbg4r4g.apps.googleusercontent.com',
     iosClientId: '637805349115-j94i9ivenehmmadpbr9kf44avfif5aj3.apps.googleusercontent.com',
     iosBundleId: 'com.example.geminiApp',
   );
