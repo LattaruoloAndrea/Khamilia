@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gemini_app/components/my_drawer.dart';
 import 'package:gemini_app/pages/setting_page.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -31,7 +32,8 @@ class HomePage extends StatelessWidget {
             SizedBox(height:  40),
             Center(child: Text('Welcome, you are logged in')),
             SizedBox(height:  40),
-            Center(child: Text('Welcome, you are logged in')),
+            // https://lottiefiles.com/animations/flamingo-v2lht2pMje
+            Center(child: Lottie.asset("lib/images/flamingo.json")),
             SizedBox(height:  40),
             Center(child: Text('Welcome, you are logged in'))
           ],
