@@ -1,0 +1,850 @@
+[
+    {
+      "query": "Add 'Go for a walk' to my routine every Monday",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a walk"] }
+      ]
+    },
+    {
+      "query": "Remove 'Grocery shopping' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Grocery shopping"] }
+      ]
+    },
+    {
+      "query": "Add 'Yoga class' and 'Meal prep' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Yoga class", "Meal prep"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the house' and 'Do laundry' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Clean the house", "Do laundry"] }
+      ]
+    },
+    {
+      "query": "Add 'Read a book' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Read a book"] }
+      ]
+    },
+    {
+      "query": "Remove 'Attend a meeting' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Attend a meeting"] }
+      ]
+    },
+    {
+      "query": "Add 'Workout' and 'Cook dinner' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Workout", "Cook dinner"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the library' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the library"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a blog post' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a blog post"] }
+      ]
+    },
+    {
+      "query": "Remove 'Catch up with friends' and 'Go to a concert' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Catch up with friends", "Go to a concert"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time with family' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time with family"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Learn a new skill' and 'Prepare for a presentation' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Learn a new skill", "Prepare for a presentation"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the animal shelter' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the animal shelter"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a hike' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a hike"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the bathroom' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the bathroom"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a book club meeting' and 'Cook a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a book club meeting", "Cook a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Pay bills' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Pay bills"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a musical instrument' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a musical instrument"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a mentor' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a mentor"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to the movies", "Have dinner with friends"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the park' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the park"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a journal entry' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a journal entry"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to a concert' and 'Have a picnic' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Go to a concert", "Have a picnic"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time in nature' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time in nature"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Read a magazine' and 'Learn a new recipe' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Read a magazine", "Learn a new recipe"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the local soup kitchen' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the local soup kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a walk in the park' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a walk in the park"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the kitchen' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a workshop' and 'Prepare a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a workshop", "Prepare a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Run errands' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Run errands"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a new skill' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a new skill"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a friend for coffee' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a friend for coffee"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to a museum' and 'Have dinner with family' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to a museum", "Have dinner with family"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the library' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the library"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a blog post' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a blog post"] }
+      ]
+    },
+    {
+      "query": "Remove 'Catch up with friends' and 'Go to a concert' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Catch up with friends", "Go to a concert"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time with family' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time with family"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Learn a new skill' and 'Prepare for a presentation' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Learn a new skill", "Prepare for a presentation"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the animal shelter' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the animal shelter"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a hike' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a hike"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the bathroom' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the bathroom"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a book club meeting' and 'Cook a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a book club meeting", "Cook a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Pay bills' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Pay bills"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a new skill' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a new skill"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a mentor' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a mentor"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to the movies", "Have dinner with friends"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the park' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the park"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a journal entry' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a journal entry"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to a concert' and 'Have a picnic' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Go to a concert", "Have a picnic"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time in nature' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time in nature"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Read a magazine' and 'Learn a new recipe' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Read a magazine", "Learn a new recipe"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the local soup kitchen' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the local soup kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a walk in the park' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a walk in the park"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the kitchen' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a workshop' and 'Prepare a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a workshop", "Prepare a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Run errands' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Run errands"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a new skill' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a new skill"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a mentor' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a mentor"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to the movies", "Have dinner with friends"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the park' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the park"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a journal entry' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a journal entry"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to a concert' and 'Have a picnic' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Go to a concert", "Have a picnic"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time in nature' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time in nature"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Read a magazine' and 'Learn a new recipe' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Read a magazine", "Learn a new recipe"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the local soup kitchen' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the local soup kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a walk in the park' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a walk in the park"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the kitchen' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a workshop' and 'Prepare a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a workshop", "Prepare a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Run errands' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Run errands"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a new skill' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a new skill"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a mentor' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a mentor"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to the movies", "Have dinner with friends"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the park' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the park"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a journal entry' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a journal entry"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to a concert' and 'Have a picnic' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Go to a concert", "Have a picnic"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time in nature' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time in nature"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Read a magazine' and 'Learn a new recipe' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Read a magazine", "Learn a new recipe"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the local soup kitchen' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the local soup kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a walk in the park' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a walk in the park"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the kitchen' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a workshop' and 'Prepare a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a workshop", "Prepare a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Run errands' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Run errands"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a new skill' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a new skill"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a mentor' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a mentor"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to the movies", "Have dinner with friends"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the park' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the park"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a journal entry' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a journal entry"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to a concert' and 'Have a picnic' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Go to a concert", "Have a picnic"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time in nature' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time in nature"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Read a magazine' and 'Learn a new recipe' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Read a magazine", "Learn a new recipe"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the local soup kitchen' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the local soup kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a walk in the park' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a walk in the park"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the kitchen' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a workshop' and 'Prepare a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a workshop", "Prepare a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Run errands' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Run errands"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a new skill' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a new skill"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a mentor' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a mentor"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to the movies", "Have dinner with friends"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the park' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the park"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a journal entry' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a journal entry"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to a concert' and 'Have a picnic' from my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "saturday": ["Go to a concert", "Have a picnic"] }
+      ]
+    },
+    {
+      "query": "Add 'Spend time in nature' to my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "sunday": ["Spend time in nature"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the gym' from my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "tuesday": ["Go to the gym"] }
+      ]
+    },
+    {
+      "query": "Add 'Read a magazine' and 'Learn a new recipe' to my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "thursday": ["Read a magazine", "Learn a new recipe"] }
+      ]
+    },
+    {
+      "query": "Remove 'Volunteer at the local soup kitchen' from my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "friday": ["Volunteer at the local soup kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Go for a walk in the park' to my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "monday": ["Go for a walk in the park"] }
+      ]
+    },
+    {
+      "query": "Remove 'Clean the kitchen' from my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "wednesday": ["Clean the kitchen"] }
+      ]
+    },
+    {
+      "query": "Add 'Attend a workshop' and 'Prepare a healthy meal' to my Saturday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "saturday": ["Attend a workshop", "Prepare a healthy meal"] }
+      ]
+    },
+    {
+      "query": "Remove 'Do laundry' and 'Run errands' from my Sunday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "sunday": ["Do laundry", "Run errands"] }
+      ]
+    },
+    {
+      "query": "Add 'Practice a new skill' to my Tuesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "tuesday": ["Practice a new skill"] }
+      ]
+    },
+    {
+      "query": "Remove 'Meet with a mentor' from my Thursday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "thursday": ["Meet with a mentor"] }
+      ]
+    },
+    {
+      "query": "Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "friday": ["Go to the movies", "Have dinner with friends"] }
+      ]
+    },
+    {
+      "query": "Remove 'Go to the park' from my Monday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "remove", "monday": ["Go to the park"] }
+      ]
+    },
+    {
+      "query": "Add 'Write a journal entry' to my Wednesday routine",
+      "type": "set-periodicy",
+      "data": [
+        { "kind": "add", "wednesday": ["Write a journal entry"] }
+      ]
+    }
+]
+        

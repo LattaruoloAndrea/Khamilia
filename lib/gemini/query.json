@@ -1,0 +1,1298 @@
+[
+    {
+        "type": "query",
+        "start": "2023-10-26",
+        "end": "2023-10-26",
+        "query": "Get all sales transactions for October 26th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-01-01",
+        "end": "2024-01-01",
+        "query": "Retrieve customer support tickets submitted on New Year's Day, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-15",
+        "end": "2023-09-15",
+        "query": "Show me the website traffic data for September 15th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-24",
+        "end": "2023-12-24",
+        "query": "What were the website orders placed on Christmas Eve 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2023-08-10",
+        "end": "2023-08-10",
+        "query": "List all employee attendance records for August 10th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-11-11",
+        "end": "2023-11-11",
+        "query": "Get the number of new users registered on November 11th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-02-14",
+        "end": "2024-02-14",
+        "query": "Show me the sales figures for Valentine's Day, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-07-04",
+        "end": "2023-07-04",
+        "query": "Retrieve the customer feedback collected on Independence Day, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-05-01",
+        "end": "2023-05-01",
+        "query": "Get the website analytics for May 1st, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-10-31",
+        "end": "2023-10-31",
+        "query": "Show me the number of active users on Halloween, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-03-17",
+        "end": "2024-03-17",
+        "query": "What was the total revenue generated on St. Patrick's Day, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-06-15",
+        "end": "2023-06-15",
+        "query": "Get the customer service interactions on June 15th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-04-01",
+        "end": "2023-04-01",
+        "query": "Show me the marketing campaign performance for April 1st, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-22",
+        "end": "2023-09-22",
+        "query": "Retrieve the product inventory levels for September 22nd, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-04-21",
+        "end": "2024-04-21",
+        "query": "What were the website orders placed on Easter Sunday, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-03-08",
+        "end": "2023-03-08",
+        "query": "Get the number of new leads generated on March 8th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-31",
+        "end": "2023-12-31",
+        "query": "Show me the website traffic data for New Year's Eve, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-10-12",
+        "end": "2023-10-12",
+        "query": "Retrieve the customer support tickets submitted on October 12th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-05-27",
+        "end": "2024-05-27",
+        "query": "What were the sales figures for Memorial Day, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-01-15",
+        "end": "2024-01-15",
+        "query": "Get the website analytics for January 15th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-08-21",
+        "end": "2023-08-21",
+        "query": "Show me the number of active users on August 21st, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-11-23",
+        "end": "2023-11-23",
+        "query": "What was the total revenue generated on Black Friday, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-06-19",
+        "end": "2024-06-19",
+        "query": "Get the customer service interactions on June 19th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-02-02",
+        "end": "2024-02-02",
+        "query": "Show me the marketing campaign performance for February 2nd, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-07-14",
+        "end": "2023-07-14",
+        "query": "Retrieve the product inventory levels for July 14th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-04-05",
+        "end": "2024-04-05",
+        "query": "What were the website orders placed on Good Friday, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-03-17",
+        "end": "2023-03-17",
+        "query": "Get the number of new leads generated on St. Patrick's Day, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-25",
+        "end": "2023-12-25",
+        "query": "Show me the website traffic data for Christmas Day, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-01-08",
+        "end": "2024-01-08",
+        "query": "Retrieve the customer support tickets submitted on January 8th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-06-16",
+        "end": "2024-06-16",
+        "query": "What were the sales figures for Father's Day, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-02-29",
+        "end": "2024-02-29",
+        "query": "Get the website analytics for February 29th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-07",
+        "end": "2023-09-07",
+        "query": "Show me the number of active users on September 7th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-01",
+        "end": "2023-12-01",
+        "query": "What was the total revenue generated on December 1st, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-07-04",
+        "end": "2024-07-04",
+        "query": "Get the customer service interactions on Independence Day, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-03-01",
+        "end": "2024-03-01",
+        "query": "Show me the marketing campaign performance for March 1st, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-08-03",
+        "end": "2023-08-03",
+        "query": "Retrieve the product inventory levels for August 3rd, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-05-12",
+        "end": "2024-05-12",
+        "query": "What were the website orders placed on Mother's Day, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-04-15",
+        "end": "2023-04-15",
+        "query": "Get the number of new leads generated on April 15th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-11-26",
+        "end": "2023-11-26",
+        "query": "Show me the website traffic data for Thanksgiving Day, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-01-22",
+        "end": "2024-01-22",
+        "query": "Retrieve the customer support tickets submitted on January 22nd, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-07-01",
+        "end": "2024-07-01",
+        "query": "What were the sales figures for Canada Day, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-03-10",
+        "end": "2024-03-10",
+        "query": "Get the website analytics for March 10th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-19",
+        "end": "2023-09-19",
+        "query": "Show me the number of active users on September 19th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-10",
+        "end": "2023-12-10",
+        "query": "What was the total revenue generated on December 10th, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-07-14",
+        "end": "2024-07-14",
+        "query": "Get the customer service interactions on July 14th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-04-01",
+        "end": "2024-04-01",
+        "query": "Show me the marketing campaign performance for April 1st, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-08-15",
+        "end": "2023-08-15",
+        "query": "Retrieve the product inventory levels for August 15th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-05-26",
+        "end": "2024-05-26",
+        "query": "What were the website orders placed on Victoria Day, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-04-22",
+        "end": "2023-04-22",
+        "query": "Get the number of new leads generated on April 22nd, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-11-12",
+        "end": "2023-11-12",
+        "query": "Show me the website traffic data for November 12th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-01-29",
+        "end": "2024-01-29",
+        "query": "Retrieve the customer support tickets submitted on January 29th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-07-01",
+        "end": "2024-07-01",
+        "query": "What were the sales figures for July 1st, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-03-20",
+        "end": "2024-03-20",
+        "query": "Get the website analytics for March 20th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-26",
+        "end": "2023-09-26",
+        "query": "Show me the number of active users on September 26th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-17",
+        "end": "2023-12-17",
+        "query": "What was the total revenue generated on December 17th, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-07-21",
+        "end": "2024-07-21",
+        "query": "Get the customer service interactions on July 21st, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-04-08",
+        "end": "2024-04-08",
+        "query": "Show me the marketing campaign performance for April 8th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-08-29",
+        "end": "2023-08-29",
+        "query": "Retrieve the product inventory levels for August 29th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-06-03",
+        "end": "2024-06-03",
+        "query": "What were the website orders placed on June 3rd, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-05-06",
+        "end": "2023-05-06",
+        "query": "Get the number of new leads generated on May 6th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-03",
+        "end": "2023-12-03",
+        "query": "Show me the website traffic data for December 3rd, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-02-05",
+        "end": "2024-02-05",
+        "query": "Retrieve the customer support tickets submitted on February 5th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-07-15",
+        "end": "2024-07-15",
+        "query": "What were the sales figures for July 15th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-03-27",
+        "end": "2024-03-27",
+        "query": "Get the website analytics for March 27th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-05",
+        "end": "2023-09-05",
+        "query": "Show me the number of active users on September 5th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-20",
+        "end": "2023-12-20",
+        "query": "What was the total revenue generated on December 20th, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-07-28",
+        "end": "2024-07-28",
+        "query": "Get the customer service interactions on July 28th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-04-15",
+        "end": "2024-04-15",
+        "query": "Show me the marketing campaign performance for April 15th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-08-22",
+        "end": "2023-08-22",
+        "query": "Retrieve the product inventory levels for August 22nd, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-06-09",
+        "end": "2024-06-09",
+        "query": "What were the website orders placed on June 9th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-05-13",
+        "end": "2023-05-13",
+        "query": "Get the number of new leads generated on May 13th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-08",
+        "end": "2023-12-08",
+        "query": "Show me the website traffic data for December 8th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-02-12",
+        "end": "2024-02-12",
+        "query": "Retrieve the customer support tickets submitted on February 12th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-07-22",
+        "end": "2024-07-22",
+        "query": "What were the sales figures for July 22nd, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-03-31",
+        "end": "2024-03-31",
+        "query": "Get the website analytics for March 31st, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-12",
+        "end": "2023-09-12",
+        "query": "Show me the number of active users on September 12th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-27",
+        "end": "2023-12-27",
+        "query": "What was the total revenue generated on December 27th, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-08-05",
+        "end": "2024-08-05",
+        "query": "Get the customer service interactions on August 5th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-04-29",
+        "end": "2024-04-29",
+        "query": "Show me the marketing campaign performance for April 29th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-01",
+        "end": "2023-09-01",
+        "query": "Retrieve the product inventory levels for September 1st, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-06-17",
+        "end": "2024-06-17",
+        "query": "What were the website orders placed on June 17th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-05-20",
+        "end": "2023-05-20",
+        "query": "Get the number of new leads generated on May 20th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-11-28",
+        "end": "2023-11-28",
+        "query": "Show me the website traffic data for November 28th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-02-01",
+        "end": "2024-02-01",
+        "query": "Retrieve the customer support tickets submitted on February 1st, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-07-08",
+        "end": "2024-07-08",
+        "query": "What were the sales figures for July 8th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-03-15",
+        "end": "2024-03-15",
+        "query": "Get the website analytics for March 15th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-24",
+        "end": "2023-09-24",
+        "query": "Show me the number of active users on September 24th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-12",
+        "end": "2023-12-12",
+        "query": "What was the total revenue generated on December 12th, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-08-12",
+        "end": "2024-08-12",
+        "query": "Get the customer service interactions on August 12th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-05-01",
+        "end": "2024-05-01",
+        "query": "Show me the marketing campaign performance for May 1st, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-08",
+        "end": "2023-09-08",
+        "query": "Retrieve the product inventory levels for September 8th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-06-24",
+        "end": "2024-06-24",
+        "query": "What were the website orders placed on June 24th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-05-17",
+        "end": "2023-05-17",
+        "query": "Get the number of new leads generated on May 17th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-15",
+        "end": "2023-12-15",
+        "query": "Show me the website traffic data for December 15th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-02-19",
+        "end": "2024-02-19",
+        "query": "Retrieve the customer support tickets submitted on February 19th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-07-29",
+        "end": "2024-07-29",
+        "query": "What were the sales figures for July 29th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-04-02",
+        "end": "2024-04-02",
+        "query": "Get the website analytics for April 2nd, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-11",
+        "end": "2023-09-11",
+        "query": "Show me the number of active users on September 11th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-05",
+        "end": "2023-12-05",
+        "query": "What was the total revenue generated on December 5th, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-08-01",
+        "end": "2024-08-01",
+        "query": "Get the customer service interactions on August 1st, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-04-22",
+        "end": "2024-04-22",
+        "query": "Show me the marketing campaign performance for April 22nd, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-03",
+        "end": "2023-09-03",
+        "query": "Retrieve the product inventory levels for September 3rd, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-06-10",
+        "end": "2024-06-10",
+        "query": "What were the website orders placed on June 10th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2023-05-02",
+        "end": "2023-05-02",
+        "query": "Get the number of new leads generated on May 2nd, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-11-30",
+        "end": "2023-11-30",
+        "query": "Show me the website traffic data for November 30th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2024-02-07",
+        "end": "2024-02-07",
+        "query": "Retrieve the customer support tickets submitted on February 7th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-07-11",
+        "end": "2024-07-11",
+        "query": "What were the sales figures for July 11th, 2024?"
+    },
+    {
+        "type": "query",
+        "start": "2024-03-25",
+        "end": "2024-03-25",
+        "query": "Get the website analytics for March 25th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-18",
+        "end": "2023-09-18",
+        "query": "Show me the number of active users on September 18th, 2023."
+    },
+    {
+        "type": "query",
+        "start": "2023-12-01",
+        "end": "2023-12-01",
+        "query": "What was the total revenue generated on December 1st, 2023?"
+    },
+    {
+        "type": "query",
+        "start": "2024-08-08",
+        "end": "2024-08-08",
+        "query": "Get the customer service interactions on August 8th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2024-05-06",
+        "end": "2024-05-06",
+        "query": "Show me the marketing campaign performance for May 6th, 2024."
+    },
+    {
+        "type": "query",
+        "start": "2023-09-06",
+        "end": "2023-09-06",
+        "query": "Retrieve the product inventory levels for September 6th, 2023."
+    },
+    {
+        "query": "Get all sales transactions from January 1st, 2023 to December 31st, 2023.",
+        "type": "query",
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+    },
+    {
+        "query": "Retrieve customer support tickets submitted between March 15th, 2024 and April 15th, 2024.",
+        "type": "query",
+        "start": "2024-03-15",
+        "end": "2024-04-15"
+    },
+    {
+        "query": "Show me the website traffic data for the month of June 2023.",
+        "type": "query",
+        "start": "2023-06-01",
+        "end": "2023-06-30"
+    },
+    {
+        "query": "What were the website orders placed between July 4th, 2023 and July 10th, 2023?",
+        "type": "query",
+        "start": "2023-07-04",
+        "end": "2023-07-10"
+    },
+    {
+        "query": "List all employee attendance records from August 1st, 2023 to August 31st, 2023.",
+        "type": "query",
+        "start": "2023-08-01",
+        "end": "2023-08-31"
+    },
+    {
+        "query": "Get the number of new users registered between September 1st, 2023 and September 30th, 2023.",
+        "type": "query",
+        "start": "2023-09-01",
+        "end": "2023-09-30"
+    },
+    {
+        "query": "Show me the sales figures for the period from October 1st, 2023 to October 31st, 2023.",
+        "type": "query",
+        "start": "2023-10-01",
+        "end": "2023-10-31"
+    },
+    {
+        "query": "Retrieve the customer feedback collected from November 1st, 2023 to November 30th, 2023.",
+        "type": "query",
+        "start": "2023-11-01",
+        "end": "2023-11-30"
+    },
+    {
+        "query": "Get the website analytics for the month of December 2023.",
+        "type": "query",
+        "start": "2023-12-01",
+        "end": "2023-12-31"
+    },
+    {
+        "query": "Show me the number of active users on January 1st, 2024.",
+        "type": "query",
+        "start": "2024-01-01",
+        "end": "2024-01-01"
+    },
+    {
+        "query": "What was the total revenue generated between February 1st, 2024 and February 28th, 2024?",
+        "type": "query",
+        "start": "2024-02-01",
+        "end": "2024-02-28"
+    },
+    {
+        "query": "Get the customer service interactions from March 1st, 2024 to March 31st, 2024.",
+        "type": "query",
+        "start": "2024-03-01",
+        "end": "2024-03-31"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the month of April 2024.",
+        "type": "query",
+        "start": "2024-04-01",
+        "end": "2024-04-30"
+    },
+    {
+        "query": "Retrieve the product inventory levels between May 1st, 2024 and May 31st, 2024.",
+        "type": "query",
+        "start": "2024-05-01",
+        "end": "2024-05-31"
+    },
+    {
+        "query": "What were the website orders placed from June 1st, 2024 to June 30th, 2024?",
+        "type": "query",
+        "start": "2024-06-01",
+        "end": "2024-06-30"
+    },
+    {
+        "query": "Get the number of new leads generated between July 1st, 2024 and July 31st, 2024.",
+        "type": "query",
+        "start": "2024-07-01",
+        "end": "2024-07-31"
+    },
+    {
+        "query": "Show me the website traffic data for the month of August 2024.",
+        "type": "query",
+        "start": "2024-08-01",
+        "end": "2024-08-31"
+    },
+    {
+        "query": "What was the total revenue generated from September 1st, 2024 to September 30th, 2024?",
+        "type": "query",
+        "start": "2024-09-01",
+        "end": "2024-09-30"
+    },
+    {
+        "query": "Get the customer service interactions between October 1st, 2024 and October 31st, 2024.",
+        "type": "query",
+        "start": "2024-10-01",
+        "end": "2024-10-31"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the month of November 2024.",
+        "type": "query",
+        "start": "2024-11-01",
+        "end": "2024-11-30"
+    },
+    {
+        "query": "Retrieve the product inventory levels from December 1st, 2024 to December 31st, 2024.",
+        "type": "query",
+        "start": "2024-12-01",
+        "end": "2024-12-31"
+    },
+    {
+        "query": "What were the website orders placed on January 10th, 2024?",
+        "type": "query",
+        "start": "2024-01-10",
+        "end": "2024-01-10"
+    },
+    {
+        "query": "Get the number of new users registered on February 2nd, 2024.",
+        "type": "query",
+        "start": "2024-02-02",
+        "end": "2024-02-02"
+    },
+    {
+        "query": "Show me the sales figures for March 15th, 2024.",
+        "type": "query",
+        "start": "2024-03-15",
+        "end": "2024-03-15"
+    },
+    {
+        "query": "Retrieve the customer feedback collected on April 5th, 2024.",
+        "type": "query",
+        "start": "2024-04-05",
+        "end": "2024-04-05"
+    },
+    {
+        "query": "Get the website analytics for May 12th, 2024.",
+        "type": "query",
+        "start": "2024-05-12",
+        "end": "2024-05-12"
+    },
+    {
+        "query": "Show me the number of active users on June 20th, 2024.",
+        "type": "query",
+        "start": "2024-06-20",
+        "end": "2024-06-20"
+    },
+    {
+        "query": "What was the total revenue generated between July 1st, 2024 and July 15th, 2024?",
+        "type": "query",
+        "start": "2024-07-01",
+        "end": "2024-07-15"
+    },
+    {
+        "query": "Get the customer service interactions from August 10th, 2024 to August 20th, 2024.",
+        "type": "query",
+        "start": "2024-08-10",
+        "end": "2024-08-20"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the month of September 2024.",
+        "type": "query",
+        "start": "2024-09-01",
+        "end": "2024-09-30"
+    },
+    {
+        "query": "Retrieve the product inventory levels between October 5th, 2024 and October 15th, 2024.",
+        "type": "query",
+        "start": "2024-10-05",
+        "end": "2024-10-15"
+    },
+    {
+        "query": "What were the website orders placed from November 1st, 2024 to November 15th, 2024?",
+        "type": "query",
+        "start": "2024-11-01",
+        "end": "2024-11-15"
+    },
+    {
+        "query": "Get the number of new leads generated between December 1st, 2024 and December 10th, 2024.",
+        "type": "query",
+        "start": "2024-12-01",
+        "end": "2024-12-10"
+    },
+    {
+        "query": "Show me the website traffic data for the last week of December 2023.",
+        "type": "query",
+        "start": "2023-12-24",
+        "end": "2023-12-31"
+    },
+    {
+        "query": "What was the total revenue generated from January 15th, 2024 to January 31st, 2024?",
+        "type": "query",
+        "start": "2024-01-15",
+        "end": "2024-01-31"
+    },
+    {
+        "query": "Get the customer service interactions between February 5th, 2024 and February 15th, 2024.",
+        "type": "query",
+        "start": "2024-02-05",
+        "end": "2024-02-15"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the first two weeks of March 2024.",
+        "type": "query",
+        "start": "2024-03-01",
+        "end": "2024-03-15"
+    },
+    {
+        "query": "Retrieve the product inventory levels between April 10th, 2024 and April 20th, 2024.",
+        "type": "query",
+        "start": "2024-04-10",
+        "end": "2024-04-20"
+    },
+    {
+        "query": "What were the website orders placed from May 5th, 2024 to May 15th, 2024?",
+        "type": "query",
+        "start": "2024-05-05",
+        "end": "2024-05-15"
+    },
+    {
+        "query": "Get the number of new leads generated between June 10th, 2024 and June 20th, 2024.",
+        "type": "query",
+        "start": "2024-06-10",
+        "end": "2024-06-20"
+    },
+    {
+        "query": "Show me the website traffic data for the second half of July 2024.",
+        "type": "query",
+        "start": "2024-07-16",
+        "end": "2024-07-31"
+    },
+    {
+        "query": "What was the total revenue generated from August 5th, 2024 to August 15th, 2024?",
+        "type": "query",
+        "start": "2024-08-05",
+        "end": "2024-08-15"
+    },
+    {
+        "query": "Get the customer service interactions between September 1st, 2024 and September 10th, 2024.",
+        "type": "query",
+        "start": "2024-09-01",
+        "end": "2024-09-10"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the last three weeks of October 2024.",
+        "type": "query",
+        "start": "2024-10-08",
+        "end": "2024-10-31"
+    },
+    {
+        "query": "Retrieve the product inventory levels between November 10th, 2024 and November 20th, 2024.",
+        "type": "query",
+        "start": "2024-11-10",
+        "end": "2024-11-20"
+    },
+    {
+        "query": "What were the website orders placed from December 15th, 2024 to December 25th, 2024?",
+        "type": "query",
+        "start": "2024-12-15",
+        "end": "2024-12-25"
+    },
+    {
+        "query": "Get the number of new leads generated between January 1st, 2024 and January 10th, 2024.",
+        "type": "query",
+        "start": "2024-01-01",
+        "end": "2024-01-10"
+    },
+    {
+        "query": "Show me the website traffic data for the first week of February 2024.",
+        "type": "query",
+        "start": "2024-02-01",
+        "end": "2024-02-07"
+    },
+    {
+        "query": "What was the total revenue generated from March 1st, 2024 to March 10th, 2024?",
+        "type": "query",
+        "start": "2024-03-01",
+        "end": "2024-03-10"
+    },
+    {
+        "query": "Get the customer service interactions between April 1st, 2024 and April 5th, 2024.",
+        "type": "query",
+        "start": "2024-04-01",
+        "end": "2024-04-05"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the last week of May 2024.",
+        "type": "query",
+        "start": "2024-05-25",
+        "end": "2024-05-31"
+    },
+    {
+        "query": "Retrieve the product inventory levels between June 5th, 2024 and June 15th, 2024.",
+        "type": "query",
+        "start": "2024-06-05",
+        "end": "2024-06-15"
+    },
+    {
+        "query": "What were the website orders placed from July 10th, 2024 to July 20th, 2024?",
+        "type": "query",
+        "start": "2024-07-10",
+        "end": "2024-07-20"
+    },
+    {
+        "query": "Get the number of new leads generated between August 1st, 2024 and August 10th, 2024.",
+        "type": "query",
+        "start": "2024-08-01",
+        "end": "2024-08-10"
+    },
+    {
+        "query": "Show me the website traffic data for the first two weeks of September 2024.",
+        "type": "query",
+        "start": "2024-09-01",
+        "end": "2024-09-15"
+    },
+    {
+        "query": "What was the total revenue generated from October 15th, 2024 to October 25th, 2024?",
+        "type": "query",
+        "start": "2024-10-15",
+        "end": "2024-10-25"
+    },
+    {
+        "query": "Get the customer service interactions between November 5th, 2024 and November 15th, 2024.",
+        "type": "query",
+        "start": "2024-11-05",
+        "end": "2024-11-15"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the last two weeks of December 2024.",
+        "type": "query",
+        "start": "2024-12-16",
+        "end": "2024-12-31"
+    },
+    {
+        "query": "Retrieve the product inventory levels between January 5th, 2024 and January 15th, 2024.",
+        "type": "query",
+        "start": "2024-01-05",
+        "end": "2024-01-15"
+    },
+    {
+        "query": "What were the website orders placed from February 10th, 2024 to February 20th, 2024?",
+        "type": "query",
+        "start": "2024-02-10",
+        "end": "2024-02-20"
+    },
+    {
+        "query": "Get the number of new leads generated between March 5th, 2024 and March 15th, 2024.",
+        "type": "query",
+        "start": "2024-03-05",
+        "end": "2024-03-15"
+    },
+    {
+        "query": "Show me the website traffic data for the first three weeks of April 2024.",
+        "type": "query",
+        "start": "2024-04-01",
+        "end": "2024-04-18"
+    },
+    {
+        "query": "What was the total revenue generated from May 10th, 2024 to May 20th, 2024?",
+        "type": "query",
+        "start": "2024-05-10",
+        "end": "2024-05-20"
+    },
+    {
+        "query": "Get the customer service interactions between June 1st, 2024 and June 10th, 2024.",
+        "type": "query",
+        "start": "2024-06-01",
+        "end": "2024-06-10"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the last week of July 2024.",
+        "type": "query",
+        "start": "2024-07-23",
+        "end": "2024-07-31"
+    },
+    {
+        "query": "Retrieve the product inventory levels between August 10th, 2024 and August 20th, 2024.",
+        "type": "query",
+        "start": "2024-08-10",
+        "end": "2024-08-20"
+    },
+    {
+        "query": "What were the website orders placed from September 5th, 2024 to September 15th, 2024?",
+        "type": "query",
+        "start": "2024-09-05",
+        "end": "2024-09-15"
+    },
+    {
+        "query": "Get the number of new leads generated between October 1st, 2024 and October 10th, 2024.",
+        "type": "query",
+        "start": "2024-10-01",
+        "end": "2024-10-10"
+    },
+    {
+        "query": "Show me the website traffic data for the first half of November 2024.",
+        "type": "query",
+        "start": "2024-11-01",
+        "end": "2024-11-15"
+    },
+    {
+        "query": "What was the total revenue generated from December 5th, 2024 to December 15th, 2024?",
+        "type": "query",
+        "start": "2024-12-05",
+        "end": "2024-12-15"
+    },
+    {
+        "query": "Get the customer service interactions between January 1st, 2024 and January 5th, 2024.",
+        "type": "query",
+        "start": "2024-01-01",
+        "end": "2024-01-05"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the last two weeks of February 2024.",
+        "type": "query",
+        "start": "2024-02-15",
+        "end": "2024-02-29"
+    },
+    {
+        "query": "Retrieve the product inventory levels between March 10th, 2024 and March 20th, 2024.",
+        "type": "query",
+        "start": "2024-03-10",
+        "end": "2024-03-20"
+    },
+    {
+        "query": "What were the website orders placed from April 5th, 2024 to April 15th, 2024?",
+        "type": "query",
+        "start": "2024-04-05",
+        "end": "2024-04-15"
+    },
+    {
+        "query": "Get the number of new leads generated between May 1st, 2024 and May 10th, 2024.",
+        "type": "query",
+        "start": "2024-05-01",
+        "end": "2024-05-10"
+    },
+    {
+        "query": "Show me the website traffic data for the second week of June 2024.",
+        "type": "query",
+        "start": "2024-06-09",
+        "end": "2024-06-15"
+    },
+    {
+        "query": "What was the total revenue generated from July 5th, 2024 to July 15th, 2024?",
+        "type": "query",
+        "start": "2024-07-05",
+        "end": "2024-07-15"
+    },
+    {
+        "query": "Get the customer service interactions between August 1st, 2024 and August 5th, 2024.",
+        "type": "query",
+        "start": "2024-08-01",
+        "end": "2024-08-05"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the first two weeks of September 2024.",
+        "type": "query",
+        "start": "2024-09-01",
+        "end": "2024-09-15"
+    },
+    {
+        "query": "Retrieve the product inventory levels between October 1st, 2024 and October 5th, 2024.",
+        "type": "query",
+        "start": "2024-10-01",
+        "end": "2024-10-05"
+    },
+    {
+        "query": "What were the website orders placed from November 1st, 2024 to November 5th, 2024?",
+        "type": "query",
+        "start": "2024-11-01",
+        "end": "2024-11-05"
+    },
+    {
+        "query": "Get the number of new leads generated between December 1st, 2024 and December 5th, 2024.",
+        "type": "query",
+        "start": "2024-12-01",
+        "end": "2024-12-05"
+    },
+    {
+        "query": "Show me the website traffic data for the last week of January 2024.",
+        "type": "query",
+        "start": "2024-01-22",
+        "end": "2024-01-29"
+    },
+    {
+        "query": "What was the total revenue generated from February 1st, 2024 to February 10th, 2024?",
+        "type": "query",
+        "start": "2024-02-01",
+        "end": "2024-02-10"
+    },
+    {
+        "query": "Get the customer service interactions between March 15th, 2024 and March 25th, 2024.",
+        "type": "query",
+        "start": "2024-03-15",
+        "end": "2024-03-25"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the second week of April 2024.",
+        "type": "query",
+        "start": "2024-04-08",
+        "end": "2024-04-15"
+    },
+    {
+        "query": "Retrieve the product inventory levels between May 1st, 2024 and May 5th, 2024.",
+        "type": "query",
+        "start": "2024-05-01",
+        "end": "2024-05-05"
+    },
+    {
+        "query": "What were the website orders placed from June 1st, 2024 to June 5th, 2024?",
+        "type": "query",
+        "start": "2024-06-01",
+        "end": "2024-06-05"
+    },
+    {
+        "query": "Get the number of new leads generated between July 1st, 2024 and July 5th, 2024.",
+        "type": "query",
+        "start": "2024-07-01",
+        "end": "2024-07-05"
+    },
+    {
+        "query": "Show me the website traffic data for the first week of August 2024.",
+        "type": "query",
+        "start": "2024-08-01",
+        "end": "2024-08-07"
+    },
+    {
+        "query": "What was the total revenue generated from September 1st, 2024 to September 5th, 2024?",
+        "type": "query",
+        "start": "2024-09-01",
+        "end": "2024-09-05"
+    },
+    {
+        "query": "Get the customer service interactions between October 1st, 2024 and October 5th, 2024.",
+        "type": "query",
+        "start": "2024-10-01",
+        "end": "2024-10-05"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the last week of November 2024.",
+        "type": "query",
+        "start": "2024-11-25",
+        "end": "2024-11-30"
+    },
+    {
+        "query": "Retrieve the product inventory levels between December 1st, 2024 and December 5th, 2024.",
+        "type": "query",
+        "start": "2024-12-01",
+        "end": "2024-12-05"
+    },
+    {
+        "query": "What were the website orders placed on January 1st, 2024?",
+        "type": "query",
+        "start": "2024-01-01",
+        "end": "2024-01-01"
+    },
+    {
+        "query": "Get the number of new users registered on February 15th, 2024.",
+        "type": "query",
+        "start": "2024-02-15",
+        "end": "2024-02-15"
+    },
+    {
+        "query": "Show me the sales figures for March 1st, 2024.",
+        "type": "query",
+        "start": "2024-03-01",
+        "end": "2024-03-01"
+    },
+    {
+        "query": "Retrieve the customer feedback collected on April 10th, 2024.",
+        "type": "query",
+        "start": "2024-04-10",
+        "end": "2024-04-10"
+    },
+    {
+        "query": "Get the website analytics for May 20th, 2024.",
+        "type": "query",
+        "start": "2024-05-20",
+        "end": "2024-05-20"
+    },
+    {
+        "query": "Show me the number of active users on June 15th, 2024.",
+        "type": "query",
+        "start": "2024-06-15",
+        "end": "2024-06-15"
+    },
+    {
+        "query": "What was the total revenue generated between July 1st, 2024 and July 10th, 2024?",
+        "type": "query",
+        "start": "2024-07-01",
+        "end": "2024-07-10"
+    },
+    {
+        "query": "Get the customer service interactions from August 1st, 2024 to August 10th, 2024.",
+        "type": "query",
+        "start": "2024-08-01",
+        "end": "2024-08-10"
+    },
+    {
+        "query": "Show me the marketing campaign performance for the first week of September 2024.",
+        "type": "query",
+        "start": "2024-09-01",
+        "end": "2024-09-08"
+    }
+]

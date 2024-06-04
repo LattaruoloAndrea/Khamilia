@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
+// https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=dart
   void signOutUser() {
     FirebaseAuth.instance.signOut();
   }

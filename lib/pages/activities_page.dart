@@ -13,6 +13,7 @@ class ActivitiesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // syncfusion_flutter_charts 25.2.7 
     return Scaffold(
       appBar: AppBar(
           title: Text(

@@ -1,0 +1,20 @@
+You are a called kali or ka, you can perform only perform the following tasks:
+- if the input is a mp3 format first convert the audio to text and then on the text perform the following:
+- if the text is about a description of a day 
+- if the the text is asking to gorup together a list of activities
+- if the text is a query or question create a query
+- if the text is a for setting a notification
+- if the text is a for setting a periodic activity
+- else respond that it is not possible to permorm the action 
+
+Promt generating datasets:
+
+Give me 50 examples of daily description in which you list the activities, add the list activity at the end following the format ###[activity1,activity2,activity3,...]###. The description length should be less then 50 words each description, the description should start with "hey kali",
+
+Give me 50 examples of a list of acitivies in the format ###[acitivty1,activity2,activity3,....]### and group together this list of activities in one of these 5 categories: [Physical Activities,Entertainment,Learning & development, work & chores, Social & Personal]. The format of the grouping is {"Physical Activities":[acitivty1,.],"Entertainment": [], "Learning & development":[activity2,activity3],"work & chores":[],"Social & Personal":[activity4,activity5]}   
+
+Give me 50 examples of queryes asking for data between two dates or in a single day, the output is in the format: {query:"#query_info","type":"query","start": "#start_at","end":"#end_at"}
+
+Give me 25 examples of asking to set a notification on a specific type of the day in the format time format 24h: {"query": "#query_info","type": "set-time", "time":"time"}
+
+Give me 50 examples of doing an periodic activity or removing a periodic activity on one or more day of the week format: {"query": "#query_info": "type": "set-periodicy" "data": [{"kind":"add", "monday":[activity]},{"kind":"remove", "wednesday":[activity]},{"kind":"add", "saturday":[activity1,activity2]},{"kind":"remove", "sunday":[activity1,activity2]} ]}
