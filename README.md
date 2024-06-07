@@ -28,3 +28,8 @@ the `lib/src/localization` directory.
 To support additional languages, please visit the tutorial on
 [Internationalizing Flutter
 apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+
+
+### TODO 
+- emotion/ anailsys with the activity add query with analysys emotions
+- query inference emotions/period of time? -< can be done automatically when retrieving data>

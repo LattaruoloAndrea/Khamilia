@@ -1,0 +1,203 @@
+[
+    {
+    "input": ["joy", "anger", "fear", "curiosity", "shame", "gratitude", "boredom"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "joy", "evaluation": "10", "description": "A feeling of happiness, contentment, and pleasure.", "category": "Basic Emotion"},
+      {"emotion": "anger", "evaluation": "2", "description": "A feeling of intense displeasure, hostility, and aggression.", "category": "Basic Emotion"},
+      {"emotion": "fear", "evaluation": "2", "description": "A feeling of apprehension, worry, and anxiety.", "category": "Basic Emotion"},
+      {"emotion": "curiosity", "evaluation": "7", "description": "A feeling of intrigue, interest, and inquisitiveness.", "category": "Cognitive Emotion"},
+      {"emotion": "shame", "evaluation": "2", "description": "A feeling of embarrassment, humiliation, and remorse.", "category": "Social Emotion"},
+      {"emotion": "gratitude", "evaluation": "9", "description": "A feeling of thankfulness, appreciation, and indebtedness.", "category": "Social Emotion"},
+      {"emotion": "boredom", "evaluation": "3", "description": "A feeling of uninterest, restlessness, and lack of stimulation.", "category": "Social Emotion"}
+    ]
+  },
+  {
+    "input": ["love", "guilt", "excitement", "despair", "contentment", "apathy", "stress"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "love", "evaluation": "10", "description": "A feeling of intense affection, care, and attachment.", "category": "Social Emotion"},
+      {"emotion": "guilt", "evaluation": "3", "description": "A feeling of remorse, regret, and responsibility for wrongdoing.", "category": "Social Emotion"},
+      {"emotion": "excitement", "evaluation": "8", "description": "A feeling of energy, stimulation, and thrill.", "category": "Physical Emotion"},
+      {"emotion": "despair", "evaluation": "1", "description": "A feeling of hopelessness, defeat, and resignation.", "category": "Cognitive Emotion"},
+      {"emotion": "contentment", "evaluation": "8", "description": "A feeling of satisfaction, ease, and peace.", "category": "Complex Emotion"},
+      {"emotion": "apathy", "evaluation": "3", "description": "A feeling of indifference, unconcern, and uninterest.", "category": "Complex Emotion"},
+      {"emotion": "stress", "evaluation": "3", "description": "A feeling of overwhelm, pressure, and tension.", "category": "Cognitive Emotion"}
+    ]
+  },
+  {
+    "input": ["surprise", "trust", "pain", "inspiration", "wonder", "jealousy", "humour"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "surprise", "evaluation": "5", "description": "A sudden feeling of astonishment, amazement, and unexpectedness.", "category": "Basic Emotion"},
+      {"emotion": "trust", "evaluation": "8", "description": "A feeling of safety, security, and confidence in another person.", "category": "Social Emotion"},
+      {"emotion": "pain", "evaluation": "1", "description": "A feeling of physical discomfort, suffering, and distress.", "category": "Physical Emotion"},
+      {"emotion": "inspiration", "evaluation": "9", "description": "A feeling of motivation, creativity, and a desire to create or achieve something.", "category": "Complex Emotion"},
+      {"emotion": "wonder", "evaluation": "9", "description": "A feeling of curiosity, amazement, and fascination.", "category": "Complex Emotion"},
+      {"emotion": "jealousy", "evaluation": "2", "description": "A feeling of envy, possessiveness, and insecurity.", "category": "Social Emotion"},
+      {"emotion": "humour", "evaluation": "9", "description": "A feeling of amusement, lightheartedness, and entertainment.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["sadness", "pride", "doubt", "empathy", "acceptance", "loneliness", "regret"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "sadness", "evaluation": "2", "description": "A feeling of sorrow, unhappiness, and distress.", "category": "Basic Emotion"},
+      {"emotion": "pride", "evaluation": "9", "description": "A feeling of satisfaction, accomplishment, and self-confidence.", "category": "Social Emotion"},
+      {"emotion": "doubt", "evaluation": "4", "description": "A feeling of uncertainty, skepticism, and hesitation.", "category": "Cognitive Emotion"},
+      {"emotion": "empathy", "evaluation": "8", "description": "A feeling of understanding, connection, and sharing another's emotions.", "category": "Complex Emotion"},
+      {"emotion": "acceptance", "evaluation": "7", "description": "A feeling of acknowledging and embracing a situation or reality.", "category": "Complex Emotion"},
+      {"emotion": "loneliness", "evaluation": "2", "description": "A feeling of isolation, alone, and disconnected.", "category": "Social Emotion"},
+      {"emotion": "regret", "evaluation": "3", "description": "A feeling of sorrow, remorse, and wishing things were different.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["disgust", "betrayal", "thirst", "optimism", "serenity", "confusion", "fatigue"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "disgust", "evaluation": "1", "description": "A feeling of revulsion, aversion, and repulsion.", "category": "Basic Emotion"},
+      {"emotion": "betrayal", "evaluation": "1", "description": "A feeling of deception, hurt, and violation of trust.", "category": "Social Emotion"},
+      {"emotion": "thirst", "evaluation": "4", "description": "A feeling of the need for water, dryness, and dehydration.", "category": "Physical Emotion"},
+      {"emotion": "optimism", "evaluation": "8", "description": "A feeling of hopefulness, positivity, and expectation of good outcomes.", "category": "Complex Emotion"},
+      {"emotion": "serenity", "evaluation": "9", "description": "A feeling of calm, peace, and tranquility.", "category": "Complex Emotion"},
+      {"emotion": "confusion", "evaluation": "4", "description": "A feeling of bewilderment, uncertainty, and perplexity.", "category": "Cognitive Emotion"},
+      {"emotion": "fatigue", "evaluation": "2", "description": "A feeling of tiredness, exhaustion, and drainage.", "category": "Physical Emotion"}
+    ]
+  },
+  {
+    "input": ["joy", "anger", "fear"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "joy", "evaluation": "10", "description": "A feeling of happiness, contentment, and pleasure.", "category": "Basic Emotion"},
+      {"emotion": "anger", "evaluation": "2", "description": "A feeling of intense displeasure, hostility, and aggression.", "category": "Basic Emotion"},
+      {"emotion": "fear", "evaluation": "2", "description": "A feeling of apprehension, worry, and anxiety.", "category": "Basic Emotion"}
+    ]
+  },
+  {
+    "input": ["love", "shame", "gratitude"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "love", "evaluation": "10", "description": "A feeling of intense affection, care, and attachment.", "category": "Social Emotion"},
+      {"emotion": "shame", "evaluation": "2", "description": "A feeling of embarrassment, humiliation, and remorse.", "category": "Social Emotion"},
+      {"emotion": "gratitude", "evaluation": "9", "description": "A feeling of thankfulness, appreciation, and indebtedness.", "category": "Social Emotion"}
+    ]
+  },
+  {
+    "input": ["curiosity", "doubt", "hope"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "curiosity", "evaluation": "7", "description": "A feeling of intrigue, interest, and inquisitiveness.", "category": "Cognitive Emotion"},
+      {"emotion": "doubt", "evaluation": "4", "description": "A feeling of uncertainty, skepticism, and hesitation.", "category": "Cognitive Emotion"},
+      {"emotion": "hope", "evaluation": "8", "description": "A feeling of optimism, expectation, and confidence.", "category": "Cognitive Emotion"}
+    ]
+  },
+  {
+    "input": ["pain", "hunger", "excitement"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "pain", "evaluation": "1", "description": "A feeling of physical discomfort, suffering, and distress.", "category": "Physical Emotion"},
+      {"emotion": "hunger", "evaluation": "4", "description": "A feeling of the need for food, craving, and emptiness.", "category": "Physical Emotion"},
+      {"emotion": "excitement", "evaluation": "8", "description": "A feeling of energy, stimulation, and thrill.", "category": "Physical Emotion"}
+    ]
+  },
+  {
+    "input": ["apathy", "empathy", "awe"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "apathy", "evaluation": "3", "description": "A feeling of indifference, unconcern, and uninterest.", "category": "Complex Emotion"},
+      {"emotion": "empathy", "evaluation": "8", "description": "A feeling of understanding, connection, and sharing another's emotions.", "category": "Complex Emotion"},
+      {"emotion": "awe", "evaluation": "9", "description": "A feeling of wonder, amazement, and reverence.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["surprise", "trust", "betrayal"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "surprise", "evaluation": "5", "description": "A sudden feeling of astonishment, amazement, and unexpectedness.", "category": "Basic Emotion"},
+      {"emotion": "trust", "evaluation": "8", "description": "A feeling of safety, security, and confidence in another person.", "category": "Social Emotion"},
+      {"emotion": "betrayal", "evaluation": "1", "description": "A feeling of deception, hurt, and violation of trust.", "category": "Social Emotion"}
+    ]
+  },
+  {
+    "input": ["disgust", "loneliness", "regret"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "disgust", "evaluation": "1", "description": "A feeling of revulsion, aversion, and repulsion.", "category": "Basic Emotion"},
+      {"emotion": "loneliness", "evaluation": "2", "description": "A feeling of isolation, alone, and disconnected.", "category": "Social Emotion"},
+      {"emotion": "regret", "evaluation": "3", "description": "A feeling of sorrow, remorse, and wishing things were different.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["pride", "anxiety", "acceptance"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "pride", "evaluation": "9", "description": "A feeling of satisfaction, accomplishment, and self-confidence.", "category": "Social Emotion"},
+      {"emotion": "anxiety", "evaluation": "2", "description": "A feeling of apprehension, worry, and nervousness.", "category": "Cognitive Emotion"},
+      {"emotion": "acceptance", "evaluation": "7", "description": "A feeling of acknowledging and embracing a situation or reality.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["jealousy", "boredom", "contentment"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "jealousy", "evaluation": "2", "description": "A feeling of envy, possessiveness, and insecurity.", "category": "Social Emotion"},
+      {"emotion": "boredom", "evaluation": "3", "description": "A feeling of uninterest, restlessness, and lack of stimulation.", "category": "Social Emotion"},
+      {"emotion": "contentment", "evaluation": "8", "description": "A feeling of satisfaction, ease, and peace.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["despair", "serenity", "inspiration"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "despair", "evaluation": "1", "description": "A feeling of hopelessness, defeat, and resignation.", "category": "Cognitive Emotion"},
+      {"emotion": "serenity", "evaluation": "9", "description": "A feeling of calm, peace, and tranquility.", "category": "Complex Emotion"},
+      {"emotion": "inspiration", "evaluation": "9", "description": "A feeling of motivation, creativity, and a desire to create or achieve something.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["guilt", "humour", "fatigue"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "guilt", "evaluation": "3", "description": "A feeling of remorse, regret, and responsibility for wrongdoing.", "category": "Social Emotion"},
+      {"emotion": "humour", "evaluation": "9", "description": "A feeling of amusement, lightheartedness, and entertainment.", "category": "Complex Emotion"},
+      {"emotion": "fatigue", "evaluation": "2", "description": "A feeling of tiredness, exhaustion, and drainage.", "category": "Physical Emotion"}
+    ]
+  },
+  {
+    "input": ["thirst", "optimism", "wonder"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "thirst", "evaluation": "4", "description": "A feeling of the need for water, dryness, and dehydration.", "category": "Physical Emotion"},
+      {"emotion": "optimism", "evaluation": "8", "description": "A feeling of hopefulness, positivity, and expectation of good outcomes.", "category": "Complex Emotion"},
+      {"emotion": "wonder", "evaluation": "9", "description": "A feeling of curiosity, amazement, and fascination.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["sadness", "embarrassment", "relief"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "sadness", "evaluation": "2", "description": "A feeling of sorrow, unhappiness, and distress.", "category": "Basic Emotion"},
+      {"emotion": "embarrassment", "evaluation": "3", "description": "A feeling of awkwardness, discomfort, and self-consciousness.", "category": "Social Emotion"},
+      {"emotion": "relief", "evaluation": "7", "description": "A feeling of comfort, relaxation, and easing of tension.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["confusion", "sympathy", "pessimism"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "confusion", "evaluation": "4", "description": "A feeling of bewilderment, uncertainty, and perplexity.", "category": "Cognitive Emotion"},
+      {"emotion": "sympathy", "evaluation": "7", "description": "A feeling of concern, sorrow, and pity for another.", "category": "Complex Emotion"},
+      {"emotion": "pessimism", "evaluation": "2", "description": "A feeling of negativity, doubt, and expectation of bad outcomes.", "category": "Complex Emotion"}
+    ]
+  },
+  {
+    "input": ["determination", "frustration", "acceptance"],
+    "type": "emotion-categorize",
+    "output": [
+      {"emotion": "determination", "evaluation": "8", "description": "A feeling of resolve, commitment, and strong will to achieve a goal.", "category": "Complex Emotion"},
+      {"emotion": "frustration", "evaluation": "3", "description": "A feeling of annoyance, irritation, and inability to achieve a goal.", "category": "Complex Emotion"},
+      {"emotion": "acceptance", "evaluation": "7", "description": "A feeling of acknowledging and embracing a situation or reality.", "category": "Complex Emotion"}
+    ]
+  }
+]
+
