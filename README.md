@@ -31,5 +31,14 @@ apps](https://flutter.dev/docs/development/accessibility-and-localization/intern
 
 
 ### TODO 
-- emotion/ anailsys with the activity add query with analysys emotions
-- query inference emotions/period of time? -< can be done automatically when retrieving data>
+- finish text messages UI 
+- add voice (if geminy takes it)
+- fix Ui input text
+- add activities page (big portion) 
+- add settings UI
+- add geminy 
+- add firebase db
+- refine UI
+- LOGO
+- video
+- tutorial
