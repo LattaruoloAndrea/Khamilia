@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gemini_app/components/message_chat.dart';
+import 'package:gemini_app/components/message_class.dart';
 import 'package:gemini_app/components/my_drawer.dart';
 import 'package:gemini_app/components/my_textfield.dart';
 import 'package:gemini_app/components/user_input_chat.dart';
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
-      var message = {'type': _messageController.text,'input': false};
+      var message = {'type': _messageController.text,'sender': false};
       var response = await _chatService.sendMessage(message);
 
       _messageController.clear();
@@ -69,23 +70,23 @@ class HomePage extends StatelessWidget {
         stream: _chatService.getStream(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return MessageChat(message: {'type': 'error'});
+            return MessageChat(message: MessageClass({'type':'error','sender':false,'input':'There was an error'}));
           }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('Loading ...');
-          }
-          print(snapshot.data);
+          // if (snapshot.connectionState == ConnectionState.waiting) {
+          //   return const Text('Loading ...');
+          // }
+          List<MessageClass> p = snapshot.data!;
           return ListView(
-            children: snapshot.data!.map<List>((el)=>_buildMessageItem(el)),
+            children: p.map((el)=>_buildMessageItem(el)).toList(),
                 // .toList(),
           );
         });
   }
 
-  Widget _buildMessageItem(message) {
+  Widget _buildMessageItem(MessageClass message) {
     // Map<String, dynamic> data = message as Map<String, dynamic>;
     var alignment =
-        (message['input']) ? Alignment.centerLeft : Alignment.centerRight;
+        (message.sender!) ? Alignment.centerLeft : Alignment.centerRight;
     return Container(
       alignment: alignment,
       child: Column(

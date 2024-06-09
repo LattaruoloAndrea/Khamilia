@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:gemini_app/components/message_class.dart';
 
 class MessageChat extends StatelessWidget {
-  final message;
+  final MessageClass message;
 
   const MessageChat({super.key, required this.message});
 
-  valid_message(m) {
-    return true;
-  }
 
   @override
   Widget build(BuildContext context) {
-    if (!valid_message(message)){
-      message['type'] ='';
-    }
-    switch (message['type']) {
+    switch (message.type) {
       case 'text':
         return _TextMessage(message);
       case 'activities':
@@ -29,7 +24,7 @@ class MessageChat extends StatelessWidget {
         return _PeriodicyMessage(message);
       case 'support':
         return _SupportMessage(message);
-      case 'support':
+      case 'loading':
         return _LoadingMessage(message);
       default:
         return _ErrorMessage(message);
