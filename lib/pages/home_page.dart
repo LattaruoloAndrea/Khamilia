@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
     if (_messageController.text.isNotEmpty) {
       var message = {'type': _messageController.text, 'sender': false};
       await _chatService.add_input(message);
-      // var response = await _chatService.sendMessage(message);
+      var response = await _chatService.sendMessage(message);
 
       _messageController.clear();
     }
@@ -97,7 +97,7 @@ class HomePage extends StatelessWidget {
   Widget _buildMessagesItem(MessageClass message) {
     // Map<String, dynamic> data = message as Map<String, dynamic>;
     var alignment =
-        (message.sender!) ? Alignment.centerLeft : Alignment.centerRight;
+        (message.sender!) ? Alignment.centerRight : Alignment.centerLeft;
     return Container(
       alignment: alignment,
       child: Column(

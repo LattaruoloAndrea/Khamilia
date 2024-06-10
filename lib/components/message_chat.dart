@@ -13,7 +13,7 @@ class MessageChat extends StatelessWidget {
           color: message.sender! ? Colors.pink[100] : Colors.grey[300],
           borderRadius: BorderRadius.circular(12)),
       padding: EdgeInsets.all(8),
-      margin: message.sender! ? EdgeInsets.only(left: 5,right: 65,top:5,bottom: 1): EdgeInsets.only(left: 65,right: 5,top:5,bottom: 2),
+      margin: message.sender! ? EdgeInsets.only(left: 65,right: 5,top:5,bottom: 1): EdgeInsets.only(left: 5,right: 65,top:5,bottom: 2),
       child: correct_widget(message),
     );
   }
