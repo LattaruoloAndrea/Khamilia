@@ -31,6 +31,7 @@ apps](https://flutter.dev/docs/development/accessibility-and-localization/intern
 
 
 ### TODO 
+- add evaluation time spent on activitis
 - finish text messages UI 
 - add voice (if geminy takes it)
 - fix Ui input text

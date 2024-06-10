@@ -14,15 +14,18 @@ class ChatService{
     //TODO add geminy call here
     return userInput;
   }
+
+  add_input(user_input){
+    messages.add(MessageClass({'type': 'text','input':user_input['type'],'sender': true}));
+    current_message.add(messages);
+  }
   
   sendMessage(userInput){
     // final String currentUserId = _auth.currentUser!.uid;
     // final String currentUserEmail = _auth.currentUser!.email!;
     // final Timestamp timestamp = Timestamp.now();
     // MessageClass(userInput);
-    messages.add(MessageClass({'type': userInput['type'],'input':userInput['type'],'sender': true}));
-    current_message.add(messages);
-    messages.add(MessageClass({'type': userInput['type'],'input':userInput['type'],'sender': false}));
+    messages.add(MessageClass({'type': 'text','input':userInput['type'],'sender': false}));
     current_message.add(messages);
     // current_message.add(processInput({'text': userInput['text'],'input': false}));
   }

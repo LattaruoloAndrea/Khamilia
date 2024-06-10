@@ -20,8 +20,9 @@ class HomePage extends StatelessWidget {
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
-      var message = {'type': _messageController.text,'sender': false};
-      var response = await _chatService.sendMessage(message);
+      var message = {'type': _messageController.text, 'sender': false};
+      await _chatService.add_input(message);
+      // var response = await _chatService.sendMessage(message);
 
       _messageController.clear();
     }
@@ -70,20 +71,30 @@ class HomePage extends StatelessWidget {
         stream: _chatService.getStream(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return MessageChat(message: MessageClass({'type':'error','sender':false,'input':'There was an error'}));
+            return MessageChat(
+                message: MessageClass({
+              'type': 'error',
+              'sender': false,
+              'input': 'There was an error'
+            }));
           }
           // if (snapshot.connectionState == ConnectionState.waiting) {
           //   return const Text('Loading ...');
           // }
-          List<MessageClass> p = snapshot.data!;
-          return ListView(
-            children: p.map((el)=>_buildMessageItem(el)).toList(),
-                // .toList(),
-          );
+          if (snapshot.data != null) {
+            List<MessageClass> p = snapshot.data!;
+            return ListView(
+              children: p.map((el) => _buildMessagesItem(el)).toList(),
+              // .toList(),
+            );
+          }
+          else{
+            return ListView();
+          }
         });
   }
 
-  Widget _buildMessageItem(MessageClass message) {
+  Widget _buildMessagesItem(MessageClass message) {
     // Map<String, dynamic> data = message as Map<String, dynamic>;
     var alignment =
         (message.sender!) ? Alignment.centerLeft : Alignment.centerRight;
