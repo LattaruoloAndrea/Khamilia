@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:intl/intl.dart';
 
 class MessageChat extends StatelessWidget {
   final MessageClass message;
@@ -9,38 +12,60 @@ class MessageChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          color: message.sender! ? Colors.pink[100] : Colors.grey[300],
-          borderRadius: BorderRadius.circular(12)),
-      padding: EdgeInsets.all(8),
-      margin: message.sender! ? EdgeInsets.only(left: 65,right: 5,top:5,bottom: 1): EdgeInsets.only(left: 5,right: 65,top:5,bottom: 2),
-      child: correct_widget(message),
-    );
+        decoration: BoxDecoration(
+            color: message.sender! ? Colors.pink[100] : Colors.grey[300],
+            borderRadius: BorderRadius.circular(12)),
+        padding: EdgeInsets.all(8),
+        margin: message.sender!
+            ? EdgeInsets.only(left: 65, right: 5, top: 5, bottom: 1)
+            : EdgeInsets.only(left: 5, right: 65, top: 5, bottom: 2),
+        child: Column(
+            children: [correct_widget(message), timeWidget(message.timestamp!,message.sender)])
+        // Column(children: [
+        //   message.sender!? Expanded(child: correct_widget(message),) : timeWidget(message.timestamp!),
+        //   message.sender!? timeWidget(message.timestamp!) :  Expanded(child: correct_widget(message),),
+        // ],),
+        );
   }
 
   Widget correct_widget(MessageClass message) {
-    switch (message.type) {
-      case 'mic':
-        return _MicMessage(message);
-      case 'text':
-        return _TextMessage(message);
-      case 'activities':
-        return _ActivitiesMessage(message);
-      case 'group':
-        return _GroupMessage(message);
-      case 'query':
-        return _QueryMessage(message);
-      case 'set-time':
-        return _TimeMessage(message);
-      case 'set-periodicy':
-        return _PeriodicyMessage(message);
-      case 'support':
-        return _SupportMessage(message);
-      case 'loading':
-        return _LoadingMessage(message);
-      default:
-        return _ErrorMessage(message);
+    if (message.isCorrect()) {
+      switch (message.type) {
+        case 'mic':
+          return _MicMessage(message);
+        case 'text':
+          return _TextMessage(message);
+        case 'activities':
+          return _ActivitiesMessage(message);
+        case 'group':
+          return _GroupMessage(message);
+        case 'query':
+          return _QueryMessage(message);
+        case 'set-time':
+          return _TimeMessage(message);
+        case 'set-periodicy':
+          return _PeriodicyMessage(message);
+        case 'support':
+          return _SupportMessage(message);
+        case 'loading':
+          return _LoadingMessage(message);
+        default:
+          return _ErrorMessage(message);
+      }
+    } else {
+      return _ErrorMessage(message);
     }
+  }
+
+  Widget timeWidget(DateTime timestamp,sender) {
+    var alignment =(sender!) ? Alignment.centerRight : Alignment.centerLeft;
+    return Container(
+      // alignment: alignment,
+      child: Text(
+        DateFormat.Hm().format(timestamp),
+        style: TextStyle(fontSize: 11),
+      ),
+    );
   }
 
   Widget _MicMessage(MessageClass message) {
@@ -53,8 +78,6 @@ class MessageChat extends StatelessWidget {
   Widget _TextMessage(MessageClass message) {
     return Text(
       message.input!,
-      // style: TextStyle(margin: EdgeInsets.symmetric(vertical: 1)),
-      // style: TextStyle(backgroundColor: Colors.yellow),
     );
   }
 

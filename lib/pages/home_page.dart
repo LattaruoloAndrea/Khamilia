@@ -17,16 +17,21 @@ class HomePage extends StatelessWidget {
 
   final TextEditingController _messageController = TextEditingController();
   final ChatService _chatService = ChatService();
+  final ScrollController _scrollController = ScrollController();
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
       var message = {'type': _messageController.text, 'sender': false};
       await _chatService.add_input(message);
       var response = await _chatService.sendMessage(message);
-
+      _scrollToBottom();
       _messageController.clear();
     }
   }
+
+   _scrollToBottom(){
+    _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +89,7 @@ class HomePage extends StatelessWidget {
           if (snapshot.data != null) {
             List<MessageClass> p = snapshot.data!;
             return ListView(
+              controller: _scrollController,
               children: p.map((el) => _buildMessagesItem(el)).toList(),
               // .toList(),
             );

@@ -12,22 +12,22 @@ class ChatService{
 
   processInput(userInput){
     //TODO add geminy call here
-    return userInput;
+    return {'type': 'text','input':userInput['type']};
   }
 
   add_input(user_input){
-    messages.add(MessageClass({'type': 'text','input':user_input['type'],'sender': true}));
+    final DateTime timestamp = DateTime.now();
+    messages.add(MessageClass({'type': 'text','input':user_input['type'],'sender': true,'timestamp':timestamp}));
     current_message.add(messages);
   }
   
   sendMessage(userInput){
-    // final String currentUserId = _auth.currentUser!.uid;
-    // final String currentUserEmail = _auth.currentUser!.email!;
-    // final Timestamp timestamp = Timestamp.now();
-    // MessageClass(userInput);
-    messages.add(MessageClass({'type': 'text','input':userInput['type'],'sender': false}));
+    var k = processInput(userInput);
+    k['sender'] = false;
+    final DateTime timestamp = DateTime.now();
+    k['timestamp'] = timestamp;
+    messages.add(MessageClass(k));
     current_message.add(messages);
-    // current_message.add(processInput({'text': userInput['text'],'input': false}));
   }
 
   Stream getStream(){
