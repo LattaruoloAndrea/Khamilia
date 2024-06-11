@@ -11,25 +11,46 @@ You are a called kali or ka, you can perform only perform the following tasks:
 
 Promt generating datasets:
 
-Give me 50 examples of daily description in which you list the activities, add the list activity at the end following the format ###[activity1,activity2,activity3,...]###. The description length should be less then 50 words each description, the description should start with "hey kali",
+SPOKEN  NATURAL LANGUAGE EXAMPLES
 
-Give me 50 examples of a list of acitivies in the format ###[acitivty1,activity2,activity3,....]### and group together this list of activities in one of these 5 categories: [Physical Activities,Entertainment,Learning & development, work & chores, Social & Personal]. The format of the grouping is {"Physical Activities":[acitivty1,.],"Entertainment": [], "Learning & development":[activity2,activity3],"work & chores":[],"Social & Personal":[activity4,activity5]}   
+- Give me 30 examples of daily description in which you list the activities made today. The output format is {"quey": "#query_info","type":"activities", "emotions":[] , "activities": ["activity1", "activity2", "activity3",..],"time":"today"}
 
-Give me 50 examples of queryes asking for data between two dates or in a single day, the output is in the format: {query:"#query_info","type":"query","start": "#start_at","end":"#end_at"}
+- Give me 30 examples of daily description in which you list the activities made yesterday. The output format is {"quey": "#query_info","type":"activities", "emotions":[] , "activities": ["activity1", "activity2", "activity3",..],"time":"yesterday"}
 
-Give me 25 examples of asking to set a notification on a specific type of the day in the format time format 24h: {"query": "#query_info","type": "set-time", "time":"time"}
+- Give me 30 examples of daily descriptions in which you list the activities, the emotions that you felt today. The return format should be:  {"quey": "#query_info","type":"activities","activities": ["activity1", "activity2", "activity3",..], "emotions": ["emotion1","emotion2",...],"time":"today"} 
 
-Give me 50 examples of doing an periodic activity or removing a periodic activity on one or more day of the week format: {"query": "#query_info": "type": "set-periodicy" "data": [{"kind":"add", "monday":[activity]},{"kind":"remove", "wednesday":[activity]},{"kind":"add", "saturday":[activity1,activity2]},{"kind":"remove", "sunday":[activity1,activity2]} ]}
+- Give me 30 examples of daily descriptions in which you list the activities, the emotions that you felt yesterday. The return format should be:  {"quey": "#query_info","type":"activities","activities": ["activity1", "activity2", "activity3",..], "emotions": ["emotion1","emotion2",...],"time":"yesterday"} 
 
-Give me 50 examples of daily descriptions in which you list the activities, the emotions that you felt during the day, provide the description of the day in the result: the return format should be:  {"description": "#query_info","type":"activities",, "activities": [acitivty1, acitivty2, acitivty3,..], "emotions": [emotion1,emotion2,...]}. The description length should be less then 50 words each description
+- Give me 50 examples of queryes asking for data between two dates or in a single day, the output is in the format: {query:"#query_info","type":"query","start": "#start_at","end":"#end_at"} 
 
-Given a list of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion: ###input:[emotion1,emotion2,emotion3]###  ###output: [{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}] ###
+- Give me 50 examples of doing an periodic activity or removing a periodic activity on one or more day of the week format: {"query": "#query_info": "type": "set-periodicy" "data": [{"kind":"add", "monday":["activity"]},{"kind":"remove", "wednesday":["activity"]},{"kind":"add", "saturday":["activity1","activity2"]},{"kind":"remove", "sunday":["activity1","activity2"]} ]}
+
+- Give me 20 examples of asking for help tutorail or support: output format {"query":"help example", "type":"support", "value":"help or tutorail"}
+
+- Give me 20 examples of asking to add to today or yesterday activities to a list a description: output format: {"quey": "#query_info","type": "add-activities","activities": ["activity1", "activity2", "activity3",..], "emotions": [],"time":"yesterday or today"}
+
+- Give me 20 examples of asking to add to today or yesterday activities and emotions to a list a description: output format: {"quey": "#query_info","type": "add-activities","activities": ["activity1", "activity2", "activity3",..], "emotions": ["emotion1","emotion2",...],"time":"yesterday or today"}
+
+- (NOT TO DO YET) Give me 25 examples of asking to set a notification on a specific type of the day in the format time format 24h: {"query": "#query_info","type": "set-time", "time":"time"}
+
+
+FOR API EXAMPLES
+
+- Given a list of 3 to 7 acitivies in the format ###["activity1","activity2","activity3",....]### and group together this list of activities across these these 5 categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}. Provide 50 of these json   
+
+- Give me 50 examples of a list of 7 of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion, provide also one of these 5 categories ["Basic Emotion","Social Emotion","Cognitive emotion","Physical emotion","Complex emotion"] for each emotion: the return format is: {"input":["emotion1","emotion2","emotion3"],"type": "emotion-categorize", "output":[{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}]}
+
+- query -grouping:  group together this list of activities  ###["activity1","activity2","activity3",....]### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}
+- query -Emoting-categorize: Given a list of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion: ###input:[Nostalgia,Inspiration,Arousal,discomfort, unease]### ###output: [{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}] ###
+
+
+TESTS
 
 Given a list of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion: ###input:[Nostalgia,Inspiration,Arousal,discomfort, unease]### ###output: [{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}] ###
 
-Give me 50 examples of a list of 7 of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion, provide also one of these 5 categories ["Basic Emotion","Social Emotion","Cognitive emotion","Physical emotion","Complex emotion"] for each emotion: the return format is: {"input":[emotion1,emotion2,emotion3],"type": "emotion-categorize", "output":[{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}]}
 
-Give me 20 examples of asking for help tutorail or support: output format {"query":"help example", "type":"support", "value":"help or tutorail"} 
+
+
 
 
 provide the best 5 categories to group togheter different emotions

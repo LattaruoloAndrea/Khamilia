@@ -21,17 +21,25 @@ class HomePage extends StatelessWidget {
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
-      var message = {'type': _messageController.text, 'sender': false};
-      await _chatService.add_input(message);
-      var response = await _chatService.sendMessage(message);
-      _scrollToBottom();
+      var message_text = {'type': _messageController.text, 'sender': false};
+      var message_test = {"query": "today I woke up early, had breakfast, went for a run, and worked on a project.", "type": "activities", "emotions": [], "activities": ["woke up early", "had breakfast", "went for a run", "worked on a project"]};
+      await _chatService.add_input(message_text);
+      var response = await _chatService.sendMessage(message_test);
       _messageController.clear();
+      _scrollToBottom();
     }
   }
 
-   _scrollToBottom(){
-    _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-   }
+  _scrollToBottom() {
+    if (_scrollController.hasClients) {
+      // _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        curve: Curves.easeOut,
+        duration: const Duration(milliseconds: 100),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,29 +54,31 @@ class HomePage extends StatelessWidget {
             ),
             backgroundColor: Colors.pink[300]),
         drawer: MyDrawer(),
-        body: SafeArea(
-            child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("lib/images/flamingo_screen.png"),
-              // fit: BoxFit.cover,
+        // resizeToAvoidBottomInset: false,
+        body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                alignment: Alignment.center,
+                image: AssetImage("lib/images/flamingo_screen.png"),
+                // fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: Column(
-            children: [
-              SizedBox(height: 40),
-              Center(child: Text('Welcome, you are logged in')),
-              Expanded(child: _buildMessageList()),
-              // https://lottiefiles.com/animations/flamingo-v2lht2pMje
-              // Center(child: Lottie.asset("lib/images/flamingo.json")),
-              UserInputChat(
-                  controller: _messageController,
-                  onPressed: sendMessage,
-                  onPressedMic: sendMessage),
-              SizedBox(height: 40),
-            ],
-          ),
-        )));
+            child: SafeArea(
+              child: Column(
+                children: [
+                  SizedBox(height: 40),
+                  Center(child: Text('Welcome, you are logged in')),
+                  Expanded(child: _buildMessageList()),
+                  // https://lottiefiles.com/animations/flamingo-v2lht2pMje
+                  // Center(child: Lottie.asset("lib/images/flamingo.json")),
+                  UserInputChat(
+                      controller: _messageController,
+                      onPressed: sendMessage,
+                      onPressedMic: sendMessage),
+                  SizedBox(height: 40),
+                ],
+              ),
+            )));
   }
 
   Widget _buildMessageList() {
@@ -93,8 +103,8 @@ class HomePage extends StatelessWidget {
               children: p.map((el) => _buildMessagesItem(el)).toList(),
               // .toList(),
             );
-          }
-          else{
+            //_scrollToBottom();
+          } else {
             return ListView();
           }
         });

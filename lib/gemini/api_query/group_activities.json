@@ -1,0 +1,344 @@
+[
+    {
+      "input": ["Go for a run", "Stretch", "Listen to music"],
+      "type": "group-activities",
+      "Physical Activities": ["Go for a run", "Stretch"],
+      "Entertainment": ["Listen to music"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Watch a movie", "Make popcorn", "Chat with friends"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Watch a movie"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Chat with friends"]
+    },
+    {
+      "input": ["Clean the house", "Do laundry", "Fold clothes", "Cook dinner"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": ["Clean the house", "Do laundry", "Fold clothes", "Cook dinner"],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Read a book", "Take notes", "Discuss with a study group"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Read a book", "Take notes", "Discuss with a study group"],
+      "Work & Chores": [],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Go to a concert", "Dance to the music", "Sing along", "Meet up with friends"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Go to a concert", "Dance to the music", "Sing along"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Meet up with friends"]
+    },
+    {
+      "input": ["Go hiking", "Pack a lunch", "Enjoy the scenery", "Take photos"],
+      "type": "group-activities",
+      "Physical Activities": ["Go hiking"],
+      "Entertainment": ["Take photos"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Pack a lunch", "Enjoy the scenery"]
+    },
+    {
+      "input": ["Play video games", "Compete with friends", "Have some laughs", "Order pizza"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Play video games", "Have some laughs"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Compete with friends", "Order pizza"]
+    },
+    {
+      "input": ["Learn a new language", "Practice speaking", "Read a book in the new language"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Learn a new language", "Practice speaking", "Read a book in the new language"],
+      "Work & Chores": [],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Mow the lawn", "Water the plants", "Tidy up the garden", "Enjoy the fresh air"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": ["Mow the lawn", "Water the plants", "Tidy up the garden"],
+      "Social & Personal": ["Enjoy the fresh air"]
+    },
+    {
+      "input": ["Attend a networking event", "Meet new people", "Build connections", "Exchange business cards"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Attend a networking event", "Meet new people", "Build connections", "Exchange business cards"]
+    },
+    {
+      "input": ["Go swimming", "Relax in the pool", "Sunbathe", "Read a magazine"],
+      "type": "group-activities",
+      "Physical Activities": ["Go swimming"],
+      "Entertainment": ["Read a magazine"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Relax in the pool", "Sunbathe"]
+    },
+    {
+      "input": ["Play board games", "Strategize", "Have fun with family", "Share snacks"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Play board games", "Have fun with family"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Strategize", "Share snacks"]
+    },
+    {
+      "input": ["Learn a new skill", "Practice regularly", "Master the skill", "Join an online community"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Learn a new skill", "Practice regularly", "Master the skill"],
+      "Work & Chores": [],
+      "Social & Personal": ["Join an online community"]
+    },
+    {
+      "input": ["Grocery shopping", "Cook a healthy meal", "Save money", "Plan meals for the week"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": ["Grocery shopping", "Cook a healthy meal", "Save money"],
+      "Social & Personal": ["Plan meals for the week"]
+    },
+    {
+      "input": ["Go to a museum", "Learn about history", "Admire the art", "Take photos"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Go to a museum", "Admire the art"],
+      "Learning & Development": ["Learn about history"],
+      "Work & Chores": [],
+      "Social & Personal": ["Take photos"]
+    },
+    {
+      "input": ["Volunteer at a local charity", "Help others", "Make a difference", "Meet new people"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Volunteer at a local charity", "Help others", "Make a difference", "Meet new people"]
+    },
+    {
+      "input": ["Take a dance class", "Learn new steps", "Express yourself through movement", "Make new friends"],
+      "type": "group-activities",
+      "Physical Activities": ["Take a dance class", "Express yourself through movement"],
+      "Entertainment": [],
+      "Learning & Development": ["Learn new steps"],
+      "Work & Chores": [],
+      "Social & Personal": ["Make new friends"]
+    },
+    {
+      "input": ["Go to a party", "Dance", "Socialize with friends", "Enjoy the music"],
+      "type": "group-activities",
+      "Physical Activities": ["Dance"],
+      "Entertainment": ["Go to a party", "Enjoy the music"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Socialize with friends"]
+    },
+    {
+      "input": ["Spend time with family", "Play games", "Share stories", "Have dinner together"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Play games", "Share stories"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Spend time with family", "Have dinner together"]
+    },
+    {
+      "input": ["Learn to play a musical instrument", "Practice scales", "Learn a new song", "Join a band"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Learn a new song"],
+      "Learning & Development": ["Learn to play a musical instrument", "Practice scales"],
+      "Work & Chores": [],
+      "Social & Personal": ["Join a band"]
+    },
+    {
+      "input": ["Go stargazing", "Observe the night sky", "Learn about constellations", "Share stories with friends"],
+      "type": "group-activities",
+      "Physical Activities": ["Go stargazing"],
+      "Entertainment": ["Share stories with friends"],
+      "Learning & Development": ["Observe the night sky", "Learn about constellations"],
+      "Work & Chores": [],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Attend a workshop", "Learn new skills", "Expand your knowledge", "Network with other attendees"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Learn new skills", "Expand your knowledge"],
+      "Work & Chores": [],
+      "Social & Personal": ["Attend a workshop", "Network with other attendees"]
+    },
+    {
+      "input": ["Go to a bar", "Have a drink", "Catch up with friends", "Play pool"],
+      "type": "group-activities",
+      "Physical Activities": ["Play pool"],
+      "Entertainment": ["Go to a bar"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Have a drink", "Catch up with friends"]
+    },
+    {
+      "input": ["Write a blog post", "Share your thoughts", "Connect with others", "Promote your blog"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Write a blog post", "Share your thoughts", "Connect with others", "Promote your blog"]
+    },
+    {
+      "input": ["Go on a road trip", "Explore new places", "Create memories", "Listen to music"],
+      "type": "group-activities",
+      "Physical Activities": ["Go on a road trip"],
+      "Entertainment": ["Listen to music"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Explore new places", "Create memories"]
+    },
+    {
+      "input": ["Go camping", "Enjoy nature", "Sleep under the stars", "Roast marshmallows"],
+      "type": "group-activities",
+      "Physical Activities": ["Go camping"],
+      "Entertainment": ["Roast marshmallows"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Enjoy nature", "Sleep under the stars"]
+    },
+    {
+      "input": ["Learn about a new culture", "Read books", "Watch documentaries", "Try new foods"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Try new foods"],
+      "Learning & Development": ["Learn about a new culture", "Read books", "Watch documentaries"],
+      "Work & Chores": [],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Learn to code", "Practice coding", "Build a website", "Join a coding community"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Learn to code", "Practice coding", "Build a website"],
+      "Work & Chores": [],
+      "Social & Personal": ["Join a coding community"]
+    },
+    {
+      "input": ["Take a photography class", "Learn about composition", "Capture beautiful moments", "Experiment with different techniques"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Take a photography class", "Learn about composition", "Capture beautiful moments", "Experiment with different techniques"],
+      "Work & Chores": [],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Attend a conference", "Network with professionals", "Gain insights from experts", "Share your experiences"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Attend a conference", "Gain insights from experts"],
+      "Work & Chores": [],
+      "Social & Personal": ["Network with professionals", "Share your experiences"]
+    },
+    {
+      "input": ["Go to a sporting event", "Cheer for your team", "Enjoy the excitement", "Meet up with friends"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Go to a sporting event", "Enjoy the excitement"],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Cheer for your team", "Meet up with friends"]
+    },
+    {
+      "input": ["Do a puzzle", "Challenge your mind", "Relax and unwind", "Listen to music"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Listen to music"],
+      "Learning & Development": [],
+      "Work & Chores": ["Do a puzzle"],
+      "Social & Personal": ["Challenge your mind", "Relax and unwind"]
+    },
+    {
+      "input": ["Take a cooking class", "Learn new techniques", "Master culinary skills", "Try new recipes"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Take a cooking class", "Learn new techniques", "Master culinary skills", "Try new recipes"],
+      "Work & Chores": [],
+      "Social & Personal": []
+    },
+    {
+      "input": ["Go on a date", "Enjoy each other's company", "Create a special memory", "Go for a walk"],
+      "type": "group-activities",
+      "Physical Activities": ["Go for a walk"],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Go on a date", "Enjoy each other's company", "Create a special memory"]
+    },
+    {
+      "input": ["Do a DIY project", "Learn new skills", "Create something unique", "Use recycled materials"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": ["Learn new skills", "Create something unique"],
+      "Work & Chores": ["Do a DIY project"],
+      "Social & Personal": ["Use recycled materials"]
+    },
+    {
+      "input": ["Go to a farmers market", "Buy fresh produce", "Support local farmers", "Try new foods"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Try new foods"],
+      "Learning & Development": [],
+      "Work & Chores": ["Buy fresh produce"],
+      "Social & Personal": ["Go to a farmers market", "Support local farmers"]
+    },
+    {
+      "input": ["Spend time in nature", "Breathe fresh air", "Clear your mind", "Take a walk in the park"],
+      "type": "group-activities",
+      "Physical Activities": ["Take a walk in the park"],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Spend time in nature", "Breathe fresh air", "Clear your mind"]
+    },
+    {
+      "input": ["Meditate", "Relax", "Focus on your breath", "Practice mindfulness"],
+      "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": [],
+      "Learning & Development": [],
+      "Work & Chores": [],
+      "Social & Personal": ["Meditate", "Relax", "Focus on your breath", "Practice mindfulness"]
+    }
+  ]

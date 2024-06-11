@@ -37,12 +37,10 @@ class MessageChat extends StatelessWidget {
           return _TextMessage(message);
         case 'activities':
           return _ActivitiesMessage(message);
-        case 'group':
-          return _GroupMessage(message);
         case 'query':
           return _QueryMessage(message);
-        case 'set-time':
-          return _TimeMessage(message);
+        case 'add-activities':
+          return _AddActivityMessage(message);
         case 'set-periodicy':
           return _PeriodicyMessage(message);
         case 'support':
@@ -103,6 +101,12 @@ class MessageChat extends StatelessWidget {
 
   Widget _SupportMessage(MessageClass message) {
     return Text('Support', style: TextStyle(backgroundColor: Colors.grey));
+  }
+
+    Widget _AddActivityMessage(MessageClass message) {
+    return Text('AddActivity',
+        style: TextStyle(
+            backgroundColor: const Color.fromARGB(255, 54, 238, 244)));
   }
 
   Widget _LoadingMessage(MessageClass message) {

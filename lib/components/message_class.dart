@@ -37,6 +37,7 @@ class MessageClass {
   DateTime? timestamp;
 
   ActivitiesClass? activitiesClass;
+  AddActivitiesClass? addActivitiesClass;
   GroupClass? groupClass;
   QueryClass? queryClass;
   NotificationClass? notificationClass;
@@ -54,7 +55,7 @@ class MessageClass {
 
   MessageClass(dynamic message) {
     try{type = message['type'];} on(){errorType = ErrorType.errorGeminiResponseNoType;}
-    try{input = message['input'];} on(){errorType = ErrorType.warningMissingInput;}
+    try{input = message['query'];} on(){errorType = ErrorType.warningMissingInput;}
     try{sender = message['sender'];} on(){errorType = ErrorType.warningMissingSender;}
     try{timestamp = message['timestamp'];} on(){}
     switch (type) {
@@ -62,6 +63,8 @@ class MessageClass {
         break;
       case 'activities':
         try{activitiesClass = ActivitiesClass(message);} on ErrorType catch(e){errorType = e;}
+      case 'add-activities':
+        try{addActivitiesClass = AddActivitiesClass(message);} on ErrorType catch(e){errorType = e;}
       case 'group':
         try{groupClass = GroupClass(message);} on ErrorType catch(e){errorType = e;}
       case 'query':
@@ -83,11 +86,26 @@ class MessageClass {
 class ActivitiesClass {
   List<String>? emotions;
   List<String>? activitises;
+  bool yesterday = false; //if false it refers to today
   ActivitiesClass(dynamic message) {
     emotions = [];
     activitises = [];
     try{activitises = message['activitises'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
     try{emotions = message['emotions'];}on(){} //throw ErrorType.warningMissingEmotionsOnActivityType;
+    try{yesterday = message['time']=='yesterday'; }on(){}
+  }
+}
+
+class AddActivitiesClass {
+  List<String>? emotions;
+  List<String>? activitises;
+  bool yesterday = false; //if false it refers to today
+  AddActivitiesClass(dynamic message) {
+    emotions = [];
+    activitises = [];
+    try{activitises = message['activitises'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
+    try{emotions = message['emotions'];}on(){} //throw ErrorType.warningMissingEmotionsOnActivityType;
+    try{yesterday = message['time']=='yesterday'; }on(){}
   }
 }
 
