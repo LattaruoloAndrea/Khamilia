@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -19,8 +21,10 @@ class MessageChat extends StatelessWidget {
         margin: message.sender!
             ? EdgeInsets.only(left: 65, right: 5, top: 5, bottom: 1)
             : EdgeInsets.only(left: 5, right: 65, top: 5, bottom: 2),
-        child: Column(
-            children: [correct_widget(message), timeWidget(message.timestamp!,message.sender)])
+        child: Column(children: [
+          correct_widget(message),
+          timeWidget(message.timestamp!, message.sender)
+        ])
         // Column(children: [
         //   message.sender!? Expanded(child: correct_widget(message),) : timeWidget(message.timestamp!),
         //   message.sender!? timeWidget(message.timestamp!) :  Expanded(child: correct_widget(message),),
@@ -35,6 +39,8 @@ class MessageChat extends StatelessWidget {
           return _MicMessage(message);
         case 'text':
           return _TextMessage(message);
+        case 'ai-text':
+          return _AiTextMessage(message);
         case 'activities':
           return _ActivitiesMessage(message);
         case 'query':
@@ -55,8 +61,8 @@ class MessageChat extends StatelessWidget {
     }
   }
 
-  Widget timeWidget(DateTime timestamp,sender) {
-    var alignment =(sender!) ? Alignment.centerRight : Alignment.centerLeft;
+  Widget timeWidget(DateTime timestamp, sender) {
+    var alignment = (sender!) ? Alignment.centerRight : Alignment.centerLeft;
     return Container(
       // alignment: alignment,
       child: Text(
@@ -74,8 +80,34 @@ class MessageChat extends StatelessWidget {
   }
 
   Widget _TextMessage(MessageClass message) {
-    return Text(
+    return Container(alignment: Alignment.centerLeft,child: Text(
       message.input!,
+    ));
+  }
+
+  Widget _AiTextMessage(MessageClass message) {
+    return Column(
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          child: Row(
+            children: [
+              Icon(Icons.auto_awesome_sharp, size: 35),
+              Padding(
+                padding: EdgeInsets.only(left: 12),
+                child: Text("AI-generated"),
+              )
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+            top: 12,
+          ),
+          child: _TextMessage(message),
+        )
+      ],
     );
   }
 
@@ -103,7 +135,7 @@ class MessageChat extends StatelessWidget {
     return Text('Support', style: TextStyle(backgroundColor: Colors.grey));
   }
 
-    Widget _AddActivityMessage(MessageClass message) {
+  Widget _AddActivityMessage(MessageClass message) {
     return Text('AddActivity',
         style: TextStyle(
             backgroundColor: const Color.fromARGB(255, 54, 238, 244)));

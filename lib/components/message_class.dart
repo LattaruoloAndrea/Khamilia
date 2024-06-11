@@ -61,6 +61,8 @@ class MessageClass {
     switch (type) {
       case 'text':
         break;
+      case 'ai-text':
+        break;
       case 'activities':
         try{activitiesClass = ActivitiesClass(message);} on ErrorType catch(e){errorType = e;}
       case 'add-activities':

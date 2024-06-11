@@ -12,12 +12,12 @@ class ChatService{
 
   processInput(userInput){
     //TODO add geminy call here
-    return {'type': 'text','input':userInput['type']};
+    return {'type': 'text','query':userInput['type']};
   }
 
   add_input(user_input){
     final DateTime timestamp = DateTime.now();
-    messages.add(MessageClass({'type': 'text','input':user_input['type'],'sender': true,'timestamp':timestamp}));
+    messages.add(MessageClass({'type': 'ai-text','query':user_input['type'],'sender': true,'timestamp':timestamp}));
     current_message.add(messages);
   }
   
