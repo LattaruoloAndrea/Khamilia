@@ -80,35 +80,52 @@ class MessageChat extends StatelessWidget {
   }
 
   Widget _TextMessage(MessageClass message) {
-    return Container(alignment: Alignment.centerLeft,child: Text(
-      message.input!,
-    ));
+    return Text(message.input!);
+    // Container(alignment: Alignment.centerLeft,child: Text(
+    //   message.input!,
+    // ));
   }
 
   Widget _AiTextMessage(MessageClass message) {
-    return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          alignment: Alignment.centerLeft,
-          child: Row(
-            children: [
-              Icon(Icons.auto_awesome_sharp, size: 35),
-              Padding(
-                padding: EdgeInsets.only(left: 12),
-                child: Text("AI-generated"),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            top: 12,
-          ),
-          child: _TextMessage(message),
-        )
-      ],
+    return RichText(
+      text: TextSpan(
+        children: [
+
+          TextSpan(
+            text: message.input!,
+            style: TextStyle(color: Colors.black),
+          ),          WidgetSpan(
+            child: Icon(Icons.auto_awesome_sharp, size: 35),
+          )
+        ],
+      ),
     );
+    // return Wrap(children: [
+    //   Icon(Icons.auto_awesome_sharp, size: 35),Text("sadas")
+    // ],);
+    // Column(
+    //   // crossAxisAlignment: CrossAxisAlignment.start,
+    //   children: [
+    //     Container(
+    //       alignment: Alignment.centerLeft,
+    //       child: Row(
+    //         children: [
+    //           Icon(Icons.auto_awesome_sharp, size: 35),
+    //           Padding(
+    //             padding: EdgeInsets.only(left: 12),
+    //             child: Text("AI-generated"),
+    //           )
+    //         ],
+    //       ),
+    //     ),
+    //     Padding(
+    //       padding: EdgeInsets.only(
+    //         top: 12,
+    //       ),
+    //       child: _TextMessage(message),
+    //     )
+    //   ],
+    // );
   }
 
   Widget _ActivitiesMessage(MessageClass message) {
