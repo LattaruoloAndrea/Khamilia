@@ -12,7 +12,9 @@ class ChatService{
 
   processInput(userInput){
     //TODO add geminy call here
-    return {'type': 'text','query':userInput['type']};
+    //var res = {'type': 'text','query':userInput['type']};
+    var res = {"query": "I woke up feeling energized, had a quick breakfast, went for a run, and started working on a new project. I felt motivated and focused.", "type": "activities", "activities": ["woke up early", "had breakfast", "went for a run", "started working on a new project"], "emotions": ["energized", "motivated", "focused"], "time": "today"};
+    return res;
   }
 
   add_input(user_input){

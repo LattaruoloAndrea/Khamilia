@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gemini_app/components/activity_message.dart';
 import 'package:gemini_app/components/message_class.dart';
 import 'package:intl/intl.dart';
 
@@ -100,36 +101,10 @@ class MessageChat extends StatelessWidget {
         ],
       ),
     );
-    // return Wrap(children: [
-    //   Icon(Icons.auto_awesome_sharp, size: 35),Text("sadas")
-    // ],);
-    // Column(
-    //   // crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     Container(
-    //       alignment: Alignment.centerLeft,
-    //       child: Row(
-    //         children: [
-    //           Icon(Icons.auto_awesome_sharp, size: 35),
-    //           Padding(
-    //             padding: EdgeInsets.only(left: 12),
-    //             child: Text("AI-generated"),
-    //           )
-    //         ],
-    //       ),
-    //     ),
-    //     Padding(
-    //       padding: EdgeInsets.only(
-    //         top: 12,
-    //       ),
-    //       child: _TextMessage(message),
-    //     )
-    //   ],
-    // );
   }
 
   Widget _ActivitiesMessage(MessageClass message) {
-    return Text('Activities', style: TextStyle(backgroundColor: Colors.yellow));
+    return ActivitiMessageClass(activitiesClass: message.activitiesClass!);
   }
 
   Widget _GroupMessage(MessageClass message) {
