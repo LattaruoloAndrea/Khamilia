@@ -54,10 +54,10 @@ class MessageClass {
   }
 
   MessageClass(dynamic message) {
-    try{type = message['type'];} on(){errorType = ErrorType.errorGeminiResponseNoType;}
-    try{input = message['query'];} on(){errorType = ErrorType.warningMissingInput;}
-    try{sender = message['sender'];} on(){errorType = ErrorType.warningMissingSender;}
-    try{timestamp = message['timestamp'];} on(){}
+    try{type = message['type'];} catch(e){errorType = ErrorType.errorGeminiResponseNoType;}
+    try{input = message['query'];} catch(e){errorType = ErrorType.warningMissingInput;}
+    try{sender = message['sender'];} catch(e){errorType = ErrorType.warningMissingSender;}
+    try{timestamp = message['timestamp'];} catch(e){}
     switch (type) {
       case 'text':
         break;
@@ -92,9 +92,11 @@ class ActivitiesClass {
   ActivitiesClass(dynamic message) {
     emotions = [];
     activities = [];
-    try{activities = message['activities'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
-    try{emotions = message['emotions'];}on(){} //throw ErrorType.warningMissingEmotionsOnActivityType;
-    try{yesterday = message['time']=='yesterday'; }on(){}
+    try{activities = message['activities'];}catch(e){throw ErrorType.warningMissingEmotionsOnActivityType;}
+    try{emotions = message['emotions'];}catch(e){
+      print("object");
+    } //throw ErrorType.warningMissingEmotionsOnActivityType;
+    try{yesterday = message['time']=='yesterday'; }catch(e){}
   }
 }
 
@@ -105,9 +107,9 @@ class AddActivitiesClass {
   AddActivitiesClass(dynamic message) {
     emotions = [];
     activities = [];
-    try{activities = message['activities'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
-    try{emotions = message['emotions'];}on(){} //throw ErrorType.warningMissingEmotionsOnActivityType;
-    try{yesterday = message['time']=='yesterday'; }on(){}
+    try{activities = message['activities'];}catch(e){throw ErrorType.warningMissingEmotionsOnActivityType;}
+    try{emotions = message['emotions'];}catch(e){} //throw ErrorType.warningMissingEmotionsOnActivityType;
+    try{yesterday = message['time']=='yesterday'; }catch(e){}
   }
 }
 
@@ -123,11 +125,11 @@ class GroupClass {
     learningDevelopment = [];
     workChores = [];
     socialPerson = [];
-    try{pyshicalActivities = message['Physical Activities'];}on(){}
-    try{entertainment = message['Entertainment'];}on(){}
-    try{learningDevelopment = message['Learning & development'];}on(){}
-    try{workChores = message['work & chores'];}on(){}
-    try{socialPerson = message['Social & Personal'];}on(){}
+    try{pyshicalActivities = message['Physical Activities'];}catch(e){}
+    try{entertainment = message['Entertainment'];}catch(e){}
+    try{learningDevelopment = message['Learning & development'];}catch(e){}
+    try{workChores = message['work & chores'];}catch(e){}
+    try{socialPerson = message['Social & Personal'];}catch(e){}
     
   }
 }
@@ -138,15 +140,15 @@ class QueryClass {
   QueryClass(dynamic message) {
     start = ""; 
     end = "";
-    try{start = message['start'];}on(){throw ErrorType.errorMissingStartOnQueryType;}
-    try{end = message['end'];}on(){end=start;}
+    try{start = message['start'];}catch(e){throw ErrorType.errorMissingStartOnQueryType;}
+    try{end = message['end'];}catch(e){end=start;}
   }
 }
 
 class NotificationClass {
   String? time;
   NotificationClass(dynamic message) {
-    try{time = message['time'];}on(){throw ErrorType.errorMissingStartOnQueryType;}
+    try{time = message['time'];}catch(e){throw ErrorType.errorMissingStartOnQueryType;}
   }
 }
 
@@ -155,7 +157,7 @@ class PeriodicyClass {
   PeriodicyClass(dynamic message) {
     data = [];
     List<dynamic> l = [];
-    try{ l= message['data'];}on(){throw ErrorType.errorMissingDataFromPeriodicyType;}
+    try{ l= message['data'];}catch(e){throw ErrorType.errorMissingDataFromPeriodicyType;}
     for (int i = 0; i < l.length; i++) {
       data!.add(OperationOnWeekClass(l[i]));
     }
@@ -173,7 +175,7 @@ class OperationOnWeekClass {
   List<String>? sunday;
   OperationOnWeekClass(dynamic message) {
     bool atLeastOne =false;
-    try{kind = message['kind'];}on(){throw ErrorType.errorMissingKindInDataForPeriodicyType;}
+    try{kind = message['kind'];}catch(e){throw ErrorType.errorMissingKindInDataForPeriodicyType;}
     try {
       monday = message['monday'];
       atLeastOne = true;
@@ -214,7 +216,7 @@ class EmotionCategorizeClass {
 
     listEmotions = [];
     List<dynamic> l = [];
-    try{l = message['output'];}on(){}
+    try{l = message['output'];}catch(e){}
      
     for (int i = 0; i < l.length; i++) {
       listEmotions!.add(EmotionEvaluationClass(l[i]));
@@ -228,17 +230,17 @@ class EmotionEvaluationClass {
   String? description;
   String? category;
   EmotionEvaluationClass(dynamic message) {
-    try{emotion = message['emotion'];}on(){emotion="Not provided";}
-    try{evaluation = message['evaluation'];}on(){evaluation =-1;}
-    try{description = message['description'];}on(){description="Not provided";}
-    try{category = message['category'];}on(){category="Not provided";}
+    try{emotion = message['emotion'];}catch(e){emotion="Not provided";}
+    try{evaluation = message['evaluation'];}catch(e){evaluation =-1;}
+    try{description = message['description'];}catch(e){description="Not provided";}
+    try{category = message['category'];}catch(e){category="Not provided";}
   }
 }
 
 class SupportClass {
   String? value; // help tutorial
   SupportClass(dynamic message) {
-    try{value = message['value'];}on(){value="help";}
+    try{value = message['value'];}catch(e){value="help";}
   }
 
 
