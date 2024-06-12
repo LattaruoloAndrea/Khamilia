@@ -87,12 +87,12 @@ class MessageClass {
 
 class ActivitiesClass {
   List<String>? emotions;
-  List<String>? activitises;
+  List<String>? activities;
   bool yesterday = false; //if false it refers to today
   ActivitiesClass(dynamic message) {
     emotions = [];
-    activitises = [];
-    try{activitises = message['activitises'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
+    activities = [];
+    try{activities = message['activities'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
     try{emotions = message['emotions'];}on(){} //throw ErrorType.warningMissingEmotionsOnActivityType;
     try{yesterday = message['time']=='yesterday'; }on(){}
   }
@@ -100,12 +100,12 @@ class ActivitiesClass {
 
 class AddActivitiesClass {
   List<String>? emotions;
-  List<String>? activitises;
+  List<String>? activities;
   bool yesterday = false; //if false it refers to today
   AddActivitiesClass(dynamic message) {
     emotions = [];
-    activitises = [];
-    try{activitises = message['activitises'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
+    activities = [];
+    try{activities = message['activities'];}on(){throw ErrorType.warningMissingEmotionsOnActivityType;}
     try{emotions = message['emotions'];}on(){} //throw ErrorType.warningMissingEmotionsOnActivityType;
     try{yesterday = message['time']=='yesterday'; }on(){}
   }

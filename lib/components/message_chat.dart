@@ -105,6 +105,7 @@ class MessageChat extends StatelessWidget {
 
   Widget _ActivitiesMessage(MessageClass message) {
     return ActivitiMessageClass(activitiesClass: message.activitiesClass!);
+
   }
 
   Widget _GroupMessage(MessageClass message) {
