@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -16,15 +17,62 @@ class ActivitiMessageClass extends StatefulWidget {
 }
 
 class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
-  removeActivity() {}
+  bool modifyActivities = false;
+  bool modifyEmotions = false;
+  bool modifiedListEmotionsOrActivities = false;
+  TextEditingController activitiesController = TextEditingController();
+  TextEditingController emotionsController = TextEditingController();
 
-  removeEmotion() {}
 
-  saveData() {}
 
-  addActivity() {}
+  addActivity() {
+    setState(() {
+      if(activitiesController.text.isNotEmpty){
+        modifiedListEmotionsOrActivities = true;
+        widget.activitiesClass.activities!.add(activitiesController.text);
+        activitiesController.clear();
+      }
+    });
+  }
 
-  addEmotion() {}
+  addEmotion() {
+    setState(() {
+      if(emotionsController.text.isNotEmpty){
+        modifiedListEmotionsOrActivities = true;
+        widget.activitiesClass.emotions!.add(emotionsController.text);
+        emotionsController.clear();
+      }
+    });
+  }
+
+  removeActivity(String val) {
+    modifiedListEmotionsOrActivities = true;
+    widget.activitiesClass.activities!.remove(val);
+  }
+
+  removeEmotion(String val){
+      modifiedListEmotionsOrActivities = true;
+    widget.activitiesClass.emotions!.remove(val);
+  }
+
+  saveData() {
+    if(modifiedListEmotionsOrActivities){
+      // TODO send data to firebase
+      modifiedListEmotionsOrActivities = false;
+    }
+  }
+
+  modifyActivity() {
+    setState(() {
+      modifyActivities = !modifyActivities;
+    });
+  }
+
+  modifyEmotion() {
+    setState(() {
+      modifyEmotions = !modifyEmotions;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +81,16 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.auto_awesome_sharp,
-              size: 40,
+                        Text(
+              "Daily activities",
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               width: 10,
             ),
-            Text(
-              "Daily activities",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            Icon(
+              Icons.auto_awesome_sharp,
+              size: 40,
             )
           ],
         ),
@@ -96,34 +144,73 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
                     width: 10,
                   ),
                   IconButton.filledTonal(
-                      onPressed: addActivity,
-                      icon: Icon(Icons.add),
+                      onPressed: modifyActivity,
+                      icon: modifyActivities
+                          ? Icon(Icons.save)
+                          : Icon(Icons.edit),
                       color: Colors.black)
                 ]),
                 subtitle: Text("This is the activities from your description"),
               ),
-              Wrap(
-                children: List<Widget>.generate(
-                  widget.activitiesClass.activities!.length,
-                  (int idx) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: Chip(
-                        // padding: EdgeInsets.symmetric(horizontal: 20),
-                        // shape: ,
-                        deleteIcon: Icon(Icons.delete),
-                        shape: StadiumBorder(side: BorderSide()),
-                        onDeleted: () {
-                          setState(() {
-                            removeActivity();
-                          });
-                        },
-                        label: Text(widget.activitiesClass.activities![idx]),
+              modifyActivities
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 15, right: 10, bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                              child: TextField(
+                            controller: activitiesController,
+                            decoration: InputDecoration(
+                                hintText: "Add activity",
+                                hintStyle: TextStyle(color: Colors.grey[600])),
+                          )),
+                          Container(
+                            child: IconButton.filledTonal(
+                              onPressed: addActivity,
+                              icon: Icon(Icons.add),
+                            ),
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                ).toList(),
-              ),
+                    )
+                  : SizedBox.shrink(),
+              modifyActivities
+                  ? Wrap(
+                      children: List<Widget>.generate(
+                        widget.activitiesClass.activities!.length,
+                        (int idx) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            child: Chip(
+                              shape: StadiumBorder(side: BorderSide()),
+                              onDeleted: () {
+                                setState(() {
+                                  removeActivity(widget.activitiesClass.activities![idx]);
+                                });
+                              },
+                              label:
+                                  Text(widget.activitiesClass.activities![idx]),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    )
+                  : Wrap(
+                      children: List<Widget>.generate(
+                        widget.activitiesClass.activities!.length,
+                        (int idx) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            child: Chip(
+                              shape: StadiumBorder(side: BorderSide()),
+                              label:
+                                  Text(widget.activitiesClass.activities![idx]),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    ),
               SizedBox(
                 height: 10,
               )
@@ -138,7 +225,6 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                //leading: Icon(Icons.table_chart),
                 title: Row(children: [
                   Text(
                     "Emotions list",
@@ -148,34 +234,73 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
                     width: 10,
                   ),
                   IconButton.filledTonal(
-                      onPressed: addEmotion,
-                      icon: Icon(Icons.add),
+                      onPressed: modifyEmotion,
+                      icon: modifyEmotions
+                          ? Icon(Icons.save)
+                          : Icon(Icons.edit),
                       color: Colors.black)
                 ]),
-                subtitle: Text("This is the emotions from your description"),
+                subtitle: Text("This is the activities from your description"),
               ),
-              Wrap(
-                children: List<Widget>.generate(
-                  widget.activitiesClass.emotions!.length,
-                  (int idx) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: Chip(
-                        // padding: EdgeInsets.symmetric(horizontal: 20),
-                        // shape: ,
-                        deleteIcon: Icon(Icons.delete),
-                        shape: StadiumBorder(side: BorderSide()),
-                        onDeleted: () {
-                          setState(() {
-                            removeEmotion();
-                          });
-                        },
-                        label: Text(widget.activitiesClass.emotions![idx]),
+              modifyEmotions
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 15, right: 10, bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                              child: TextField(
+                            controller: emotionsController,
+                            decoration: InputDecoration(
+                                hintText: "Add emotion",
+                                hintStyle: TextStyle(color: Colors.grey[600])),
+                          )),
+                          Container(
+                            child: IconButton.filledTonal(
+                              onPressed: addEmotion,
+                              icon: Icon(Icons.add),
+                            ),
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                ).toList(),
-              ),
+                    )
+                  : SizedBox.shrink(),
+              modifyEmotions
+                  ? Wrap(
+                      children: List<Widget>.generate(
+                        widget.activitiesClass.emotions!.length,
+                        (int idx) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            child: Chip(
+                              shape: StadiumBorder(side: BorderSide()),
+                              onDeleted: () {
+                                setState(() {
+                                  removeEmotion(widget.activitiesClass.emotions![idx]);
+                                });
+                              },
+                              label:
+                                  Text(widget.activitiesClass.emotions![idx]),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    )
+                  : Wrap(
+                      children: List<Widget>.generate(
+                        widget.activitiesClass.emotions!.length,
+                        (int idx) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            child: Chip(
+                              shape: StadiumBorder(side: BorderSide()),
+                              label:
+                                  Text(widget.activitiesClass.emotions![idx]),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    ),
               SizedBox(
                 height: 10,
               )
