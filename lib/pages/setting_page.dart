@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/my_drawer.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -11,6 +12,10 @@ class SettingsPage extends StatelessWidget {
 
   void openMenu() {}
 
+  String getToday(){
+    return "13-06-2024";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +26,8 @@ class SettingsPage extends StatelessWidget {
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),
           ),
           backgroundColor: Colors.pink[300]),
-      body: Center(child: Text('This is the settings page')),
       drawer: MyDrawer(),
+      body: ActivityPageComponent(endDate: getToday(),startDate: getToday(),isMessage: false,),
     );
   }
 }

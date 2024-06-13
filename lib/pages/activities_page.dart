@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/my_drawer.dart';
 
 class ActivitiesPage extends StatelessWidget {
@@ -10,6 +11,10 @@ class ActivitiesPage extends StatelessWidget {
   }
 
   void openMenu() {}
+
+  String getTodayDate(){
+    return "13-06-2024";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +27,8 @@ class ActivitiesPage extends StatelessWidget {
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 22),
           ),
           backgroundColor: Colors.pink[300]),
-      body: Center(child: Text('This is the activity page')),
       drawer: MyDrawer(),
+      body: ActivityPageComponent(isMessage: false,startDate: getTodayDate(),endDate: getTodayDate()),
     );
   }
 }
