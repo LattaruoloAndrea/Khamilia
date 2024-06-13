@@ -1,31 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:gemini_app/services/current_day_service.dart';
 
-class DatePickerExample extends StatefulWidget {
-  const DatePickerExample({super.key, this.restorationId,this.date});
-  final String? date;
+class DatePickerComponent extends StatefulWidget {
+  const DatePickerComponent({super.key,required this.restorationId,required this.date});
+  final String date;
   final String? restorationId;
 
   @override
-  State<DatePickerExample> createState() => _DatePickerExampleState();
+  State<DatePickerComponent> createState() => _DatePickerComponentState();
 }
 
 /// RestorationProperty objects can be used because of RestorationMixin.
-class _DatePickerExampleState extends State<DatePickerExample>
+class _DatePickerComponentState extends State<DatePickerComponent>
     with RestorationMixin {
   // In this example, the restoration ID for the mixin is passed in through
   // the [StatefulWidget]'s constructor.
   @override
-  String? get restorationId => widget.restorationId;
+  String? get restorationId => widget.restorationId;  
+  String? get date => widget.date;
+  RestorableDateTime? _selectedDate;
+  int day = CurrentDayService().currentDay();
+  int month = CurrentDayService().currentMonth();
+  int year = CurrentDayService().currentYear();
 
-  final RestorableDateTime _selectedDate =
-      RestorableDateTime(DateTime(2021, 7, 25));
+  @override
+  void initState() {
+    _selectedDate = RestorableDateTime(DateTime.parse(date!));
+  }
+
+
   late final RestorableRouteFuture<DateTime?> _restorableDatePickerRouteFuture =
       RestorableRouteFuture<DateTime?>(
     onComplete: _selectDate,
     onPresent: (NavigatorState navigator, Object? arguments) {
       return navigator.restorablePush(
         _datePickerRoute,
-        arguments: _selectedDate.value.millisecondsSinceEpoch,
+        arguments: _selectedDate!.value.millisecondsSinceEpoch,
       );
     },
   );
@@ -41,9 +51,9 @@ class _DatePickerExampleState extends State<DatePickerExample>
         return DatePickerDialog(
           restorationId: 'date_picker_dialog',
           initialEntryMode: DatePickerEntryMode.calendarOnly,
-          initialDate: DateTime.fromMillisecondsSinceEpoch(arguments! as int),
-          firstDate: DateTime(2021),
-          lastDate: DateTime(2022),
+          initialDate: DateTime(2024,6,13),
+          firstDate: DateTime(2024),
+          lastDate: DateTime(2024,6,13),
         );
       },
     );
@@ -51,7 +61,7 @@ class _DatePickerExampleState extends State<DatePickerExample>
 
   @override
   void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
-    registerForRestoration(_selectedDate, 'selected_date');
+    registerForRestoration(_selectedDate!, 'selected_date');
     registerForRestoration(
         _restorableDatePickerRouteFuture, 'date_picker_route_future');
   }
@@ -59,14 +69,15 @@ class _DatePickerExampleState extends State<DatePickerExample>
   void _selectDate(DateTime? newSelectedDate) {
     if (newSelectedDate != null) {
       setState(() {
-        _selectedDate.value = newSelectedDate;
+        _selectedDate!.value = newSelectedDate;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
-              'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),
+              'Selected: ${_selectedDate!.value.day}/${_selectedDate!.value.month}/${_selectedDate!.value.year}'),
         ));
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +86,7 @@ class _DatePickerExampleState extends State<DatePickerExample>
           onPressed: () {
             _restorableDatePickerRouteFuture.present();
           },
-          child: const Text('From:'),
+          child: const Text('From: 123-213-123'),
         ),
       ),
     );

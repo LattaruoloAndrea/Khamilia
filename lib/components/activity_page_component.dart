@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gemini_app/components/date_picker_component.dart';
 import 'package:gemini_app/components/loading_component.dart';
 import 'package:gemini_app/components/message_class.dart';
 import 'package:gemini_app/services/db_service.dart';
@@ -48,12 +49,7 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
       future: data,
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return Text("DATA LOADED",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold
-            ),
-          );
+          return DatePickerComponent(restorationId: "",date: "2024-06-13");
         }
         else {
           return LoadingComponent();
