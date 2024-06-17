@@ -17,7 +17,7 @@ class EmotionsValue{
   EmotionsValue(this.emotion,this.value,this.color);
   final String emotion;
   final int value;
-  final Color color; 
+  final Color? color; 
 }
 
 class EmotionsComponent extends StatefulWidget {
@@ -66,23 +66,33 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
     score = 0;
     for (int i = 0; i < emotionsList.length; i++) {
       score+= emotionsList[i].evaluation!;
-      Color c = Colors.transparent;
+      Color? c = Colors.transparent;
+      if(emotionsList[i].evaluation!<4){
+        var val = 500-100* emotionsList[i].evaluation!;
+        c = Colors.red[val];
+      }else if(emotionsList[i].evaluation!>=4 && emotionsList[i].evaluation!<=6){
+        var val = 900-100* emotionsList[i].evaluation!;
+        c = Colors.grey[val];
+      }else{
+        var val = 100* emotionsList[i].evaluation!-600;
+        c = Colors.green[val];
+      }
       switch (emotionsList[i].category) {
         case 'Basic Emotion':
           basicEmotions.add(emotionsList[i].emotion!);
-          c = basicColor;
+          // c = basicColor;
         case 'Social Emotion':
           socialEmotions.add(emotionsList[i].emotion!);
-          c = socialColor;
+          // c = socialColor;
         case 'Cognitive Emotion':
           cognitiveEmotions.add(emotionsList[i].emotion!);
-          c = cognitiveColor;
+          // c = cognitiveColor;
         case 'Pyshical Emotion':
           basicEmotions.add(emotionsList[i].emotion!);
-          c = pyshicalColor;
+          // c = pyshicalColor;
         case 'Complex Emotion':
           complexEmotions.add(emotionsList[i].emotion!);
-          c = complexColor;
+          // c = complexColor;
       }
       allEmotions.add(EmotionsValue(emotionsList[i].emotion!,emotionsList[i].evaluation!,c));
     }
