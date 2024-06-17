@@ -13,6 +13,13 @@ class ChartData {
   final Color c;
 }
 
+class EmotionsValue{
+  EmotionsValue(this.emotion,this.value,this.color);
+  final String emotion;
+  final int value;
+  final Color color; 
+}
+
 class EmotionsComponent extends StatefulWidget {
   // final
   List<String> emotions;
@@ -26,16 +33,23 @@ class EmotionsComponent extends StatefulWidget {
 class _EmotionsComponentState extends State<EmotionsComponent> {
   GeminyService gemini = GeminyService();
   late Future<EmotionCategorizeClass> data;
-  Color basicColor = Colors.blue;
-  Color socialColor = Colors.red;
-  Color cognitiveColor = Colors.green;
-  Color pyshicalColor = Colors.orange;
-  Color complexColor = Colors.purple;
-  String basicLabel = "Basic";
-  String socialLabel = "Social";
-  String cognitiveLabel = "Cognitive";
-  String pyshicalLabel = "Pyshical";
-  String complexLabel = "Complex";
+  final Color basicColor = Colors.blue;
+  final Color socialColor = Colors.red;
+  final Color cognitiveColor = Colors.green;
+  final Color pyshicalColor = Colors.orange;
+  final Color complexColor = Colors.purple;
+  final String basicLabel = "Basic";
+  final String socialLabel = "Social";
+  final String cognitiveLabel = "Cognitive";
+  final String pyshicalLabel = "Pyshical";
+  final String complexLabel = "Complex";
+  List<String> basicEmotions = [];
+  List<String> socialEmotions = [];
+  List<String> cognitiveEmotions = [];
+  List<String> pyshicalEmotions = [];
+  List<String> complexEmotions = [];
+  List<EmotionsValue> allEmotions = [];
+  double score = 0;
 
   @override
   void initState() {
@@ -43,38 +57,202 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
   }
 
   List<ChartData> createChartData(List<EmotionEvaluationClass> emotionsList) {
-    int basic = 0;
-    int social = 0;
-    int cognitive = 0;
-    int pyshical = 0;
-    int complex = 0;
+    basicEmotions = [];
+    socialEmotions = [];
+    cognitiveEmotions = [];
+    pyshicalEmotions = [];
+    complexEmotions = [];
+    allEmotions = [];
+    score = 0;
     for (int i = 0; i < emotionsList.length; i++) {
+      score+= emotionsList[i].evaluation!;
+      Color c = Colors.transparent;
       switch (emotionsList[i].category) {
         case 'Basic Emotion':
-          basic += 1;
+          basicEmotions.add(emotionsList[i].emotion!);
+          c = basicColor;
         case 'Social Emotion':
-          social += 1;
+          socialEmotions.add(emotionsList[i].emotion!);
+          c = socialColor;
         case 'Cognitive Emotion':
-          cognitive += 1;
+          cognitiveEmotions.add(emotionsList[i].emotion!);
+          c = cognitiveColor;
         case 'Pyshical Emotion':
-          pyshical += 1;
+          basicEmotions.add(emotionsList[i].emotion!);
+          c = pyshicalColor;
         case 'Complex Emotion':
-          complex += 1;
+          complexEmotions.add(emotionsList[i].emotion!);
+          c = complexColor;
       }
+      allEmotions.add(EmotionsValue(emotionsList[i].emotion!,emotionsList[i].evaluation!,c));
     }
+    score = score/emotionsList.length;
     List<ChartData> chartData = [
-      ChartData(basicLabel, basic, basicColor),
-      ChartData(socialLabel, social, socialColor),
-      ChartData(cognitiveLabel, cognitive, cognitiveColor),
-      ChartData(pyshicalLabel, pyshical, pyshicalColor),
-      ChartData(complexLabel, complex, complexColor)
+      ChartData(basicLabel, basicEmotions.length, basicColor),
+      ChartData(socialLabel, socialEmotions.length, socialColor),
+      ChartData(cognitiveLabel, cognitiveEmotions.length, cognitiveColor),
+      ChartData(pyshicalLabel, pyshicalEmotions.length, pyshicalColor),
+      ChartData(complexLabel, complexEmotions.length, complexColor)
     ];
     return chartData;
   }
 
-  openListEmotions() {}
+  openListEmotions() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          // height: 400,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(
+                  "Your emotion score is: ${score.toStringAsFixed(1)}",
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Divider(),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Text("To every emotion is given a score from 1-10 and the averege is given as emotional score.Where 1 is a negative emotion 5 is neutral and 10 is positive emotion."),
+                ),
+                SizedBox(height: 20,),
+                Expanded(
+                    child: Column(
+                      
+                  children: [
+                    Text("These are all your emotions:",
+                    // textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w400)),
+                    Wrap(
+                      children: List<Widget>.generate(
+                        allEmotions.length,
+                        (int idx) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            child: Chip(
+                              backgroundColor: allEmotions[idx].color,
+                              avatar: CircleAvatar(backgroundColor: Colors.transparent, child: Text('${allEmotions[idx].value}'),),
+                              shape: StadiumBorder(side: BorderSide()),
+                              label: Text(allEmotions[idx].emotion),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    )
+                  ],
+                )),
+                IconButton.filledTonal(
+                  icon: Icon(Icons.close),
+                  color: Colors.red,
+                  // child: const Text('Close'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                SizedBox(height: 20,)
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
-  openModalFor() {}
+  openModalFor(String category) {
+    String current_category = "";
+    String current_explaination = "";
+    List<String> current_list = [];
+    switch (category) {
+      case "Basic":
+        current_category = "Basic emotions";
+        current_explaination =
+            " These are considered universal and innate, often arising from biological and evolutionary processes. They are usually experienced in a more intense and immediate way.";
+        current_list = basicEmotions;
+      case 'Social':
+        current_category = "Social emotions";
+        current_explaination =
+            "These are heavily influenced by our interactions with others and are tied to our social roles and relationships. They reflect our social needs and how we navigate social situations.";
+        current_list = socialEmotions;
+      case 'Cognitive':
+        current_category = "Cognitive emotions";
+        current_explaination =
+            "These arise from our thoughts, beliefs, and interpretations of situations. They are often associated with our mental processes and how we perceive the world around us.";
+        current_list = cognitiveEmotions;
+      case 'Pyshical':
+        current_category = "Pyshical emotions";
+        current_explaination =
+            "These are closely tied to our bodily sensations and physiological responses. They can be triggered by external stimuli or internal states and often involve physical changes like heart rate, breathing, or muscle tension.";
+        current_list = pyshicalEmotions;
+      case 'Complex':
+        current_category = "Complex emotions";
+        current_explaination =
+            "These are multifaceted and often involve a combination of other emotions. They can be nuanced and difficult to categorize, frequently reflecting a blend of feelings.";
+        current_list = complexEmotions;
+    }
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          // height: 400,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(
+                  current_category,
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Divider(),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Text(current_explaination),
+                ),
+                Expanded(
+                    child: Column(
+                      
+                  children: [
+                    Text("Your ${current_category} are:",
+                    // textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w400)),
+                    Wrap(
+                      children: List<Widget>.generate(
+                        current_list.length,
+                        (int idx) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            child: Chip(
+                              shape: StadiumBorder(side: BorderSide()),
+                              label: Text(current_list[idx]),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    )
+                  ],
+                )),
+                IconButton.filledTonal(
+                  icon: Icon(Icons.close),
+                  color: Colors.red,
+                  // child: const Text('Close'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                SizedBox(height: 20,)
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,8 +279,11 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: Divider(),
                       ),
-                      Text(
-                          "Check your emotion score and your emotions categorizations!"),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                            "Check your emotion score and your emotions categorizations!"),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +314,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                 children: [
                                   // Icon(Icons.stay_primary_portrait_outlined),
                                   Text(
-                                    "7.8",
+                                    score.toStringAsFixed(1),
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 26),
@@ -154,7 +335,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 4),
                               child: FloatingActionButton(
-                                  onPressed: openModalFor,
+                                  onPressed: () => openModalFor(basicLabel),
                                   child: Column(
                                     children: [
                                       SizedBox(
@@ -181,7 +362,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 4),
                               child: FloatingActionButton(
-                                  onPressed: openModalFor,
+                                  onPressed: () => openModalFor(socialLabel),
                                   child: Column(
                                     children: [
                                       SizedBox(
@@ -208,7 +389,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 4),
                               child: FloatingActionButton(
-                                  onPressed: openModalFor,
+                                  onPressed: () => openModalFor(cognitiveLabel),
                                   child: Column(
                                     children: [
                                       SizedBox(
@@ -235,7 +416,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 4),
                               child: FloatingActionButton(
-                                  onPressed: openModalFor,
+                                  onPressed: () => openModalFor(pyshicalLabel),
                                   child: Column(
                                     children: [
                                       SizedBox(
@@ -262,7 +443,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 4),
                               child: FloatingActionButton(
-                                  onPressed: openModalFor,
+                                  onPressed: () => openModalFor(complexLabel),
                                   child: Column(
                                     children: [
                                       SizedBox(
