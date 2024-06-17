@@ -5,7 +5,7 @@ class DbService {
   //TODO implements method insided here
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<ActivitiesClass> queryFromTo(String start, String end) async{
+  Future<ActivitiesClass> queryFromTo(String start, String end) async {
     var listActivities = [
       ActivitiesClass({
         "query":
@@ -62,8 +62,8 @@ class DbService {
         "time": "yesterday"
       })
     ];
-    var activities = [];
-    var emotions = [];
+    List<String> activities = [];
+    List<String> emotions = [];
     for (int i = 0; i < listActivities.length; i++) {
       if (listActivities[i].activities != null &&
           listActivities[i].activities!.isNotEmpty) {
@@ -75,8 +75,14 @@ class DbService {
       }
     }
     await Future.delayed(const Duration(seconds: 2));
-    return ActivitiesClass({"activities":activities, "emotions":emotions});
-
-
+    var result = ActivitiesClass({        
+      "query":
+            "",
+        "type": "activities",
+      "activities": activities,
+      "emotions": emotions,
+      "time": "yesterday"
+    });
+    return result;
   }
 }
