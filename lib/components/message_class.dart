@@ -216,19 +216,19 @@ class GroupClass {
     socialPerson = [];
     try {
       pyshicalActivities = message['Physical Activities'];
-    } catch (e) {}
+    } catch (e) {pyshicalActivities = [];}
     try {
       entertainment = message['Entertainment'];
-    } catch (e) {}
+    } catch (e) {entertainment = [];}
     try {
-      learningDevelopment = message['Learning & development'];
-    } catch (e) {}
+      learningDevelopment = message['Learning & Development'];
+    } catch (e) {learningDevelopment = [];}
     try {
-      workChores = message['work & chores'];
-    } catch (e) {}
+      workChores = message['Work & Chores'];
+    } catch (e) {workChores = [];}
     try {
       socialPerson = message['Social & Personal'];
-    } catch (e) {}
+    } catch (e) {socialPerson = [];}
   }
 }
 

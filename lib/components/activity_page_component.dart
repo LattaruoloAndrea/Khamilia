@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gemini_app/components/activity_chart_component.dart';
 import 'package:gemini_app/components/date_picker_component.dart';
+import 'package:gemini_app/components/description_component.dart';
 import 'package:gemini_app/components/emotions_component.dart';
 import 'package:gemini_app/components/loading_component.dart';
 import 'package:gemini_app/components/message_class.dart';
@@ -28,7 +30,7 @@ class ActivityPageComponent extends StatefulWidget {
 
 class _ActivityPageComponentState extends State<ActivityPageComponent> {
   DbService db = DbService();
-  late Future<ActivitiesClass> data;
+  late Future<ActivitiesClass> data; // TODO change ActivitiesClass with message Class we also need the description of the day if it's a signle day or add to activities class
   bool isLoading = true;
   TextEditingController dateFrom = TextEditingController();
   TextEditingController dateTo = TextEditingController();
@@ -94,31 +96,12 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
                     SizedBox(
                       height: 20,
                     ),
+                    ActivityChartComponent(activities: snapshot.data!.activities!),
+                    SizedBox(height: 20,),
                     snapshot.data!.emotions!.length >0? EmotionsComponent(emotions: snapshot.data!.emotions!) : SizedBox(),
-                    Container(
-                      height: 200,
-                      child: Text("dasdsadsadad"),
-                    ),
-                    Container(
-                      height: 200,
-                      child: Text("dasdsadsadad"),
-                    ),
-                    Container(
-                      height: 200,
-                      child: Text("dasdsadsadad"),
-                    ),
-                    Container(
-                      height: 200,
-                      child: Text("dasdsadsadad"),
-                    ),
-                    Container(
-                      height: 200,
-                      child: Text("dasdsadsadad"),
-                    ),
-                    Container(
-                      height: 200,
-                      child: Text("dasdsadsadad"),
-                    ),
+                    SizedBox(height: 200,),
+                    // dateFrom.text == dateTo.text? DescriptionComponent(day: dateFrom.text,description: "",): SizedBox(),
+                    // SizedBox(height: 20,),
                   ],
                 ),
               );
@@ -128,4 +111,5 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
           }
         });
   }
+
 }
