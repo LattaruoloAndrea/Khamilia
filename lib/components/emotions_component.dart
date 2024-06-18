@@ -335,6 +335,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                               Padding(
                                 padding: EdgeInsets.only(right: 10, top: 50),
                                 child: FloatingActionButton(
+                                  heroTag: "Objct6",
                                   onPressed: openListEmotions,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -357,11 +358,13 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                             ],
                           ),
                           Row(
+                            // spacing: 10,
                             children: [
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct7",
                                       onPressed: () => openModalFor(basicLabel),
                                       child: Column(
                                         children: [
@@ -378,7 +381,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                           ),
                                           Text(
                                             basicLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -389,6 +392,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct8",
                                       onPressed: () =>
                                           openModalFor(socialLabel),
                                       child: Column(
@@ -406,7 +410,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                           ),
                                           Text(
                                             socialLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -417,6 +421,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct9",
                                       onPressed: () =>
                                           openModalFor(cognitiveLabel),
                                       child: Column(
@@ -434,7 +439,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                           ),
                                           Text(
                                             cognitiveLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -445,6 +450,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct10",
                                       onPressed: () =>
                                           openModalFor(pyshicalLabel),
                                       child: Column(
@@ -462,7 +468,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                           ),
                                           Text(
                                             pyshicalLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -473,6 +479,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct11",
                                       onPressed: () =>
                                           openModalFor(complexLabel),
                                       child: Column(
@@ -490,7 +497,7 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                                           ),
                                           Text(
                                             complexLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],

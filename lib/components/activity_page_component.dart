@@ -38,8 +38,8 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
   @override
   void initState() {
     data = db.queryFromTo(widget.startDate, widget.endDate);
-    dateFrom.text = "2024-06-14";
-    dateTo.text = "2024-06-14";
+    dateFrom.text = "2024-06-14"; //widget.startDate
+    dateTo.text = "2024-06-14"; //widget.endDate
   }
 
   changeDates(newStart, newEnd) {
@@ -71,6 +71,14 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
                         SizedBox(
                           width: 10,
                         ),
+                        widget.isMessage? 
+                        SizedBox()
+                        // Column(children: [
+
+                        // Expanded(child: Text('From: ${dateFrom.text}')),
+                        // Expanded(child: Text('To: ${dateTo.text}')),
+                        // ],)
+                        :
                         Expanded(
                           child: DatePickerComponent(
                             restorationId: "",
@@ -81,6 +89,8 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
                         SizedBox(
                           width: 10,
                         ),
+                        widget.isMessage? SizedBox()
+                        :
                         Expanded(
                           child: DatePickerComponent(
                             restorationId: "",
@@ -96,9 +106,12 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
                     SizedBox(
                       height: 20,
                     ),
-                    ActivityChartComponent(activities: snapshot.data!.activities!),
-                    SizedBox(height: 20,),
                     snapshot.data!.emotions!.length >0? EmotionsComponent(emotions: snapshot.data!.emotions!) : SizedBox(),
+                    SizedBox(height: 20,),
+                    ActivityChartComponent(activities: snapshot.data!.activities!),
+
+                    widget.isMessage?
+                    SizedBox(height: 20,): 
                     SizedBox(height: 200,),
                     // dateFrom.text == dateTo.text? DescriptionComponent(day: dateFrom.text,description: "",): SizedBox(),
                     // SizedBox(height: 20,),

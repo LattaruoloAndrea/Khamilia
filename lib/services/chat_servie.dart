@@ -10,10 +10,11 @@ class ChatService{
   StreamController<List<MessageClass>> current_message= new StreamController();
   List<MessageClass> messages = [];
 
-  processInput(userInput){
+  Map processInput(userInput){
     //TODO add geminy call here
     //var res = {'type': 'text','query':userInput['type']};
-    var res = {"query": "I woke up feeling energized, had a quick breakfast, went for a run, and started working on a new project. I felt motivated and focused.", "type": "activities", "activities": ["woke up early", "had breakfast", "went for a run", "started working on a new project"], "emotions": ["energized", "motivated", "focused"], "time": "today"};
+    //var res = {"query": "I woke up feeling energized, had a quick breakfast, went for a run, and started working on a new project. I felt motivated and focused.", "type": "activities", "activities": ["woke up early", "had breakfast", "went for a run", "started working on a new project"], "emotions": ["energized", "motivated", "focused"], "time": "today"};
+    var res  ={ "query": "Get the number of new leads generated between August 1st, 2024 and August 10th, 2024.", "type": "query","start": "2024-08-01","end": "2024-08-10","sender":false};
     return res;
   }
 
@@ -24,7 +25,7 @@ class ChatService{
   }
   
   sendMessage(userInput){
-    var k = processInput(userInput);
+    Map k = processInput(userInput);
     k['sender'] = false;
     final DateTime timestamp = DateTime.now();
     k['timestamp'] = timestamp;

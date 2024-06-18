@@ -79,7 +79,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
     List<String> current_list = [];
     switch (label) {
       case Activities.sport:
-        current_category = "Sport / Physical activities";
+        current_category = "Sports / Physical activities";
         current_explaination =
             "These are the activities that somehow involve in a physical activity.";
         current_list = grouping.pyshicalActivities!;
@@ -225,7 +225,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                                "Check your activities and see how your time is distribuited among activities!"),
+                                "Check how your time is distribuited among activities!"),
                           ),
                           SizedBox(
                             height: 20,
@@ -260,6 +260,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct1",
                                       onPressed: () => openModalFor(Activities.sport,snapshot.data!),
                                       child: Column(
                                         children: [
@@ -276,7 +277,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                           ),
                                           Text(
                                             physicalLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -287,6 +288,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct2",
                                       onPressed: () =>
                                           openModalFor(Activities.hobby,snapshot.data!),
                                       child: Column(
@@ -304,7 +306,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                           ),
                                           Text(
                                             entertainmentLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -315,6 +317,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct3",
                                       onPressed: () =>
                                           openModalFor(Activities.study,snapshot.data!),
                                       child: Column(
@@ -332,7 +335,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                           ),
                                           Text(
                                             learningLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -343,6 +346,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct4",
                                       onPressed: () =>
                                           openModalFor(Activities.work,snapshot.data!),
                                       child: Column(
@@ -360,7 +364,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                           ),
                                           Text(
                                             workLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],
@@ -371,6 +375,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 4),
                                   child: FloatingActionButton(
+                                    heroTag: "Objct5",
                                       onPressed: () =>
                                           openModalFor(Activities.social,snapshot.data!),
                                       child: Column(
@@ -388,7 +393,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                                           ),
                                           Text(
                                             socialLabel,
-                                            style: TextStyle(),
+                                            style: TextStyle(fontSize: 12),
                                             textAlign: TextAlign.center,
                                           )
                                         ],

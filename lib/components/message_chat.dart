@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gemini_app/components/activity_message.dart';
+import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/message_class.dart';
 import 'package:intl/intl.dart';
 
@@ -113,7 +114,8 @@ class MessageChat extends StatelessWidget {
   }
 
   Widget _QueryMessage(MessageClass message) {
-    return Text('Query', style: TextStyle(backgroundColor: Colors.pink));
+    // return Text("sdadsada");
+    return ActivityPageComponent(isMessage: true,startDate: message.queryClass!.start!,endDate: message.queryClass!.end!,);
   }
 
   Widget _TimeMessage(MessageClass message) {
