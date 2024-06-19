@@ -1,0 +1,23 @@
+[
+    {"query":"Could you help me install this software?", "type":"support"},
+    {"query":"I need assistance setting up my new printer. Would you be able to help?", "type":"support"},
+    {"query":"I'm struggling to troubleshoot this error message. Can you lend a hand?", "type":"support"},
+    {"query":"I'm not sure how to format this document. Would you mind showing me?", "type":"support"},
+    {"query":"I'm having trouble with this spreadsheet formula. Can you help me figure it out?", "type":"support"},
+    {"query":"I need someone to proofread this report before I submit it. Would you be available?", "type":"support"},
+    {"query":"I'm trying to create a presentation, but I'm stuck on the design. Can you give me some ideas?", "type":"support"},
+    {"query":"I need help organizing this data for my research project. Could you offer any tips?", "type":"support"},
+    {"query":"I'm trying to learn a new programming language. Would you be willing to help me with some exercises?", "type":"support"},
+    {"query":"I'm having trouble with this math problem. Could you walk me through the steps?", "type":"support"},
+    {"query":"I need someone to help me build this website. Would you be interested?", "type":"support"},
+    {"query":"I'm trying to create a marketing campaign, but I need help with the strategy. Can you assist?", "type":"support"},
+    {"query":"I'm working on a project that requires some graphic design. Would you be able to help?", "type":"support"},
+    {"query":"I need someone to edit this video for me. Do you have any experience?", "type":"support"},
+    {"query":"I'm trying to write a blog post, but I'm struggling with the writing. Could you offer some feedback?", "type":"support"},
+    {"query":"I'm learning how to cook, but I need help with this recipe. Can you show me how to do it?", "type":"support"},
+    {"query":"I need someone to help me move furniture. Would you be available?", "type":"support"},
+    {"query":"I'm trying to fix this broken appliance. Can you give me some advice?", "type":"support"},
+    {"query":"I need help with this DIY project. Would you be able to assist?", "type":"support"},    
+    {"query": "help", "type": "support"},
+    {"query": "tutorial", "type": "support"}
+  ]

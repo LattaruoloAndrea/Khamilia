@@ -73,7 +73,7 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
     return v;
   }
 
-  openModalFor(Activities label, GroupClass grouping){
+  openModalFor(Activities label, GroupClass grouping) {
     String current_category = "";
     String current_explaination = "";
     List<String> current_list = [];
@@ -210,202 +210,122 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                   ),
                   child: Card(
                     child: SizedBox(
-                      child: Column(
+                        child: Column(children: [
+                      Text(
+                        "Activities",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 26),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Divider(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                            "Check how your time is distribuited among activities!"),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      // _multipleSelectionActivities(),
+                      // SizedBox(height: 20,),
+                      SfCartesianChart(
+                          primaryXAxis: CategoryAxis(),
+                          primaryYAxis: NumericAxis(
+                              minimum: 0,
+                              maximum: max_value,
+                              interval: interval),
+                          // tooltipBehavior: _tooltip,
+                          series: <CartesianSeries<ChartData, String>>[
+                            ColumnSeries<ChartData, String>(
+                              dataSource: createChartData(snapshot.data!),
+                              xValueMapper: (ChartData data, _) => data.x,
+                              yValueMapper: (ChartData data, _) => data.y,
+                              pointColorMapper: (ChartData data, _) => data.c,
+                              // yAxisName: "Number of activities",
+                              // enableTooltip: true,
+                              // dataLabelMapper: (ChartData data, _) => data.x,
+                            )
+                            // name: 'Gold',
+                            // color: (ChartData data, _) => data.c)
+                          ]),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Wrap(
                         children: [
-                          Text(
-                            "Activities",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 26),
-                          ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Divider(),
-                          ),
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: FilledButton(
+                                style: FilledButton.styleFrom(
+                                    backgroundColor: physicalColor),
+                                onPressed: () => {
+                                  setState(() {
+                                    openModalFor(
+                                        Activities.sport, snapshot.data!);
+                                  })
+                                },
+                                child: Text(physicalLabel),
+                              )),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                                "Check how your time is distribuited among activities!"),
-                          ),
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: FilledButton(
+                                  style: FilledButton.styleFrom(
+                                      backgroundColor: entertainmentColor),
+                                  onPressed: () => {
+                                        setState(() {
+                                          openModalFor(
+                                              Activities.hobby, snapshot.data!);
+                                        })
+                                      },
+                                  child: Text(entertainmentLabel))),
+                          Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: FilledButton(
+                                  style: FilledButton.styleFrom(
+                                      backgroundColor: learningColor),
+                                  onPressed: () => {
+                                        setState(() {
+                                          openModalFor(
+                                              Activities.study, snapshot.data!);
+                                        })
+                                      },
+                                  child: Text(learningLabel))),
+                          Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: FilledButton(
+                                  style: FilledButton.styleFrom(
+                                      backgroundColor: workColor),
+                                  onPressed: () => {
+                                        setState(() {
+                                          openModalFor(
+                                              Activities.work, snapshot.data!);
+                                        })
+                                      },
+                                  child: Text(
+                                    workLabel,
+                                    style: TextStyle(color: Colors.black),
+                                  ))),
+                          Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: FilledButton(
+                                  style: FilledButton.styleFrom(
+                                      backgroundColor: socialColor),
+                                  onPressed: () => {
+                                        setState(() {
+                                          openModalFor(Activities.social,
+                                              snapshot.data!);
+                                        })
+                                      },
+                                  child: Text(socialLabel))),
                           SizedBox(
                             height: 20,
-                          ),
-                          // _multipleSelectionActivities(),
-                          // SizedBox(height: 20,),
-                          SfCartesianChart(
-                              primaryXAxis: CategoryAxis(),
-                              primaryYAxis: NumericAxis(
-                                  minimum: 0,
-                                  maximum: max_value,
-                                  interval: interval),
-                              // tooltipBehavior: _tooltip,
-                              series: <CartesianSeries<ChartData, String>>[
-                                ColumnSeries<ChartData, String>(
-                                  dataSource: createChartData(snapshot.data!),
-                                  xValueMapper: (ChartData data, _) => data.x,
-                                  yValueMapper: (ChartData data, _) => data.y,
-                                  pointColorMapper: (ChartData data, _) =>
-                                      data.c,
-                                  // yAxisName: "Number of activities",
-                                  // enableTooltip: true,
-                                  // dataLabelMapper: (ChartData data, _) => data.x,
-                                )
-                                // name: 'Gold',
-                                // color: (ChartData data, _) => data.c)
-                              ]),
-                          SizedBox(height: 40,),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct1",
-                                      onPressed: () => openModalFor(Activities.sport,snapshot.data!),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: physicalColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            physicalLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct2",
-                                      onPressed: () =>
-                                          openModalFor(Activities.hobby,snapshot.data!),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: entertainmentColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            entertainmentLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct3",
-                                      onPressed: () =>
-                                          openModalFor(Activities.study,snapshot.data!),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: learningColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            learningLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct4",
-                                      onPressed: () =>
-                                          openModalFor(Activities.work,snapshot.data!),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: workColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            workLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct5",
-                                      onPressed: () =>
-                                          openModalFor(Activities.social,snapshot.data!),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: socialColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            socialLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 20,)
+                          )
                         ],
-                      ),
-                    ),
+                      )
+                    ])),
                   ));
             }
           } else {

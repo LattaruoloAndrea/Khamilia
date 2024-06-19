@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gemini_app/components/loading_component.dart';
 import 'package:gemini_app/components/message_class.dart';
@@ -357,158 +358,60 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                               )
                             ],
                           ),
-                          Row(
-                            // spacing: 10,
+                          Wrap(
                             children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct7",
-                                      onPressed: () => openModalFor(basicLabel),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: basicColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            basicLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct8",
-                                      onPressed: () =>
-                                          openModalFor(socialLabel),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: socialColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            socialLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct9",
-                                      onPressed: () =>
-                                          openModalFor(cognitiveLabel),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: cognitiveColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            cognitiveLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct10",
-                                      onPressed: () =>
-                                          openModalFor(pyshicalLabel),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: pyshicalColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            pyshicalLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 4),
-                                  child: FloatingActionButton(
-                                    heroTag: "Objct11",
-                                      onPressed: () =>
-                                          openModalFor(complexLabel),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: complexColor),
-                                            height: 30,
-                                            width: 30,
-                                          ),
-                                          Text(
-                                            complexLabel,
-                                            style: TextStyle(fontSize: 12),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  child: FilledButton(
+                                    style: FilledButton.styleFrom(backgroundColor: basicColor),
+                                      onPressed: () => {
+                                            setState(() {
+                                              openModalFor(basicLabel);
+                                            })
+                                          },
+                                      child:  Text(basicLabel),)),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  child: FilledButton(
+                                    style: FilledButton.styleFrom(backgroundColor: socialColor),
+                                      onPressed: () => {
+                                            setState(() {
+                                              openModalFor(socialLabel);
+                                            })
+                                          },
+                                      child: Text(socialLabel))),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  child: FilledButton(
+                                    style: FilledButton.styleFrom(backgroundColor: cognitiveColor),
+                                      onPressed: () => {
+                                            setState(() {
+                                              openModalFor(cognitiveLabel);
+                                            })
+                                          },
+                                      child: Text(cognitiveLabel))),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  child: FilledButton(
+                                    style: FilledButton.styleFrom(backgroundColor: pyshicalColor),
+                                      onPressed: () => {
+                                            setState(() {
+                                              openModalFor(pyshicalLabel);
+                                            })
+                                          },
+                                      child: Text(pyshicalLabel, style: TextStyle(color: Colors.black),))),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  child: FilledButton(
+                                    style: FilledButton.styleFrom(backgroundColor: complexColor),
+                                      onPressed: () => {
+                                            setState(() {
+                                              openModalFor(complexLabel);
+                                            })
+                                          },
+                                      child: Text(complexLabel))),
                             ],
                           ),
-                          SizedBox(
-                            height: 20,
-                          )
                         ],
                       ),
                     ),

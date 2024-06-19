@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gemini_app/components/activity_message.dart';
 import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:gemini_app/components/support_chat_component.dart';
 import 'package:intl/intl.dart';
 
 class MessageChat extends StatelessWidget {
@@ -127,7 +128,7 @@ class MessageChat extends StatelessWidget {
   }
 
   Widget _SupportMessage(MessageClass message) {
-    return Text('Support', style: TextStyle(backgroundColor: Colors.grey));
+    return SupportChatComponent(message: message.supportClass!);
   }
 
   Widget _AddActivityMessage(MessageClass message) {

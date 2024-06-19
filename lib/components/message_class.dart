@@ -158,6 +158,7 @@ class MessageClass {
 }
 
 class ActivitiesClass {
+  String? description;
   List<String>? emotions;
   List<String>? activities;
   bool yesterday = false; //if false it refers to today
@@ -177,6 +178,9 @@ class ActivitiesClass {
     } //throw ErrorType.warningMissingEmotionsOnActivityType;
     try {
       yesterday = message['time'] == 'yesterday';
+    } catch (e) {}
+        try {
+      description = message['query'];
     } catch (e) {}
   }
 }

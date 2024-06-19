@@ -71,9 +71,11 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
                         SizedBox(
                           width: 10,
                         ),
-                        widget.isMessage? 
-                        SizedBox()
-                        // Column(children: [
+                        widget.isMessage?
+                        dateFrom.text == dateTo.text ?
+                        Text('On ${dateFrom.text}',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 22),):
+                        Text('From: ${dateFrom.text}, to ${dateTo.text}',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 22))
+                        // Row(children: [
 
                         // Expanded(child: Text('From: ${dateFrom.text}')),
                         // Expanded(child: Text('To: ${dateTo.text}')),

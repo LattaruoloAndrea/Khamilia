@@ -66,9 +66,10 @@ class HomePage extends StatelessWidget {
             child: SafeArea(
               child: Column(
                 children: [
-                  SizedBox(height: 40),
-                  Center(child: Text('Welcome, you are logged in')),
+                  SizedBox(height: 10),
+                  Center(child: Text('Welcome!')),
                   Expanded(child: _buildMessageList()),
+                  SizedBox(height: 15,),
                   // https://lottiefiles.com/animations/flamingo-v2lht2pMje
                   // Center(child: Lottie.asset("lib/images/flamingo.json")),
                   UserInputChat(
