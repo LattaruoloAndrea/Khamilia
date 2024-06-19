@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:gemini_app/components/set_periodicy_component.dart';
 
 class DbService {
   //TODO implements method insided here
@@ -84,5 +85,11 @@ class DbService {
       "time": "yesterday"
     });
     return result;
+  }
+
+  Future<PeriodicyDataClass> loadPeriodicy() async {
+    await Future.delayed(const Duration(seconds: 2));
+    return PeriodicyDataClass({"monday":["work","gym"],"tuesday":["work","volleyball"],"wednsday":["work","gym"],"thursday":["work","volleyball"],"friday":["work","gym"],"saturday":["gym"],"sunday":["jogging"]});
+
   }
 }

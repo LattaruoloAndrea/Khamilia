@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gemini_app/components/activity_message.dart';
 import 'package:gemini_app/components/activity_page_component.dart';
+import 'package:gemini_app/components/error_chat_component.dart';
 import 'package:gemini_app/components/message_class.dart';
 import 'package:gemini_app/components/support_chat_component.dart';
 import 'package:intl/intl.dart';
@@ -144,6 +145,6 @@ class MessageChat extends StatelessWidget {
   }
 
   Widget _ErrorMessage(MessageClass message) {
-    return Text('Error', style: TextStyle(backgroundColor: Colors.red));
+    return ErrorChatComponent();
   }
 }

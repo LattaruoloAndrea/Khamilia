@@ -40,7 +40,7 @@ If you have still doubs you can check the tutorial on the button below!
               """),
         ),
 
-        Center(child: Lottie.asset("lib/images/help.json")),
+        // Center(child: Lottie.asset("lib/images/help.json")),
         // SizedBox(
         //   height: 10,
         // ),
