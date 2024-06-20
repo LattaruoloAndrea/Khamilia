@@ -33,10 +33,10 @@ apps](https://flutter.dev/docs/development/accessibility-and-localization/intern
 ### TODO 
 - add evaluation time spent on activitis
 - progress activities store informations about specific tasks and you can see the progress on these tasks
-- finish text messages UI 
+- finish text messages UI
 - add voice (if geminy takes it)
 - fix Ui input text
-- add activities page (big portion) 
+- add activities page (big portion)
 - add settings UI
 - add geminy 
 - add firebase db

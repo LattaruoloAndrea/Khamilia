@@ -11,14 +11,8 @@ import 'package:gemini_app/services/auth_service.dart';
 import 'package:gemini_app/services/chat_servie.dart';
 import 'package:lottie/lottie.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePage();
-}
-
-class _HomePage extends State<HomePage> {
 // https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=dart
 
   final TextEditingController _messageController = TextEditingController();
@@ -28,25 +22,19 @@ class _HomePage extends State<HomePage> {
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
-      var text = _messageController.text; 
-       _messageController.clear();
-      setState(() {
-        typing = true;
-      });
-      var message_text = {'type': text, 'sender': false};
+      typing = true;
+      await Future.delayed(const Duration(seconds: 5));
+      var message_text = {'type': _messageController.text, 'sender': false};
       var message_test = {"query": "today I woke up early, had breakfast, went for a run, and worked on a project.", "type": "activities", "emotions": [], "activities": ["woke up early", "had breakfast", "went for a run", "worked on a project"]};
-      await Future.delayed(const Duration(seconds: 2));
       await _chatService.add_input(message_text);
       var response = await _chatService.sendMessage(message_test);
-     
-      setState(() {
+      _messageController.clear();
+      _scrollToBottom();
       typing = false;
-      // _scrollToBottom();
-      });
     }
   }
 
-  _scrollToBottom() {
+  _scrollToBottom(){
     if (_scrollController.hasClients) {
       // await Future.delayed(const Duration(seconds: 2));
       // _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
@@ -86,31 +74,14 @@ class _HomePage extends State<HomePage> {
                   SizedBox(height: 10),
                   Center(child: Text('Welcome!')),
                   Expanded(child: _buildMessageList()),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15,),
                   // https://lottiefiles.com/animations/flamingo-v2lht2pMje
                   // Center(child: Lottie.asset("lib/images/flamingo.json")),
-                  typing
-                      ? Row(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 25.0,vertical: 5),
-                                child: SizedBox(
-                                  height: 45,
-                                  width: 60,
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-
-                                    decoration:
-                                        BoxDecoration(color: Color.fromARGB(255, 194, 194, 194), borderRadius: BorderRadius.circular(10)),
-                                      child: Center(child: Lottie.asset("lib/images/dots.json")),
-                                  ),
-                                )),
-                            Expanded(child: Container())
-                          ],
-                        )
-                      : SizedBox(),
+                  typing? SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: Container(decoration: BoxDecoration(color: Colors.black),),
+                  ) :SizedBox(),
                   UserInputChat(
                       controller: _messageController,
                       onPressed: sendMessage,
