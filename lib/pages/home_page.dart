@@ -22,9 +22,17 @@ class _HomePage extends State<HomePage> {
 // https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=dart
 
   final TextEditingController _messageController = TextEditingController();
-  final ChatService _chatService = ChatService();
+  late ChatService _chatService;
+  late Stream stream;
   bool typing = false;
   final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState(){
+    _chatService = ChatService();
+    stream = _chatService.getStream();
+    //_chatService = ChatService.instace;
+  }
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
@@ -41,7 +49,7 @@ class _HomePage extends State<HomePage> {
      
       setState(() {
       typing = false;
-      // _scrollToBottom();
+      _scrollToBottom();
       });
     }
   }
@@ -123,7 +131,7 @@ class _HomePage extends State<HomePage> {
 
   Widget _buildMessageList() {
     return StreamBuilder(
-        stream: _chatService.getStream(),
+        stream: stream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return MessageChat(
@@ -145,7 +153,14 @@ class _HomePage extends State<HomePage> {
             );
             //_scrollToBottom();
           } else {
-            return ListView();
+            //return ListView();
+            List<MessageClass> p = _chatService.singletonMessages.messages;
+            return ListView(
+              reverse: true,
+              controller: _scrollController,
+              children: p.map((el) => _buildMessagesItem(el)).toList().reversed.toList(),
+              // .toList(),
+            );
           }
         });
   }

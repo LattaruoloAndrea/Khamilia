@@ -9,6 +9,29 @@ import 'package:gemini_app/services/gemini_service.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:lottie/lottie.dart';
 
+enum EnumEmotionsCategorize {
+  basicEmotion(
+      color: Colors.blue, label: "Basic", key: "Basic Emotion", description: " These are considered universal and innate, often arising from biological and evolutionary processes. They are usually experienced in a more intense and immediate way."),
+  socialEmotion(color: Colors.red, label: "Social", key: "Social Emotion", description: "These are heavily influenced by our interactions with others and are tied to our social roles and relationships. They reflect our social needs and how we navigate social situations."),
+  cognitiveEmotion(
+      color: Colors.green, label: "Cognitive", key: "Cognitive Emotion", description: "These arise from our thoughts, beliefs, and interpretations of situations. They are often associated with our mental processes and how we perceive the world around us."),
+  pyshicalEmotion(
+      color: Colors.orange, label: "Pyshical", key: "Pyshical Emotion", description: "These are closely tied to our bodily sensations and physiological responses. They can be triggered by external stimuli or internal states and often involve physical changes like heart rate, breathing, or muscle tension."),
+  complexEmotion(
+      color: Colors.purple, label: "Complex", key: "Complex Emotion", description: "These are multifaceted and often involve a combination of other emotions. They can be nuanced and difficult to categorize, frequently reflecting a blend of feelings.");
+
+  const EnumEmotionsCategorize(
+      {required this.color,
+      required this.label,
+      required this.key,
+      required this.description});
+
+  final Color color;
+  final String label;
+  final String key;
+  final String description;
+}
+
 class ChartData {
   ChartData(this.x, this.y, this.c);
   final String x;
@@ -36,16 +59,6 @@ class EmotionsComponent extends StatefulWidget {
 class _EmotionsComponentState extends State<EmotionsComponent> {
   GeminyService gemini = GeminyService();
   late Future<EmotionCategorizeClass> data;
-  final Color basicColor = Colors.blue;
-  final Color socialColor = Colors.red;
-  final Color cognitiveColor = Colors.green;
-  final Color pyshicalColor = Colors.orange;
-  final Color complexColor = Colors.purple;
-  final String basicLabel = "Basic";
-  final String socialLabel = "Social";
-  final String cognitiveLabel = "Cognitive";
-  final String pyshicalLabel = "Pyshical";
-  final String complexLabel = "Complex";
   List<String> basicEmotions = [];
   List<String> socialEmotions = [];
   List<String> cognitiveEmotions = [];
@@ -103,11 +116,11 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
     }
     score = score / emotionsList.length;
     List<ChartData> chartData = [
-      ChartData(basicLabel, basicEmotions.length, basicColor),
-      ChartData(socialLabel, socialEmotions.length, socialColor),
-      ChartData(cognitiveLabel, cognitiveEmotions.length, cognitiveColor),
-      ChartData(pyshicalLabel, pyshicalEmotions.length, pyshicalColor),
-      ChartData(complexLabel, complexEmotions.length, complexColor)
+      ChartData(EnumEmotionsCategorize.basicEmotion.label, basicEmotions.length, EnumEmotionsCategorize.basicEmotion.color),
+      ChartData(EnumEmotionsCategorize.socialEmotion.label, socialEmotions.length, EnumEmotionsCategorize.socialEmotion.color),
+      ChartData(EnumEmotionsCategorize.cognitiveEmotion.label, cognitiveEmotions.length, EnumEmotionsCategorize.cognitiveEmotion.color),
+      ChartData(EnumEmotionsCategorize.pyshicalEmotion.label, pyshicalEmotions.length, EnumEmotionsCategorize.pyshicalEmotion.color),
+      ChartData(EnumEmotionsCategorize.complexEmotion.label, complexEmotions.length, EnumEmotionsCategorize.complexEmotion.color)
     ];
     return chartData;
   }
@@ -190,29 +203,24 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
     List<String> current_list = [];
     switch (category) {
       case "Basic":
-        current_category = "Basic emotions";
-        current_explaination =
-            " These are considered universal and innate, often arising from biological and evolutionary processes. They are usually experienced in a more intense and immediate way.";
+        current_category = EnumEmotionsCategorize.basicEmotion.key;
+        current_explaination =EnumEmotionsCategorize.basicEmotion.description;
         current_list = basicEmotions;
       case 'Social':
-        current_category = "Social emotions";
-        current_explaination =
-            "These are heavily influenced by our interactions with others and are tied to our social roles and relationships. They reflect our social needs and how we navigate social situations.";
+        current_category = EnumEmotionsCategorize.socialEmotion.key;
+        current_explaination =EnumEmotionsCategorize.socialEmotion.description;
         current_list = socialEmotions;
       case 'Cognitive':
-        current_category = "Cognitive emotions";
-        current_explaination =
-            "These arise from our thoughts, beliefs, and interpretations of situations. They are often associated with our mental processes and how we perceive the world around us.";
+        current_category = EnumEmotionsCategorize.cognitiveEmotion.key;
+        current_explaination =EnumEmotionsCategorize.cognitiveEmotion.description;
         current_list = cognitiveEmotions;
       case 'Pyshical':
-        current_category = "Pyshical emotions";
-        current_explaination =
-            "These are closely tied to our bodily sensations and physiological responses. They can be triggered by external stimuli or internal states and often involve physical changes like heart rate, breathing, or muscle tension.";
+        current_category = EnumEmotionsCategorize.pyshicalEmotion.key;
+        current_explaination =EnumEmotionsCategorize.pyshicalEmotion.description;
         current_list = pyshicalEmotions;
       case 'Complex':
-        current_category = "Complex emotions";
-        current_explaination =
-            "These are multifaceted and often involve a combination of other emotions. They can be nuanced and difficult to categorize, frequently reflecting a blend of feelings.";
+        current_category = EnumEmotionsCategorize.complexEmotion.key;
+        current_explaination = EnumEmotionsCategorize.complexEmotion.description;
         current_list = complexEmotions;
     }
     showModalBottomSheet<void>(
@@ -363,53 +371,62 @@ class _EmotionsComponentState extends State<EmotionsComponent> {
                               Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 5),
                                   child: FilledButton(
-                                    style: FilledButton.styleFrom(backgroundColor: basicColor),
-                                      onPressed: () => {
-                                            setState(() {
-                                              openModalFor(basicLabel);
-                                            })
-                                          },
-                                      child:  Text(basicLabel),)),
+                                    style: FilledButton.styleFrom(
+                                        backgroundColor: EnumEmotionsCategorize.basicEmotion.color),
+                                    onPressed: () => {
+                                      setState(() {
+                                        openModalFor(EnumEmotionsCategorize.basicEmotion.label);
+                                      })
+                                    },
+                                    child: Text(EnumEmotionsCategorize.basicEmotion.label),
+                                  )),
                               Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 5),
                                   child: FilledButton(
-                                    style: FilledButton.styleFrom(backgroundColor: socialColor),
+                                      style: FilledButton.styleFrom(
+                                          backgroundColor: EnumEmotionsCategorize.socialEmotion.color),
                                       onPressed: () => {
                                             setState(() {
-                                              openModalFor(socialLabel);
+                                              openModalFor(EnumEmotionsCategorize.socialEmotion.label);
                                             })
                                           },
-                                      child: Text(socialLabel))),
+                                      child: Text(EnumEmotionsCategorize.socialEmotion.label))),
                               Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 5),
                                   child: FilledButton(
-                                    style: FilledButton.styleFrom(backgroundColor: cognitiveColor),
+                                      style: FilledButton.styleFrom(
+                                          backgroundColor: EnumEmotionsCategorize.cognitiveEmotion.color),
                                       onPressed: () => {
                                             setState(() {
-                                              openModalFor(cognitiveLabel);
+                                              openModalFor(EnumEmotionsCategorize.cognitiveEmotion.label);
                                             })
                                           },
-                                      child: Text(cognitiveLabel))),
+                                      child: Text(EnumEmotionsCategorize.cognitiveEmotion.label))),
                               Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 5),
                                   child: FilledButton(
-                                    style: FilledButton.styleFrom(backgroundColor: pyshicalColor),
+                                      style: FilledButton.styleFrom(
+                                          backgroundColor: EnumEmotionsCategorize.pyshicalEmotion.color),
                                       onPressed: () => {
                                             setState(() {
-                                              openModalFor(pyshicalLabel);
+                                              openModalFor(EnumEmotionsCategorize.pyshicalEmotion.label);
                                             })
                                           },
-                                      child: Text(pyshicalLabel, style: TextStyle(color: Colors.black),))),
+                                      child: Text(
+                                        EnumEmotionsCategorize.pyshicalEmotion.label,
+                                        style: TextStyle(color: Colors.black),
+                                      ))),
                               Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 5),
                                   child: FilledButton(
-                                    style: FilledButton.styleFrom(backgroundColor: complexColor),
+                                      style: FilledButton.styleFrom(
+                                          backgroundColor: EnumEmotionsCategorize.complexEmotion.color),
                                       onPressed: () => {
                                             setState(() {
-                                              openModalFor(complexLabel);
+                                              openModalFor(EnumEmotionsCategorize.complexEmotion.label);
                                             })
                                           },
-                                      child: Text(complexLabel))),
+                                      child: Text(EnumEmotionsCategorize.complexEmotion.label))),
                             ],
                           ),
                         ],

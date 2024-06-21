@@ -4,9 +4,11 @@ import 'package:gemini_app/main.dart';
 import 'package:gemini_app/pages/home_page.dart';
 import 'package:gemini_app/pages/login.dart';
 import 'package:gemini_app/pages/login_or_register.dart';
+import 'package:gemini_app/services/chat_servie.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
+  AuthPage({super.key});
+  // ChatService _chatService = ChatService();
 
   @override
   Widget build(BuildContext context) {
