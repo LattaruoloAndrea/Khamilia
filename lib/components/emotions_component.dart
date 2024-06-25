@@ -353,7 +353,7 @@ class _MessageEmotionsQueryComponent extends State<MessageEmotionsQueryComponent
                     Padding(
                       padding: EdgeInsets.only(right: 10, top: 50),
                       child: FloatingActionButton(
-                        heroTag: "Objct6",
+                        heroTag: emotionClass.floatingHeroTag,
                         onPressed: openListEmotions,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

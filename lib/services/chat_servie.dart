@@ -99,6 +99,7 @@ class ChatService{
         GroupClass group = await geminyService.groupActivities(activities.activities!);
         EmotionQueryClass classEmotions = EmotionQueryClass();
         ActivityQueryClass classActivities = ActivityQueryClass();
+        classEmotions.floatingHeroTag = DateTime.now().microsecondsSinceEpoch.toString();
         classActivities.createChartData(group);
         classEmotions.createChartData(emotions);
         QueryClassToMessage queryClass = QueryClassToMessage(classEmotions,classActivities,p.queryClassEasy!);

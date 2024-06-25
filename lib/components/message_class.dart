@@ -306,52 +306,8 @@ class EmotionQueryClass {
   List<String>? complexEmotions;
   List<EmotionsValue>? allEmotions;
   double? score;
+  String? floatingHeroTag = "default";
   List<ChartDataEmotions>? chartData;
-  // EmotionQueryClass(dynamic message) {
-  //   basicEmotions = [];
-  //   socialEmotions = [];
-  //   cognitiveEmotions = [];
-  //   pyshicalEmotions = [];
-  //   complexEmotions = [];
-  //   allEmotions = [];
-  //   score = 0;
-  //   chartData = [];
-  //   try {
-  //     basicEmotions = message['basic'];
-  //   } catch (e) {
-  //     basicEmotions = [];
-  //   }
-  //   try {
-  //     socialEmotions = message['social'];
-  //   } catch (e) {
-  //     socialEmotions = [];
-  //   }
-  //   try {
-  //     cognitiveEmotions = message['cognitive'];
-  //   } catch (e) {
-  //     cognitiveEmotions = [];
-  //   }
-  //   try {
-  //     complexEmotions = message['complex'];
-  //   } catch (e) {
-  //     complexEmotions = [];
-  //   }
-  //   try {
-  //     allEmotions = message['all'];
-  //   } catch (e) {
-  //     allEmotions = [];
-  //   }
-  //   try {
-  //     score = message['score'];
-  //   } catch (e) {
-  //     score = 0;
-  //   }
-  //   try {
-  //     chartData = message['chart'];
-  //   } catch (e) {
-  //     chartData = [];
-  //   }
-  // }
 
   createChartData(EmotionCategorizeClass allData) {
     List<EmotionEvaluationClass> emotionsList = allData.listEmotions!;
@@ -361,6 +317,7 @@ class EmotionQueryClass {
     pyshicalEmotions = [];
     complexEmotions = [];
     allEmotions = [];
+    
     score = 0;
     for (int i = 0; i < emotionsList.length; i++) {
       score = score! + emotionsList[i].evaluation!.toDouble();
@@ -435,6 +392,7 @@ class ActivityQueryClass {
   }
 
   createChartData(GroupClass activitiesList) {
+    groupClass= activitiesList;
     maxValue = 2 +
         _max([
           activitiesList.pyshicalActivities!.length,
