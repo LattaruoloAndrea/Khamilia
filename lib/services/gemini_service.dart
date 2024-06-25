@@ -1,6 +1,13 @@
 import 'package:gemini_app/components/message_class.dart';
 
 class GeminyService {
+
+  Future<dynamic> processUserInput(dynamic input){
+    //TODO this is the call to geminy AI
+    // "sender":false add the "sender" : false, to the map
+    return input;
+  }
+
   Future<EmotionCategorizeClass> categolizeListOfEmotions(
       List<String> emotions) async {
     await Future.delayed(const Duration(seconds: 2));
@@ -88,4 +95,5 @@ class GeminyService {
     GroupClass b = GroupClass(ll);
     return b;
   }
+
 }

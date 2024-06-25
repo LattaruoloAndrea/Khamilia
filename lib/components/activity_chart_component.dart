@@ -11,18 +11,55 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 enum Activities { sport, hobby, work, study, social }
 
-class ChartData {
-  ChartData(this.x, this.y, this.c);
-  final String x;
-  final int y;
-  final Color c;
-}
+enum EnumActivitiesGroup {
+  pyshicalActivities(
+      color: Colors.blue,
+      label: "Sports",
+      key: "pyshical",
+      category: "Sports / Physical activities",
+      description:
+          "These are the activities that somehow involve in a physical activity."),
+  entertainmentAvtivities(
+      color: Colors.red,
+      label: "Hobby",
+      key: "entertainment",
+      category: "Hobby / Entertainment",
+      description:
+          "These are the activities that somehow involve in a hobby."),
+  learningActivities(
+      color: Colors.green,
+      label: "Study",
+      key: "learning",
+      category: "Study / Learning & development",
+      description:
+          "These are the activities that somehow involve in learning and development."),
+  workActivities(
+      color: Colors.orange,
+      label: "Work",
+      key: "work",
+      category: "Work & Chores",
+      description:
+          "These are the activities that somehow involve working or doing chroes."),
+  socialActivities(
+      color: Colors.purple,
+      label: "Social",
+      key: "social",
+      category: "Social / Social & person",
+      description:
+          "These are the activities that somehow involve social activities and personal activities.");
 
-class EmotionsValue {
-  EmotionsValue(this.emotion, this.value, this.color);
-  final String emotion;
-  final int value;
-  final Color? color;
+  const EnumActivitiesGroup(
+      {required this.color,
+      required this.label,
+      required this.key,
+      required this.category,
+      required this.description});
+
+  final Color color;
+  final String label;
+  final String key;
+  final String category;
+  final String description;
 }
 
 class ActivityChartComponent extends StatefulWidget {
@@ -38,18 +75,8 @@ class ActivityChartComponent extends StatefulWidget {
 class _ActivityChartComponentState extends State<ActivityChartComponent> {
   GeminyService gemini = GeminyService();
   late Future<GroupClass> data;
-  final Color physicalColor = Colors.blue;
-  final Color entertainmentColor = Colors.red;
-  final Color learningColor = Colors.green;
-  final Color workColor = Colors.orange;
-  final Color socialColor = Colors.purple;
-  final String physicalLabel = "Sports";
-  final String entertainmentLabel = "Hobby";
-  final String learningLabel = "Study";
-  final String workLabel = "Work";
-  final String socialLabel = "Social";
-  double max_value = 10;
-  double interval = 5;
+  ActivityQueryClass activityClass = ActivityQueryClass();
+
   Set<Activities> selection = <Activities>{
     Activities.hobby,
     Activities.sport,
@@ -61,48 +88,121 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
   @override
   void initState() {
     data = gemini.groupActivities(widget.activities);
+     data.then(activityClass.createChartData);
   }
 
-  double _max(List<int> values) {
-    double v = 0;
-    for (int i = 0; i < values.length; i++) {
-      if (values[i] > v) {
-        v = values[i].toDouble();
-      }
-    }
-    return v;
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: data,
+        builder: (ctx, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == null) {
+              return Text("Data not provided");
+            } else {
+              return MessageActivityQueryComponent(activityClass: activityClass);
+            }
+          } else {
+            return Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                child: Card(
+                  child: SizedBox(
+                    child: Column(
+                      children: [
+                        Text(
+                          "Loading data",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 26),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Divider(),
+                        ),
+                        //TODO put loading here
+                        // Center(child: Lottie.asset("lib/images/loading_component.json")),
+                      ],
+                    ),
+                  ),
+                ));
+          }
+        });
   }
 
-  openModalFor(Activities label, GroupClass grouping) {
+  Widget _multipleSelectionActivities() {
+    return SegmentedButton<Activities>(
+      // style: ButtonStyle(maximumSize: WidgetStateProperty.all(Size(50, 50)), minimumSize: WidgetStateProperty.all(Size(50, 50),), textStyle: WidgetStateProperty.all(TextStyle(fontSize: 20)) ),
+      segments: const <ButtonSegment<Activities>>[
+        ButtonSegment<Activities>(
+            value: Activities.sport, label: Text('Sport')),
+        ButtonSegment<Activities>(
+            value: Activities.hobby, label: Text('Hobby')),
+        ButtonSegment<Activities>(
+            value: Activities.study, label: Text('Study')),
+        ButtonSegment<Activities>(
+          value: Activities.work,
+          label: Text('Work'),
+        ),
+        // ButtonSegment<Activities>(value: Activities.social, label: Text('Social')),
+      ],
+      selected: selection,
+      onSelectionChanged: (Set<Activities> newSelection) {
+        setState(() {
+          selection = newSelection;
+        });
+      },
+      multiSelectionEnabled: true,
+    );
+  }
+}
+
+
+class MessageActivityQueryComponent extends StatefulWidget {
+  final ActivityQueryClass activityClass;
+
+  const MessageActivityQueryComponent(
+      {super.key,
+      required this.activityClass});
+
+  @override
+  State<MessageActivityQueryComponent> createState() => _MessageActivityQueryComponent();
+}
+
+class _MessageActivityQueryComponent extends State<MessageActivityQueryComponent> {
+  ActivityQueryClass activityClass = ActivityQueryClass();
+
+  @override
+  initState() {
+    activityClass = widget.activityClass;
+  }
+
+  openModalFor(Activities label) {
     String current_category = "";
     String current_explaination = "";
     List<String> current_list = [];
     switch (label) {
       case Activities.sport:
-        current_category = "Sports / Physical activities";
-        current_explaination =
-            "These are the activities that somehow involve in a physical activity.";
-        current_list = grouping.pyshicalActivities!;
+        current_category = EnumActivitiesGroup.pyshicalActivities.category;
+        current_explaination = EnumActivitiesGroup.pyshicalActivities.description;
+        current_list = activityClass.groupClass!.pyshicalActivities!;
       case Activities.hobby:
-        current_category = "Hobby / Entertainment";
-        current_explaination =
-            "These are the activities that somehow involve in a hobby.";
-        current_list = grouping.entertainment!;
+        current_category = EnumActivitiesGroup.entertainmentAvtivities.category;
+        current_explaination =EnumActivitiesGroup.entertainmentAvtivities.description;
+        current_list = activityClass.groupClass!.entertainment!;
       case Activities.study:
-        current_category = "Study / Learning & development";
-        current_explaination =
-            "These are the activities that somehow involve in learning and development.";
-        current_list = grouping.learningDevelopment!;
+        current_category = EnumActivitiesGroup.learningActivities.category;
+        current_explaination = EnumActivitiesGroup.learningActivities.description;
+        current_list = activityClass.groupClass!.learningDevelopment!;
       case Activities.work:
-        current_category = "Work & Chores";
-        current_explaination =
-            "These are the activities that somehow involve working or doing chroes.";
-        current_list = grouping.workChores!;
+        current_category = EnumActivitiesGroup.workActivities.category;
+        current_explaination =EnumActivitiesGroup.workActivities.description;
+        current_list = activityClass.groupClass!.workChores!;
       case Activities.social:
-        current_category = "Social / Social & person";
-        current_explaination =
-            "These are the activities that somehow involve social activities and personal activities.";
-        current_list = grouping.socialPerson!;
+        current_category = EnumActivitiesGroup.socialActivities.category;
+        current_explaination = EnumActivitiesGroup.socialActivities.description;
+        current_list = activityClass.groupClass!.socialPerson!;
     }
     showModalBottomSheet<void>(
       context: context,
@@ -166,45 +266,10 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
     );
   }
 
-  List<ChartData> createChartData(GroupClass activitiesList) {
-    max_value = 2 +
-        _max([
-          activitiesList.pyshicalActivities!.length,
-          activitiesList.entertainment!.length,
-          activitiesList.learningDevelopment!.length,
-          activitiesList.workChores!.length,
-          activitiesList.socialPerson!.length
-        ]);
-    List<ChartData> chartData = [
-      ChartData(physicalLabel, activitiesList.pyshicalActivities!.length,
-          physicalColor),
-      ChartData(entertainmentLabel, activitiesList.entertainment!.length,
-          entertainmentColor),
-      ChartData(learningLabel, activitiesList.learningDevelopment!.length,
-          learningColor),
-      ChartData(workLabel, activitiesList.workChores!.length, workColor),
-      ChartData(socialLabel, activitiesList.socialPerson!.length, socialColor),
-    ];
-    if (max_value < 20) {
-      interval = 1;
-    } else if (max_value < 50) {
-      interval = 5;
-    } else if (max_value < 100) {
-      interval = 10;
-    }
-    return chartData;
-  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: data,
-        builder: (ctx, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.data == null) {
-              return Text("Data not provided");
-            } else {
-              return Padding(
+    return Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 20,
                   ),
@@ -235,15 +300,15 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                           primaryXAxis: CategoryAxis(),
                           primaryYAxis: NumericAxis(
                               minimum: 0,
-                              maximum: max_value,
-                              interval: interval),
+                              maximum: activityClass.maxValue!,
+                              interval: activityClass.interval),
                           // tooltipBehavior: _tooltip,
-                          series: <CartesianSeries<ChartData, String>>[
-                            ColumnSeries<ChartData, String>(
-                              dataSource: createChartData(snapshot.data!),
-                              xValueMapper: (ChartData data, _) => data.x,
-                              yValueMapper: (ChartData data, _) => data.y,
-                              pointColorMapper: (ChartData data, _) => data.c,
+                          series: <CartesianSeries<ChartDataActivities, String>>[
+                            ColumnSeries<ChartDataActivities, String>(
+                              dataSource: activityClass.chartData,
+                              xValueMapper: (ChartDataActivities data, _) => data.x,
+                              yValueMapper: (ChartDataActivities data, _) => data.y,
+                              pointColorMapper: (ChartDataActivities data, _) => data.c,
                               // yAxisName: "Number of activities",
                               // enableTooltip: true,
                               // dataLabelMapper: (ChartData data, _) => data.x,
@@ -260,66 +325,65 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                               padding: EdgeInsets.symmetric(horizontal: 5),
                               child: FilledButton(
                                 style: FilledButton.styleFrom(
-                                    backgroundColor: physicalColor),
+                                    backgroundColor: EnumActivitiesGroup.pyshicalActivities.color),
                                 onPressed: () => {
                                   setState(() {
                                     openModalFor(
-                                        Activities.sport, snapshot.data!);
+                                        Activities.sport);
                                   })
                                 },
-                                child: Text(physicalLabel),
+                                child: Text(EnumActivitiesGroup.pyshicalActivities.label),
                               )),
                           Padding(
                               padding: EdgeInsets.symmetric(horizontal: 5),
                               child: FilledButton(
                                   style: FilledButton.styleFrom(
-                                      backgroundColor: entertainmentColor),
+                                      backgroundColor: EnumActivitiesGroup.entertainmentAvtivities.color),
                                   onPressed: () => {
                                         setState(() {
                                           openModalFor(
-                                              Activities.hobby, snapshot.data!);
+                                              Activities.hobby);
                                         })
                                       },
-                                  child: Text(entertainmentLabel))),
+                                  child: Text(EnumActivitiesGroup.entertainmentAvtivities.label))),
                           Padding(
                               padding: EdgeInsets.symmetric(horizontal: 5),
                               child: FilledButton(
                                   style: FilledButton.styleFrom(
-                                      backgroundColor: learningColor),
+                                      backgroundColor: EnumActivitiesGroup.learningActivities.color),
                                   onPressed: () => {
                                         setState(() {
                                           openModalFor(
-                                              Activities.study, snapshot.data!);
+                                              Activities.study);
                                         })
                                       },
-                                  child: Text(learningLabel))),
+                                  child: Text(EnumActivitiesGroup.learningActivities.label))),
                           Padding(
                               padding: EdgeInsets.symmetric(horizontal: 5),
                               child: FilledButton(
                                   style: FilledButton.styleFrom(
-                                      backgroundColor: workColor),
+                                      backgroundColor: EnumActivitiesGroup.workActivities.color),
                                   onPressed: () => {
                                         setState(() {
                                           openModalFor(
-                                              Activities.work, snapshot.data!);
+                                              Activities.work);
                                         })
                                       },
                                   child: Text(
-                                    workLabel,
+                                    EnumActivitiesGroup.workActivities.label,
                                     style: TextStyle(color: Colors.black),
                                   ))),
                           Padding(
                               padding: EdgeInsets.symmetric(horizontal: 5),
                               child: FilledButton(
                                   style: FilledButton.styleFrom(
-                                      backgroundColor: socialColor),
+                                      backgroundColor: EnumActivitiesGroup.socialActivities.color),
                                   onPressed: () => {
                                         setState(() {
-                                          openModalFor(Activities.social,
-                                              snapshot.data!);
+                                          openModalFor(Activities.social);
                                         })
                                       },
-                                  child: Text(socialLabel))),
+                                  child: Text(EnumActivitiesGroup.socialActivities.label))),
                           SizedBox(
                             height: 20,
                           )
@@ -327,59 +391,6 @@ class _ActivityChartComponentState extends State<ActivityChartComponent> {
                       )
                     ])),
                   ));
-            }
-          } else {
-            return Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                child: Card(
-                  child: SizedBox(
-                    child: Column(
-                      children: [
-                        Text(
-                          "Loading data",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 26),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Divider(),
-                        ),
-                        //TODO put loading here
-                        // Center(child: Lottie.asset("lib/images/loading_component.json")),
-                      ],
-                    ),
-                  ),
-                ));
-          }
-        });
   }
 
-  Widget _multipleSelectionActivities() {
-    return SegmentedButton<Activities>(
-      // style: ButtonStyle(maximumSize: WidgetStateProperty.all(Size(50, 50)), minimumSize: WidgetStateProperty.all(Size(50, 50),), textStyle: WidgetStateProperty.all(TextStyle(fontSize: 20)) ),
-      segments: const <ButtonSegment<Activities>>[
-        ButtonSegment<Activities>(
-            value: Activities.sport, label: Text('Sport')),
-        ButtonSegment<Activities>(
-            value: Activities.hobby, label: Text('Hobby')),
-        ButtonSegment<Activities>(
-            value: Activities.study, label: Text('Study')),
-        ButtonSegment<Activities>(
-          value: Activities.work,
-          label: Text('Work'),
-        ),
-        // ButtonSegment<Activities>(value: Activities.social, label: Text('Social')),
-      ],
-      selected: selection,
-      onSelectionChanged: (Set<Activities> newSelection) {
-        setState(() {
-          selection = newSelection;
-        });
-      },
-      multiSelectionEnabled: true,
-    );
-  }
 }

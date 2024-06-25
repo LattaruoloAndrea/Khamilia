@@ -4,7 +4,25 @@ import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:gemini_app/components/activity_chart_component.dart';
+import 'package:gemini_app/components/emotions_component.dart';
 import 'package:intl/intl.dart';
+
+class ChartDataEmotions {
+  ChartDataEmotions(this.x, this.y, this.c);
+  final String x;
+  final int y;
+  final Color c;
+}
+
+class ChartDataActivities {
+  ChartDataActivities(this.x, this.y, this.c);
+  final String x;
+  final int y;
+  final Color c;
+}
+
 
 enum ErrorType {
   warningMissingEmotionsOnActivityType(
@@ -65,7 +83,8 @@ class MessageClass {
   ActivitiesClass? activitiesClass;
   AddActivitiesClass? addActivitiesClass;
   GroupClass? groupClass;
-  QueryClass? queryClass;
+  QueryClassEasy? queryClassEasy;
+  QueryClassToMessage? queryClassToMessage;
   NotificationClass? notificationClass;
   PeriodicyClass? periodicyClass;
   EmotionCategorizeClass? emotionCategorizeClass;
@@ -123,7 +142,7 @@ class MessageClass {
         }
       case 'query':
         try {
-          queryClass = QueryClass(message);
+          queryClassEasy = QueryClassEasy(message);
         } on ErrorType catch (e) {
           errorType = e;
         }
@@ -179,7 +198,7 @@ class ActivitiesClass {
     try {
       yesterday = message['time'] == 'yesterday';
     } catch (e) {}
-        try {
+    try {
       description = message['query'];
     } catch (e) {}
   }
@@ -220,26 +239,36 @@ class GroupClass {
     socialPerson = [];
     try {
       pyshicalActivities = message['Physical Activities'];
-    } catch (e) {pyshicalActivities = [];}
+    } catch (e) {
+      pyshicalActivities = [];
+    }
     try {
       entertainment = message['Entertainment'];
-    } catch (e) {entertainment = [];}
+    } catch (e) {
+      entertainment = [];
+    }
     try {
       learningDevelopment = message['Learning & Development'];
-    } catch (e) {learningDevelopment = [];}
+    } catch (e) {
+      learningDevelopment = [];
+    }
     try {
       workChores = message['Work & Chores'];
-    } catch (e) {workChores = [];}
+    } catch (e) {
+      workChores = [];
+    }
     try {
       socialPerson = message['Social & Personal'];
-    } catch (e) {socialPerson = [];}
+    } catch (e) {
+      socialPerson = [];
+    }
   }
 }
 
-class QueryClass {
+class QueryClassEasy {
   String? start;
   String? end;
-  QueryClass(dynamic message) {
+  QueryClassEasy(dynamic message) {
     start = "";
     end = "";
     try {
@@ -253,6 +282,187 @@ class QueryClass {
       end = start;
     }
   }
+}
+
+
+class QueryClassToMessage {
+  String? start;
+  String? end;
+  EmotionQueryClass? emotions;
+  ActivityQueryClass? activities;
+  QueryClassToMessage(EmotionQueryClass em, ActivityQueryClass ac, QueryClassEasy query){
+    start = query.start;
+    end = query.end;
+    emotions = em;
+    activities = ac;
+  }
+}
+
+class EmotionQueryClass {
+  List<String>? basicEmotions;
+  List<String>? socialEmotions;
+  List<String>? cognitiveEmotions;
+  List<String>? pyshicalEmotions;
+  List<String>? complexEmotions;
+  List<EmotionsValue>? allEmotions;
+  double? score;
+  List<ChartDataEmotions>? chartData;
+  // EmotionQueryClass(dynamic message) {
+  //   basicEmotions = [];
+  //   socialEmotions = [];
+  //   cognitiveEmotions = [];
+  //   pyshicalEmotions = [];
+  //   complexEmotions = [];
+  //   allEmotions = [];
+  //   score = 0;
+  //   chartData = [];
+  //   try {
+  //     basicEmotions = message['basic'];
+  //   } catch (e) {
+  //     basicEmotions = [];
+  //   }
+  //   try {
+  //     socialEmotions = message['social'];
+  //   } catch (e) {
+  //     socialEmotions = [];
+  //   }
+  //   try {
+  //     cognitiveEmotions = message['cognitive'];
+  //   } catch (e) {
+  //     cognitiveEmotions = [];
+  //   }
+  //   try {
+  //     complexEmotions = message['complex'];
+  //   } catch (e) {
+  //     complexEmotions = [];
+  //   }
+  //   try {
+  //     allEmotions = message['all'];
+  //   } catch (e) {
+  //     allEmotions = [];
+  //   }
+  //   try {
+  //     score = message['score'];
+  //   } catch (e) {
+  //     score = 0;
+  //   }
+  //   try {
+  //     chartData = message['chart'];
+  //   } catch (e) {
+  //     chartData = [];
+  //   }
+  // }
+
+  createChartData(EmotionCategorizeClass allData) {
+    List<EmotionEvaluationClass> emotionsList = allData.listEmotions!;
+    basicEmotions = [];
+    socialEmotions = [];
+    cognitiveEmotions = [];
+    pyshicalEmotions = [];
+    complexEmotions = [];
+    allEmotions = [];
+    score = 0;
+    for (int i = 0; i < emotionsList.length; i++) {
+      score = score! + emotionsList[i].evaluation!.toDouble();
+      Color? c = Colors.transparent;
+      if (emotionsList[i].evaluation! < 4) {
+        var val = 500 - 100 * emotionsList[i].evaluation!;
+        c = Colors.red[val];
+      } else if (emotionsList[i].evaluation! >= 4 &&
+          emotionsList[i].evaluation! <= 6) {
+        var val = 900 - 100 * emotionsList[i].evaluation!;
+        c = Colors.grey[val];
+      } else {
+        var val = 100 * emotionsList[i].evaluation! - 600;
+        c = Colors.green[val];
+      }
+      switch (emotionsList[i].category) {
+        case 'Basic Emotion':
+          basicEmotions!.add(emotionsList[i].emotion!);
+        // c = basicColor;
+        case 'Social Emotion':
+          socialEmotions!.add(emotionsList[i].emotion!);
+        // c = socialColor;
+        case 'Cognitive Emotion':
+          cognitiveEmotions!.add(emotionsList[i].emotion!);
+        // c = cognitiveColor;
+        case 'Pyshical Emotion':
+          basicEmotions!.add(emotionsList[i].emotion!);
+        // c = pyshicalColor;
+        case 'Complex Emotion':
+          complexEmotions!.add(emotionsList[i].emotion!);
+        // c = complexColor;
+      }
+      allEmotions!.add(EmotionsValue(
+          emotionsList[i].emotion!, emotionsList[i].evaluation!, c));
+    }
+    score = score! / emotionsList.length;
+    chartData = [
+      ChartDataEmotions(EnumEmotionsCategorize.basicEmotion.label, basicEmotions!.length,
+          EnumEmotionsCategorize.basicEmotion.color),
+      ChartDataEmotions(EnumEmotionsCategorize.socialEmotion.label,
+          socialEmotions!.length, EnumEmotionsCategorize.socialEmotion.color),
+      ChartDataEmotions(
+          EnumEmotionsCategorize.cognitiveEmotion.label,
+          cognitiveEmotions!.length,
+          EnumEmotionsCategorize.cognitiveEmotion.color),
+      ChartDataEmotions(
+          EnumEmotionsCategorize.pyshicalEmotion.label,
+          pyshicalEmotions!.length,
+          EnumEmotionsCategorize.pyshicalEmotion.color),
+      ChartDataEmotions(EnumEmotionsCategorize.complexEmotion.label,
+          complexEmotions!.length, EnumEmotionsCategorize.complexEmotion.color)
+    ];
+  }
+
+
+}
+
+class ActivityQueryClass {
+  GroupClass? groupClass;
+  double? maxValue;
+  double? interval;
+  List<ChartDataActivities>? chartData;
+
+  double _max(List<int> values) {
+    double v = 0;
+    for (int i = 0; i < values.length; i++) {
+      if (values[i] > v) {
+        v = values[i].toDouble();
+      }
+    }
+    return v;
+  }
+
+  createChartData(GroupClass activitiesList) {
+    maxValue = 2 +
+        _max([
+          activitiesList.pyshicalActivities!.length,
+          activitiesList.entertainment!.length,
+          activitiesList.learningDevelopment!.length,
+          activitiesList.workChores!.length,
+          activitiesList.socialPerson!.length
+        ]);
+    chartData = [
+      ChartDataActivities(EnumActivitiesGroup.pyshicalActivities.label, activitiesList.pyshicalActivities!.length,
+          EnumActivitiesGroup.pyshicalActivities.color),
+      ChartDataActivities(EnumActivitiesGroup.entertainmentAvtivities.label, activitiesList.entertainment!.length,
+          EnumActivitiesGroup.entertainmentAvtivities.color),
+      ChartDataActivities(EnumActivitiesGroup.learningActivities.label, activitiesList.learningDevelopment!.length,
+          EnumActivitiesGroup.learningActivities.color),
+      ChartDataActivities(EnumActivitiesGroup.workActivities.label, activitiesList.workChores!.length, EnumActivitiesGroup.workActivities.color),
+      ChartDataActivities(EnumActivitiesGroup.socialActivities.label, activitiesList.socialPerson!.length, EnumActivitiesGroup.socialActivities.color),
+    ];
+    if (maxValue!< 20) {
+      interval = 1;
+    } else if (maxValue! < 50) {
+      interval = 5;
+    } else if (maxValue! < 100) {
+      interval = 10;
+    }
+  }
+
+
 }
 
 class NotificationClass {
@@ -386,3 +596,5 @@ class SupportClass {
     }
   }
 }
+
+

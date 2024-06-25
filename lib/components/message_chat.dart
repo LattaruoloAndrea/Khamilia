@@ -7,6 +7,7 @@ import 'package:gemini_app/components/activity_message.dart';
 import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/error_chat_component.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:gemini_app/components/query_message_component.dart';
 import 'package:gemini_app/components/support_chat_component.dart';
 import 'package:intl/intl.dart';
 
@@ -117,7 +118,7 @@ class MessageChat extends StatelessWidget {
 
   Widget _QueryMessage(MessageClass message) {
     // return Text("sdadsada");
-    return ActivityPageComponent(isMessage: true,startDate: message.queryClass!.start!,endDate: message.queryClass!.end!,);
+    return MessageForActivityComponent(queryForMessage: message.queryClassToMessage!,);
   }
 
   Widget _TimeMessage(MessageClass message) {
