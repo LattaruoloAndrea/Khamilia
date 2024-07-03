@@ -1,11 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gemini_app/components/activities_periodic_select_button.dart';
 import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/my_drawer.dart';
 import 'package:gemini_app/components/set_periodicy_component.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+class PeriodicActivityPage extends StatelessWidget {
+  final Function()? onTap;
+
+  const PeriodicActivityPage({super.key,this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,8 @@ class SettingsPage extends StatelessWidget {
         drawer: MyDrawer(),
         body: SafeArea(child: ListView( children: [
           // Text("sdasdsdsad")
-          Text("TODO settings page"),
+        ActivitiesPeriodicSelectButton(onTap: onTap,activity: false,),
+          SetPeriodicyComponent(),
           // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.black),),),
           // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.red),),),
           // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.green),),),

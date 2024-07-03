@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gemini_app/pages/activities_or_periodic.dart';
 import 'package:gemini_app/pages/activities_page.dart';
 import 'package:gemini_app/pages/home_page.dart';
 import 'package:gemini_app/pages/setting_page.dart';
@@ -36,7 +37,7 @@ class MyDrawer extends StatelessWidget {
                 title: Text("Activities"),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ActivitiesPage()));
+                      builder: (context) => ActivitiesOrPeriodicPage()));
                 }),
             ListTile(
                 leading: Icon(Icons.settings),

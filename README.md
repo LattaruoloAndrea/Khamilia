@@ -29,14 +29,13 @@ To support additional languages, please visit the tutorial on
 [Internationalizing Flutter
 apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
 
+## Done
+- progress activities store informations about specific tasks and you can see the progress on these tasks
 
 ### TODO 
-- add evaluation time spent on activitis
-- progress activities store informations about specific tasks and you can see the progress on these tasks
 - finish text messages UI
 - add voice (if geminy takes it)
 - fix Ui input text
-- add activities page (big portion)
 - add settings UI
 - add geminy 
 - add firebase db
@@ -44,3 +43,6 @@ apps](https://flutter.dev/docs/development/accessibility-and-localization/intern
 - LOGO
 - video
 - tutorial
+
+## later 
+- add evaluation time spent on activitis (not for now)

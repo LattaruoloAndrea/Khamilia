@@ -1,16 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gemini_app/components/activities_periodic_select_button.dart';
 import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/my_drawer.dart';
 
 class ActivitiesPage extends StatelessWidget {
-  const ActivitiesPage({super.key});
+  final Function()? onTap;
+  const ActivitiesPage({super.key, this.onTap});
 
-  void signOutUser() {
-    FirebaseAuth.instance.signOut();
-  }
-
-  void openMenu() {}
 
   String getTodayDate(){
     return "13-06-2024";
@@ -28,7 +24,10 @@ class ActivitiesPage extends StatelessWidget {
           ),
           backgroundColor: Colors.pink[300]),
       drawer: MyDrawer(),
-      body: ActivityPageComponent(isMessage: false,startDate: getTodayDate(),endDate: getTodayDate()),
+      body: ListView(children: [
+        ActivitiesPeriodicSelectButton(onTap: onTap,activity: true),
+        ActivityPageComponent(isMessage: false,startDate: getTodayDate(),endDate: getTodayDate()),
+      ],) 
     );
   }
 }

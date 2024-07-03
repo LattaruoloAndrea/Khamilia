@@ -30,6 +30,13 @@ class PeriodicyDataClass {
   List<String>? saturday;
   List<String>? sunday;
   PeriodicyDataClass(dynamic message) {
+    monday = [];
+    tuesday = [];
+    wednesday = [];
+    thursday = [];
+    friday = [];
+    saturday = [];
+    sunday = [];
     try {
       monday = message[WeekDays.monday.key];
     } catch (e) {
@@ -120,9 +127,12 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
   bool modify = true;
   bool removed = false;
   bool added = false;
+  bool expandAll = false;
+  late ExpansionTileController mondayController;
 
   @override
   void initState() {
+    mondayController = ExpansionTileController();
     currentData = db.loadPeriodicy();
     currentData.then(setOldData);
   }
@@ -144,6 +154,17 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
     });
   }
 
+  expand() {
+    setState(() {
+      expandAll = !expandAll;
+      if (expandAll) {
+        mondayController.collapse();
+      } else {
+        mondayController.expand();
+      }
+    });
+  }
+
   openModalFor() {}
 
   saveModifications() {
@@ -154,6 +175,8 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
         db.savePeriodicy();
         added = false;
         removed = false;
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Modifications saved!")));
       }
     });
   }
@@ -210,7 +233,11 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
                                     //     onPressed: discardModifications,
                                     //     icon: Icon(Icons.undo))
                                   ],
-                                )
+                                ),
+                          Expanded(child: Container()),
+                          // IconButton(
+                          //   onPressed: expand,
+                          //   icon: expandAll? Icon(Icons.keyboard_double_arrow_down): Icon(Icons.keyboard_double_arrow_up))
                         ],
                       ),
                       Padding(
@@ -219,56 +246,29 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
                       ),
                       modify
                           ? SizedBox()
-                          : AddPeriodicyComponent(
-                              addData: addActivity,
+                          : Column(
+                              children: [
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                AddPeriodicyComponent(
+                                  addData: addActivity,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                              ],
                             ),
-                      ExpansionTile(
-                        title: Text(
-                          WeekDays.monday.label,
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        children: [
-                          Wrap(
-                            alignment: WrapAlignment.start,
-                            children: List<Widget>.generate(
-                              snapshot.data!.monday!.length,
-                              (int idx) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 5),
-                                  child: Chip(
-                                    shape: StadiumBorder(side: BorderSide()),
-                                    // onDeleted: () {
-                                    //   setState(() {
-                                    //     removeActivity(widget.activitiesClass.activities![idx]);
-                                    //   });
-                                    // },
-                                    label: Text(snapshot.data!.monday![idx]),
-                                  ),
-                                );
-                              },
-                            ).toList(),
-                          )
-                        ],
-                      ),
-                      ExpansionTile(
-                          title: Text(WeekDays.tuesday.label,
-                              style: TextStyle(fontWeight: FontWeight.w600))),
-                      ExpansionTile(
-                          title: Text(WeekDays.wednesday.label,
-                              style: TextStyle(fontWeight: FontWeight.w600))),
-                      ExpansionTile(
-                          title: Text(WeekDays.thursday.label,
-                              style: TextStyle(fontWeight: FontWeight.w600))),
-                      ExpansionTile(
-                          title: Text(WeekDays.friday.label,
-                              style: TextStyle(fontWeight: FontWeight.w600))),
-                      ExpansionTile(
-                          title: Text(WeekDays.saturday.label,
-                              style: TextStyle(fontWeight: FontWeight.w600))),
-                      ExpansionTile(
-                          title: Text(WeekDays.sunday.label,
-                              style: TextStyle(fontWeight: FontWeight.w600))),
-                      // ListView()
+                      _personalTile(WeekDays.monday, snapshot.data!.monday!),
+                      _personalTile(WeekDays.tuesday, snapshot.data!.tuesday!),
+                      _personalTile(
+                          WeekDays.wednesday, snapshot.data!.wednesday!),
+                      _personalTile(
+                          WeekDays.thursday, snapshot.data!.thursday!),
+                      _personalTile(WeekDays.friday, snapshot.data!.friday!),
+                      _personalTile(
+                          WeekDays.saturday, snapshot.data!.saturday!),
+                      _personalTile(WeekDays.sunday, snapshot.data!.sunday!),
                     ],
                   ),
                 )),
@@ -278,6 +278,43 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
             return Text("Loading");
           }
         });
+  }
+
+  Widget _personalTile(WeekDays day, List<String> activities) {
+    return ExpansionTile(
+      // controller: mondayController,
+      title: Text(
+        day.label,
+        style: TextStyle(fontWeight: FontWeight.w600),
+      ),
+      children: [
+        Wrap(
+          alignment: WrapAlignment.start,
+          children: List<Widget>.generate(
+            activities.length,
+            (int idx) {
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                child: !modify
+                    ? Chip(
+                        shape: StadiumBorder(side: BorderSide()),
+                        onDeleted: () {
+                          setState(() {
+                            removeActivity(day.label, activities[idx]);
+                          });
+                        },
+                        label: Text(activities[idx]),
+                      )
+                    : Chip(
+                        shape: StadiumBorder(side: BorderSide()),
+                        label: Text(activities[idx]),
+                      ),
+              );
+            },
+          ).toList(),
+        )
+      ],
+    );
   }
 }
 
@@ -311,54 +348,77 @@ class _AddPeriodicyComponent extends State<AddPeriodicyComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SegmentedButton<WeekDays>(
-          segments: [
-            ButtonSegment<WeekDays>(value: WeekDays.monday, label: Text("M")),
-            ButtonSegment<WeekDays>(value: WeekDays.tuesday, label: Text("Tu")),
-            ButtonSegment<WeekDays>(
-                value: WeekDays.wednesday, label: Text("W")),
-            ButtonSegment<WeekDays>(
-                value: WeekDays.thursday, label: Text("Th")),
-            ButtonSegment<WeekDays>(value: WeekDays.friday, label: Text("F")),
-            ButtonSegment<WeekDays>(
-                value: WeekDays.saturday, label: Text("Sa")),
-            ButtonSegment<WeekDays>(value: WeekDays.sunday, label: Text("Su")),
-          ],
-          selected: selection,
-          multiSelectionEnabled: true,
-          onSelectionChanged: (newSelection) {
-            setState(() {
-              selection = newSelection;
-            });
-          },
+    return Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 20,
-            ),
-            Expanded(
-                child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                  hintText: "Add activity",
-                  hintStyle: TextStyle(color: Colors.grey[600])),
-            )),
-            Container(
-              child: IconButton.filledTonal(
-                onPressed: addActivity,
-                icon: Icon(Icons.add),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: Text(
+                    "Add your periodic activities selecting the days of the week from monday to sunday then type the activity and add it! You can also remove the activies by clicking on them. When finished click on the save icon in order to save all the modifications."),
               ),
-            ),
-            SizedBox(
-              width: 20,
-            ),
-          ],
-        ),
-      ],
-    );
+              SegmentedButton<WeekDays>(
+                segments: [
+                  ButtonSegment<WeekDays>(
+                      value: WeekDays.monday, label: Text("M")),
+                  ButtonSegment<WeekDays>(
+                      value: WeekDays.tuesday, label: Text("T")),
+                  ButtonSegment<WeekDays>(
+                      value: WeekDays.wednesday, label: Text("W")),
+                  ButtonSegment<WeekDays>(
+                      value: WeekDays.thursday, label: Text("T")),
+                  ButtonSegment<WeekDays>(
+                      value: WeekDays.friday, label: Text("F")),
+                  ButtonSegment<WeekDays>(
+                      value: WeekDays.saturday, label: Text("S")),
+                  ButtonSegment<WeekDays>(
+                      value: WeekDays.sunday, label: Text("S")),
+                ],
+                selected: selection,
+                multiSelectionEnabled: true,
+                onSelectionChanged: (newSelection) {
+                  setState(() {
+                    selection = newSelection;
+                  });
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                      child: TextField(
+                    controller: controller,
+                    decoration: InputDecoration(
+                        hintText: "Add activity",
+                        hintStyle: TextStyle(color: Colors.grey[600])),
+                  )),
+                  Container(
+                    child: IconButton.filledTonal(
+                      onPressed: addActivity,
+                      icon: Icon(Icons.add),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+        ));
   }
 }

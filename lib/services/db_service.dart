@@ -89,7 +89,7 @@ class DbService {
 
   Future<PeriodicyDataClass> loadPeriodicy() async {
     await Future.delayed(const Duration(seconds: 2));
-    return PeriodicyDataClass({"monday":["work","gym"],"tuesday":["work","volleyball"],"wednsday":["work","gym"],"thursday":["work","volleyball"],"friday":["work","gym"],"saturday":["gym"],"sunday":["jogging"]});
+    return PeriodicyDataClass({"monday":["work","gym"],"tuesday":["work","volleyball"],"wednesday":["work","gym"],"thursday":["work","volleyball"],"friday":["work","gym"],"saturday":["gym"],"sunday":["jogging"]});
 
   }
   
