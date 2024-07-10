@@ -10,6 +10,7 @@ import 'package:gemini_app/pages/setting_page.dart';
 import 'package:gemini_app/services/auth_service.dart';
 import 'package:gemini_app/services/chat_servie.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -92,7 +93,7 @@ class _HomePage extends State<HomePage> {
               child: Column(
                 children: [
                   SizedBox(height: 10),
-                  Center(child: Text('Welcome!')),
+                  Center(child: Text(AppLocalizations.of(context)!.title)),
                   Expanded(child: _buildMessageList()),
                   SizedBox(
                     height: 15,
