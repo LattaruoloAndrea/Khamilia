@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 
 enum LanguageEnum { en, it }
 
 class SelectLanguageComponent extends StatefulWidget {
   // final
-  String currentLang = 'en';
-  SelectLanguageComponent({super.key, currentLang});
+  SelectLanguageComponent({super.key});
 
   @override
   State<SelectLanguageComponent> createState() =>
@@ -13,15 +13,22 @@ class SelectLanguageComponent extends StatefulWidget {
 }
 
 class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
-  String? currentLang;
+  String? currentLang = localStorage.getItem('lang') ?? 'en';
   LanguageEnum? _character;
   @override
   initState() {
-    currentLang = widget.currentLang;
-    if(currentLang=='en'){
+    if (currentLang == 'en') {
       _character = LanguageEnum.en;
-    }else{
+    } else {
       _character = LanguageEnum.it;
+    }
+  }
+
+  setLocalStorage(LanguageEnum value) {
+    if (value == LanguageEnum.it) {
+      localStorage.setItem('lang', 'it');
+    } else {
+      localStorage.setItem('lang', 'en');
     }
   }
 
@@ -41,6 +48,7 @@ class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
                     onChanged: (LanguageEnum? value) {
                       setState(() {
                         _character = value;
+                        setLocalStorage(value!);
                       });
                     },
                   ),
@@ -53,6 +61,7 @@ class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
                     onChanged: (LanguageEnum? value) {
                       setState(() {
                         _character = value;
+                        setLocalStorage(value!);
                       });
                     },
                   ),

@@ -7,8 +7,9 @@ import 'package:gemini_app/components/set_periodicy_component.dart';
 
 class PeriodicActivityPage extends StatelessWidget {
   final Function()? onTap;
+  final Future<PeriodicyDataClass> periodicData;
 
-  const PeriodicActivityPage({super.key,this.onTap});
+  const PeriodicActivityPage({super.key,this.onTap,required this.periodicData});
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +28,7 @@ class PeriodicActivityPage extends StatelessWidget {
         body: SafeArea(child: ListView( children: [
           // Text("sdasdsdsad")
         ActivitiesPeriodicSelectButton(onTap: onTap,activity: false,),
-          SetPeriodicyComponent(),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.black),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.red),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.green),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.blue),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.yellow),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.orange),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.purple),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.grey),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.black),),),
+        SetPeriodicyComponent(periodicData: periodicData,),
         ],)));
   }
 }

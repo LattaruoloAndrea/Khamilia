@@ -112,8 +112,9 @@ class PeriodicyDataClass {
 
 class SetPeriodicyComponent extends StatefulWidget {
   // final
+  final Future<PeriodicyDataClass> periodicData;
 
-  SetPeriodicyComponent({super.key});
+  SetPeriodicyComponent({super.key,required this.periodicData });
 
   @override
   State<SetPeriodicyComponent> createState() => _SetPeriodicyComponentState();
@@ -133,7 +134,8 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
   @override
   void initState() {
     mondayController = ExpansionTileController();
-    currentData = db.loadPeriodicy();
+    currentData = widget.periodicData;
+    // currentData = db.loadPeriodicy();
     currentData.then(setOldData);
   }
 

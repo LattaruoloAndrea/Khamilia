@@ -16,12 +16,14 @@ class ActivityPageComponent extends StatefulWidget {
   final bool isMessage;
   String startDate;
   String endDate;
+  final Future<ActivitiesClass> activities;
 
   ActivityPageComponent({
     super.key,
     required this.isMessage,
     required this.startDate,
     required this.endDate,
+    required this.activities,
   });
 
   @override
@@ -37,7 +39,8 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
 
   @override
   void initState() {
-    data = db.queryFromTo(widget.startDate, widget.endDate);
+    data = widget.activities;
+    // data = db.queryFromTo(widget.startDate, widget.endDate);
     dateFrom.text = "2024-06-14"; //widget.startDate
     dateTo.text = "2024-06-14"; //widget.endDate
   }
