@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gemini_app/components/activity_page_component.dart';
+import 'package:gemini_app/components/delete_account_component.dart';
 import 'package:gemini_app/components/my_drawer.dart';
-import 'package:gemini_app/components/set_periodicy_component.dart';
+import 'package:gemini_app/components/select_language_component.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -10,7 +9,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset : false,
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
             title: Text(
               "Kamilia",
@@ -21,18 +20,23 @@ class SettingsPage extends StatelessWidget {
             ),
             backgroundColor: Colors.pink[300]),
         drawer: MyDrawer(),
-        body: SafeArea(child: ListView( children: [
-          // Text("sdasdsdsad")
-          Text("TODO settings page"),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.black),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.red),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.green),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.blue),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.yellow),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.orange),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.purple),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.grey),),),
-          // SizedBox(height: 200,child: Container(decoration: BoxDecoration(color: Colors.black),),),
-        ],)));
+        body: SafeArea(
+            child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              child: Text(
+                'Settings Page',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SelectLanguageComponent(),
+            DeleteAccountComponent(),
+          ],
+        )));
   }
 }

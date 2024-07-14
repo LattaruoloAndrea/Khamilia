@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:localstorage/localstorage.dart';
 
 
 // cd ~/Documents/android-studio/bin
@@ -16,13 +17,18 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
-
+  await initLocalStorage();
+  // var notifier = ValueNotifier(localStorage.getItem('lang') ?? 'en');
+  // notifier.addListener(listener)
+  // String? lang = localStorage.getItem('lang');
+  // lang ??= 'en';
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   //final FlutterLoc localization = FlutterLocalization.instance;
-  const MyApp({super.key});
+  //final String lang;
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +36,14 @@ class MyApp extends StatelessWidget {
       create: (context) => MyAppState(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Namer App',
+        title: 'Kamilia',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         ),
         supportedLocales: L10n.all,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
-        locale: const Locale('en'),
+        locale: Locale(localStorage.getItem('lang') ?? 'en'),
         home: AuthPage(),
       ),
     );

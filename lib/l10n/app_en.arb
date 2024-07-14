@@ -1,6 +1,5 @@
 {
-    "title": "Title"
-    "@title":{
-        "description" "A description"
-    }
+    "title": "Titolo",
+    "parcella": "Parcella",
+    "demone": "Demone"
 }
