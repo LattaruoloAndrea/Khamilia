@@ -1,10 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gemini_app/components/message_class.dart';
 import 'package:gemini_app/components/set_periodicy_component.dart';
+import 'package:gemini_app/services/current_day_service.dart';
 
 class DbService {
   //TODO implements method insided here
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore db = FirebaseFirestore.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final CurrentDayService timeService = CurrentDayService();
+
+  String getUserUIDD() {
+    User user = auth.currentUser!;
+    String uid = user.uid;
+    return uid;
+  }
 
   Future<ActivitiesClass> queryFromTo(String start, String end) async {
     var listActivities = [
@@ -76,10 +86,9 @@ class DbService {
       }
     }
     await Future.delayed(const Duration(seconds: 2));
-    var result = ActivitiesClass({        
-      "query":
-            "",
-        "type": "activities",
+    var result = ActivitiesClass({
+      "query": "",
+      "type": "activities",
       "activities": activities,
       "emotions": emotions,
       "time": "yesterday"
@@ -89,14 +98,59 @@ class DbService {
 
   Future<PeriodicyDataClass> loadPeriodicy() async {
     await Future.delayed(const Duration(seconds: 2));
-    return PeriodicyDataClass({"monday":["work","gym"],"tuesday":["work","volleyball"],"wednesday":["work","gym"],"thursday":["work","volleyball"],"friday":["work","gym"],"saturday":["gym"],"sunday":["jogging"]});
-
+    return PeriodicyDataClass({
+      "monday": ["work", "gym"],
+      "tuesday": ["work", "volleyball"],
+      "wednesday": ["work", "gym"],
+      "thursday": ["work", "volleyball"],
+      "friday": ["work", "gym"],
+      "saturday": ["gym"],
+      "sunday": ["jogging"]
+    });
   }
-  
-    Future savePeriodicy() async {
+
+  Future savePeriodicy() async {
     await Future.delayed(const Duration(seconds: 2));
     // return PeriodicyDataClass({"monday":["work","gym"],"tuesday":["work","volleyball"],"wednsday":["work","gym"],"thursday":["work","volleyball"],"friday":["work","gym"],"saturday":["gym"],"sunday":["jogging"]});
-
   }
 
+  Future saveDailyOccurence(ActivityClassForDB activity, int timestamp) async {
+    var path = "usersData/${getUserUIDD()}/activities";
+    db.collection(path).add(activity.toFirestore()).then((DocumentReference doc) =>
+        print('DocumentSnapshot added with ID: ${doc.id}'));
+  }
+
+  Future modifyActivities() async {
+    await Future.delayed(const Duration(seconds: 2));
+  }
+
+  Future<Object> dataExistsForTimeStamp(int timestamp) async {
+    DateTime date = timeService.fromTimestapToDateTime(timestamp);
+    int timestampStart = timeService.getdateStartDay(date);
+    int timestampEnd = timeService.getdateEndDay(date);
+    var path = "usersData/${getUserUIDD()}/activities";
+    var querySnapshot = await db
+        .collection(path)
+        .where("timestamp", isGreaterThan: timestampStart)
+        .where("timestamp", isLessThan: timestampEnd)
+        .withConverter(fromFirestore: ActivityClassForDB.fromFirestore, toFirestore: (ActivityClassForDB activity, _) => activity.toFirestore())
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return Null;
+    } else {
+      if (querySnapshot.docs.length == 1) {
+        for (var doc in querySnapshot.docs) {
+          // There should be just one doc here
+          ActivityClassForDB data = doc.data();
+          return data;
+          // var retrievedActivity = ActivitiesClass({});
+          // retrievedActivity.fromClassForDb(data);
+          // return retrievedActivity;
+        }
+      }else{
+        print("THERE IS AN ERROR IN THE DATA SAVING");
+      }
+    }
+    return Null; // #ActivitiesClass({});
+  }
 }

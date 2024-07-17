@@ -23,7 +23,6 @@ class ChartDataActivities {
   final Color c;
 }
 
-
 enum ErrorType {
   warningMissingEmotionsOnActivityType(
       value: -3, errorMsg: "There is no emotions", msgForUser: ""),
@@ -202,6 +201,52 @@ class ActivitiesClass {
       description = message['query'];
     } catch (e) {}
   }
+
+  fromClassForDb(ActivityClassForDB data,){
+    //TODO
+    activities = data.activities;
+    description = data.description;
+    emotions = data.emotions;
+    var timestamp = data.timestamp;
+  }
+}
+
+class ActivityClassForDB{
+  String? description;
+  List<String>? emotions;
+  List<String>? activities;
+  List<String>? modifyDescriptions;
+  int? timestamp;
+
+  ActivityClassForDB({this.description,this.emotions,this.activities,this.modifyDescriptions,this.timestamp});
+
+    // ignore: empty_constructor_bodies
+    factory ActivityClassForDB.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return ActivityClassForDB(
+      description: data?['description'] as String,
+      emotions: List<String>.from(data?['emotions'] == Null? [] : data?['emotions']  as List) ,
+      activities: List<String>.from(data?['activities'] == Null? [] : data?['activities']  as List),
+      modifyDescriptions: List<String>.from(data?['modifyDescriptions'] == Null? [] : data?['modifyDescriptions']  as List),
+      timestamp: data?['timestamp'] as int
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (description != null) "description": description,
+      if (emotions != null) "emotions": emotions,
+      if (activities != null) "activities": activities,
+      if (modifyDescriptions != null) "modifyDescriptions": modifyDescriptions,
+      if (timestamp != null) "timestamp": timestamp,
+    };
+  }
+
+
+
 }
 
 class AddActivitiesClass {
@@ -284,13 +329,13 @@ class QueryClassEasy {
   }
 }
 
-
 class QueryClassToMessage {
   String? start;
   String? end;
   EmotionQueryClass? emotions;
   ActivityQueryClass? activities;
-  QueryClassToMessage(EmotionQueryClass em, ActivityQueryClass ac, QueryClassEasy query){
+  QueryClassToMessage(
+      EmotionQueryClass em, ActivityQueryClass ac, QueryClassEasy query) {
     start = query.start;
     end = query.end;
     emotions = em;
@@ -317,7 +362,7 @@ class EmotionQueryClass {
     pyshicalEmotions = [];
     complexEmotions = [];
     allEmotions = [];
-    
+
     score = 0;
     for (int i = 0; i < emotionsList.length; i++) {
       score = score! + emotionsList[i].evaluation!.toDouble();
@@ -355,8 +400,8 @@ class EmotionQueryClass {
     }
     score = score! / emotionsList.length;
     chartData = [
-      ChartDataEmotions(EnumEmotionsCategorize.basicEmotion.label, basicEmotions!.length,
-          EnumEmotionsCategorize.basicEmotion.color),
+      ChartDataEmotions(EnumEmotionsCategorize.basicEmotion.label,
+          basicEmotions!.length, EnumEmotionsCategorize.basicEmotion.color),
       ChartDataEmotions(EnumEmotionsCategorize.socialEmotion.label,
           socialEmotions!.length, EnumEmotionsCategorize.socialEmotion.color),
       ChartDataEmotions(
@@ -371,8 +416,6 @@ class EmotionQueryClass {
           complexEmotions!.length, EnumEmotionsCategorize.complexEmotion.color)
     ];
   }
-
-
 }
 
 class ActivityQueryClass {
@@ -392,7 +435,7 @@ class ActivityQueryClass {
   }
 
   createChartData(GroupClass activitiesList) {
-    groupClass= activitiesList;
+    groupClass = activitiesList;
     maxValue = 2 +
         _max([
           activitiesList.pyshicalActivities!.length,
@@ -402,16 +445,28 @@ class ActivityQueryClass {
           activitiesList.socialPerson!.length
         ]);
     chartData = [
-      ChartDataActivities(EnumActivitiesGroup.pyshicalActivities.label, activitiesList.pyshicalActivities!.length,
+      ChartDataActivities(
+          EnumActivitiesGroup.pyshicalActivities.label,
+          activitiesList.pyshicalActivities!.length,
           EnumActivitiesGroup.pyshicalActivities.color),
-      ChartDataActivities(EnumActivitiesGroup.entertainmentAvtivities.label, activitiesList.entertainment!.length,
+      ChartDataActivities(
+          EnumActivitiesGroup.entertainmentAvtivities.label,
+          activitiesList.entertainment!.length,
           EnumActivitiesGroup.entertainmentAvtivities.color),
-      ChartDataActivities(EnumActivitiesGroup.learningActivities.label, activitiesList.learningDevelopment!.length,
+      ChartDataActivities(
+          EnumActivitiesGroup.learningActivities.label,
+          activitiesList.learningDevelopment!.length,
           EnumActivitiesGroup.learningActivities.color),
-      ChartDataActivities(EnumActivitiesGroup.workActivities.label, activitiesList.workChores!.length, EnumActivitiesGroup.workActivities.color),
-      ChartDataActivities(EnumActivitiesGroup.socialActivities.label, activitiesList.socialPerson!.length, EnumActivitiesGroup.socialActivities.color),
+      ChartDataActivities(
+          EnumActivitiesGroup.workActivities.label,
+          activitiesList.workChores!.length,
+          EnumActivitiesGroup.workActivities.color),
+      ChartDataActivities(
+          EnumActivitiesGroup.socialActivities.label,
+          activitiesList.socialPerson!.length,
+          EnumActivitiesGroup.socialActivities.color),
     ];
-    if (maxValue!< 20) {
+    if (maxValue! < 20) {
       interval = 1;
     } else if (maxValue! < 50) {
       interval = 5;
@@ -419,8 +474,6 @@ class ActivityQueryClass {
       interval = 10;
     }
   }
-
-
 }
 
 class NotificationClass {
