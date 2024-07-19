@@ -60,7 +60,8 @@ class ChatService {
     MessageClass message = MessageClass(k);
     MessageClass correctMessage =
         await performTranformationOnMessageClass(message);
-    saveToDb(message, date);
+    String docId = await saveToDb(correctMessage, date);
+    addDocIdToMessage(correctMessage, docId);
     singletonMessages.add(correctMessage);
     current_message.add(singletonMessages.get());
   }
@@ -89,7 +90,7 @@ class ChatService {
     return p;
   }
 
-  saveToDb(MessageClass p, date) async {
+  Future<String> saveToDb(MessageClass p, date) async {
     if (p.type == "activities") {
       int correctTimestamp = timeService.getdateHalfDay(date);
       if (p.activitiesClass!.yesterday) {
@@ -97,31 +98,17 @@ class ChatService {
         var yesterday = timeService.getYesterdayDate(date);
         correctTimestamp = timeService.getdateHalfDay(yesterday);
       }
-      var data = await db.dataExistsForTimeStamp(correctTimestamp);
-      if (data != Null) {
-        // NOT THE FIRST ENTRY FOR THE DAY
-        ActivityClassForDB activitie = data as ActivityClassForDB;
-        activitie.activities?.addAll(p.activitiesClass!.activities!);
-        activitie.emotions?.addAll(p.activitiesClass!.emotions!);
-        activitie.modifyDescriptions?.add(p.activitiesClass!.description!);
-        ActivityClassForDB data = convertMessageToActivityForDB(p,correctTimestamp);
-        db.saveDailyOccurence(data, correctTimestamp);
-      } else {
-        // FIRST ENTRY FOR THE DAY
-        ActivityClassForDB dataDb = convertMessageToActivityForDB(p,correctTimestamp);
-        db.saveDailyOccurence(dataDb, correctTimestamp);
-      }
+      p.activitiesClass!.timestamp = correctTimestamp;
+      String id = await db.saveDailyOccurence(p.activitiesClass!);
+      return id;
     }
+    return "";
   }
 
-  ActivityClassForDB convertMessageToActivityForDB(MessageClass message,int timestamp) {
-    return ActivityClassForDB(
-      description: message.activitiesClass!.description,
-      activities: message.activitiesClass!.activities,
-      emotions: message.activitiesClass!.emotions,
-      modifyDescriptions: [],
-      timestamp: timestamp
-    );
+  addDocIdToMessage(MessageClass message, String docId) {
+    if (message.type == "activities") {
+      message.activitiesClass!.docId = docId;
+    }
   }
 
   Stream getStream() {

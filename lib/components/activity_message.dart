@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:gemini_app/services/current_day_service.dart';
+import 'package:gemini_app/services/db_service.dart';
 
 class ActivitiMessageClass extends StatefulWidget {
   final ActivitiesClass activitiesClass;
@@ -19,15 +21,18 @@ class ActivitiMessageClass extends StatefulWidget {
 class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
   bool modifyActivities = false;
   bool modifyEmotions = false;
+  bool confirmDay = false;
   bool modifiedListEmotionsOrActivities = false;
   TextEditingController activitiesController = TextEditingController();
   TextEditingController emotionsController = TextEditingController();
-
-
+  CurrentDayService dayService = CurrentDayService();
+  DbService dbService = DbService();
+  String day = "";
+  String otherDay = "";
 
   addActivity() {
     setState(() {
-      if(activitiesController.text.isNotEmpty){
+      if (activitiesController.text.isNotEmpty) {
         modifiedListEmotionsOrActivities = true;
         widget.activitiesClass.activities!.add(activitiesController.text);
         activitiesController.clear();
@@ -37,7 +42,7 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
 
   addEmotion() {
     setState(() {
-      if(emotionsController.text.isNotEmpty){
+      if (emotionsController.text.isNotEmpty) {
         modifiedListEmotionsOrActivities = true;
         widget.activitiesClass.emotions!.add(emotionsController.text);
         emotionsController.clear();
@@ -50,13 +55,13 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
     widget.activitiesClass.activities!.remove(val);
   }
 
-  removeEmotion(String val){
-      modifiedListEmotionsOrActivities = true;
+  removeEmotion(String val) {
+    modifiedListEmotionsOrActivities = true;
     widget.activitiesClass.emotions!.remove(val);
   }
 
   saveData() {
-    if(modifiedListEmotionsOrActivities){
+    if (modifiedListEmotionsOrActivities) {
       // TODO send data to firebase
       modifiedListEmotionsOrActivities = false;
     }
@@ -74,14 +79,102 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
     });
   }
 
+  changeDaySave() async {
+    var myday = otherDay;
+    var yesterday = !widget.activitiesClass.yesterday;
+    var newTimestamp = 0;
+    if (widget.activitiesClass.yesterday) {
+      // if yesterday then we take yesterday timestamp
+      newTimestamp = dayService.getdateHalfDay(dayService.getYesterdayDate(
+          dayService
+              .fromTimestapToDateTime(widget.activitiesClass.timestamp!)));
+    } else {
+      // else we take today timestamp
+      newTimestamp = dayService.getdateHalfDay(
+          dayService.getFromYesterdayTodayDate(dayService
+              .fromTimestapToDateTime(widget.activitiesClass.timestamp!)));
+    }
+    widget.activitiesClass.timestamp = newTimestamp;
+    String newDocId =
+        await dbService.changeDateOnActivity(widget.activitiesClass);
+    setState(() {
+      day = myday;
+      widget.activitiesClass.yesterday = yesterday;
+      widget.activitiesClass.timestamp = newTimestamp;
+      widget.activitiesClass.docId = newDocId;
+      confirmDay = true;
+      Navigator.pop(context);
+    });
+  }
+
+  openDialogChangeDay() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+            // height: 400,
+            child: Center(
+          child: Column(
+            children: [
+              Text(
+                "Change Date",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: Divider(
+                    thickness: 2,
+                    color: Colors.black,
+                  )),
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: Text(
+                      "If the data inferred from your description was not correct you can chenge it here. Remember it is possible to execute the date change just one.")),
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: Text(
+                      "The new date for the description provided would be ${otherDay}")),
+              OutlinedButton(
+                onPressed: changeDaySave,
+                child: Text(
+                    "Change to ${!widget.activitiesClass.yesterday ? "yesterday" : "today"}"),
+              ),
+            ],
+          ),
+        ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    var currentDay = CurrentDayService().currentDate();
+    if (widget.activitiesClass.yesterday) {
+      otherDay = currentDay.toString().substring(0, 10);
+      currentDay = CurrentDayService().getFromYesterdayTodayDate(currentDay);
+    } else {
+      var oDay = CurrentDayService().getFromYesterdayTodayDate(currentDay);
+      otherDay = oDay.toString().substring(0, 10);
+    }
+    day = currentDay.toString().substring(0, 10);
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-                        Text(
+            Text(
               "Daily activities",
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
@@ -107,25 +200,15 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
         ),
         Container(
           alignment: Alignment.centerLeft,
-          child: Text("The description provided is for"),
+          child: Text(
+              "The description provided is for ${widget.activitiesClass.yesterday ? "yesterday" : "today"}, ${day}"),
         ),
         Container(
-            alignment: Alignment.centerLeft,
-            child: SegmentedButton(
-              segments: [
-                ButtonSegment(value: "yesterday", label: Text("yesterday")),
-                ButtonSegment(value: "today", label: Text("today")),
-              ],
-              selected: {
-                widget.activitiesClass.yesterday ? "yesterday" : "today"
-              },
-              onSelectionChanged: (newSelection) {
-                setState(() {
-                  widget.activitiesClass.yesterday =
-                      (newSelection.first == "yesterday");
-                });
-              },
-            )),
+          alignment: Alignment.centerLeft,
+          child: OutlinedButton(
+              onPressed: confirmDay ? null : openDialogChangeDay,
+              child: const Text('Change day')),
+        ),
         SizedBox(
           height: 10,
         ),
@@ -186,7 +269,8 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
                               shape: StadiumBorder(side: BorderSide()),
                               onDeleted: () {
                                 setState(() {
-                                  removeActivity(widget.activitiesClass.activities![idx]);
+                                  removeActivity(
+                                      widget.activitiesClass.activities![idx]);
                                 });
                               },
                               label:
@@ -235,9 +319,8 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
                   ),
                   IconButton.filledTonal(
                       onPressed: modifyEmotion,
-                      icon: modifyEmotions
-                          ? Icon(Icons.save)
-                          : Icon(Icons.edit),
+                      icon:
+                          modifyEmotions ? Icon(Icons.save) : Icon(Icons.edit),
                       color: Colors.black)
                 ]),
                 subtitle: Text("This is the activities from your description"),
@@ -276,7 +359,8 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
                               shape: StadiumBorder(side: BorderSide()),
                               onDeleted: () {
                                 setState(() {
-                                  removeEmotion(widget.activitiesClass.emotions![idx]);
+                                  removeEmotion(
+                                      widget.activitiesClass.emotions![idx]);
                                 });
                               },
                               label:

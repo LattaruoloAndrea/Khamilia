@@ -123,7 +123,9 @@ class MessageClass {
         break;
       case 'activities':
         try {
-          activitiesClass = ActivitiesClass(message);
+          ActivitiesClass act = ActivitiesClass();
+          act.fromMessage(message);
+          activitiesClass = act;
         } on ErrorType catch (e) {
           errorType = e;
         }
@@ -180,7 +182,35 @@ class ActivitiesClass {
   List<String>? emotions;
   List<String>? activities;
   bool yesterday = false; //if false it refers to today
-  ActivitiesClass(dynamic message) {
+  int? timestamp;
+  String docId="";
+
+ActivitiesClass({this.description,this.emotions,this.activities,this.timestamp});
+
+    // ignore: empty_constructor_bodies
+    factory ActivitiesClass.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return ActivitiesClass(
+      description: data?['description'] as String,
+      emotions: List<String>.from(data?['emotions'] == Null? [] : data?['emotions']  as List) ,
+      activities: List<String>.from(data?['activities'] == Null? [] : data?['activities']  as List),
+      timestamp: data?['timestamp'] as int
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (description != null) "description": description,
+      if (emotions != null) "emotions": emotions,
+      if (activities != null) "activities": activities,
+      if (timestamp != null) "timestamp": timestamp,
+    };
+  }
+
+  fromMessage(dynamic message) {
     emotions = [];
     activities = [];
     try {
@@ -201,51 +231,6 @@ class ActivitiesClass {
       description = message['query'];
     } catch (e) {}
   }
-
-  fromClassForDb(ActivityClassForDB data,){
-    //TODO
-    activities = data.activities;
-    description = data.description;
-    emotions = data.emotions;
-    var timestamp = data.timestamp;
-  }
-}
-
-class ActivityClassForDB{
-  String? description;
-  List<String>? emotions;
-  List<String>? activities;
-  List<String>? modifyDescriptions;
-  int? timestamp;
-
-  ActivityClassForDB({this.description,this.emotions,this.activities,this.modifyDescriptions,this.timestamp});
-
-    // ignore: empty_constructor_bodies
-    factory ActivityClassForDB.fromFirestore(
-    DocumentSnapshot<Map<String, dynamic>> snapshot,
-    SnapshotOptions? options,
-  ) {
-    final data = snapshot.data();
-    return ActivityClassForDB(
-      description: data?['description'] as String,
-      emotions: List<String>.from(data?['emotions'] == Null? [] : data?['emotions']  as List) ,
-      activities: List<String>.from(data?['activities'] == Null? [] : data?['activities']  as List),
-      modifyDescriptions: List<String>.from(data?['modifyDescriptions'] == Null? [] : data?['modifyDescriptions']  as List),
-      timestamp: data?['timestamp'] as int
-    );
-  }
-
-  Map<String, dynamic> toFirestore() {
-    return {
-      if (description != null) "description": description,
-      if (emotions != null) "emotions": emotions,
-      if (activities != null) "activities": activities,
-      if (modifyDescriptions != null) "modifyDescriptions": modifyDescriptions,
-      if (timestamp != null) "timestamp": timestamp,
-    };
-  }
-
-
 
 }
 
