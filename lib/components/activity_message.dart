@@ -68,12 +68,14 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
   }
 
   modifyActivity() {
+    dbService.updateDailyActivitiesActivities(widget.activitiesClass.docId,widget.activitiesClass.activities!);
     setState(() {
       modifyActivities = !modifyActivities;
     });
   }
 
   modifyEmotion() {
+    dbService.updateDailyActivitiesEmotions(widget.activitiesClass.docId,widget.activitiesClass.emotions!);
     setState(() {
       modifyEmotions = !modifyEmotions;
     });
