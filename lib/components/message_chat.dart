@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gemini_app/components/activity_message.dart';
 import 'package:gemini_app/components/activity_page_component.dart';
+import 'package:gemini_app/components/daily_activities_message.dart';
 import 'package:gemini_app/components/error_chat_component.dart';
 import 'package:gemini_app/components/message_class.dart';
 import 'package:gemini_app/components/query_message_component.dart';
@@ -56,6 +57,8 @@ class MessageChat extends StatelessWidget {
           return _PeriodicyMessage(message);
         case 'support':
           return _SupportMessage(message);
+        case 'dailyActivity':
+          return _DailyPeriodicActivityMessage(message);
         case 'loading':
           return _LoadingMessage(message);
         default:
@@ -131,6 +134,10 @@ class MessageChat extends StatelessWidget {
 
   Widget _SupportMessage(MessageClass message) {
     return SupportChatComponent(message: message.supportClass!);
+  }
+
+    Widget _DailyPeriodicActivityMessage(MessageClass message) {
+    return DailyActivitiesMessage(activitiesClass: message.showDailyActivity!.activity!,);
   }
 
   Widget _AddActivityMessage(MessageClass message) {

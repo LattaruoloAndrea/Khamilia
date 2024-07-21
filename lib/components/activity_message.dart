@@ -60,13 +60,6 @@ class _ActivitiMessageClassState extends State<ActivitiMessageClass> {
     widget.activitiesClass.emotions!.remove(val);
   }
 
-  saveData() {
-    if (modifiedListEmotionsOrActivities) {
-      // TODO send data to firebase
-      modifiedListEmotionsOrActivities = false;
-    }
-  }
-
   modifyActivity() {
     dbService.updateDailyActivitiesActivities(widget.activitiesClass.docId,widget.activitiesClass.activities!);
     setState(() {

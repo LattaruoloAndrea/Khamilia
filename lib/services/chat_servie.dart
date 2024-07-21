@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:gemini_app/components/set_periodicy_component.dart';
 import 'package:gemini_app/services/db_service.dart';
 import 'package:gemini_app/services/gemini_service.dart';
 import 'package:gemini_app/services/signleton_messages.dart';
@@ -114,4 +115,25 @@ class ChatService {
   Stream getStream() {
     return current_message.stream;
   }
+
+  getDailyPeriodicActivities() async{
+    PeriodicyDataClass periodicy =  await db.loadPeriodicy();
+    String day = timeService.getDayOfTheWeek();
+    List<String> activitiesPerToday = periodicy.getDay(day);
+    final DateTime date = timeService.currentDate();
+    int timestampPerDb = timeService.getTimeForPeriodicService();
+    ActivitiesClass periodicActivity = ActivitiesClass(activities: activitiesPerToday,emotions: [],timestamp: timestampPerDb,description: "",periodicActivity: true);
+    String id = await db.savePeriodicActivityOnce(periodicActivity);
+    periodicActivity.docId = id;
+    Map<String, dynamic> k = {};
+    k['sender'] = false;
+    k['type'] = 'dailyActivity';
+    k['timestamp'] = date;
+    k['activity'] = periodicActivity;
+    MessageClass message = MessageClass(k);
+    singletonMessages.add(message);
+    current_message.add(singletonMessages.get());
+    
+  }
+
 }

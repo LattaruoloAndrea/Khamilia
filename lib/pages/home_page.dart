@@ -31,6 +31,7 @@ class _HomePage extends State<HomePage> {
   @override
   void initState(){
     _chatService = ChatService();
+    _chatService.getDailyPeriodicActivities();
     stream = _chatService.getStream();
     //_chatService = ChatService.instace;
   }

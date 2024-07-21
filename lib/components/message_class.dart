@@ -88,6 +88,7 @@ class MessageClass {
   PeriodicyClass? periodicyClass;
   EmotionCategorizeClass? emotionCategorizeClass;
   SupportClass? supportClass;
+  ShowDailyActivity? showDailyActivity;
   ErrorType? errorType;
 
   isCorrect() {
@@ -171,6 +172,14 @@ class MessageClass {
         } on ErrorType catch (e) {
           errorType = e;
         }
+        case 'dailyActivity':
+        try {
+          var l = ShowDailyActivity();
+          l.fromMessage(message);
+          showDailyActivity = l;
+        } on ErrorType catch (e) {
+          errorType = e;
+        }
       default:
         break;
     }
@@ -182,10 +191,11 @@ class ActivitiesClass {
   List<String>? emotions;
   List<String>? activities;
   bool yesterday = false; //if false it refers to today
+  bool? periodicActivity = false;
   int? timestamp;
   String docId="";
 
-ActivitiesClass({this.description,this.emotions,this.activities,this.timestamp});
+ActivitiesClass({this.description,this.emotions,this.activities,this.periodicActivity,this.timestamp});
 
     // ignore: empty_constructor_bodies
     factory ActivitiesClass.fromFirestore(
@@ -197,6 +207,7 @@ ActivitiesClass({this.description,this.emotions,this.activities,this.timestamp})
       description: data?['description'] as String,
       emotions: List<String>.from(data?['emotions'] == Null? [] : data?['emotions']  as List) ,
       activities: List<String>.from(data?['activities'] == Null? [] : data?['activities']  as List),
+      periodicActivity: data?['periodicActivity']== Null? false: data?['periodicActivity'] as bool,
       timestamp: data?['timestamp'] as int
     );
   }
@@ -207,6 +218,7 @@ ActivitiesClass({this.description,this.emotions,this.activities,this.timestamp})
       if (emotions != null) "emotions": emotions,
       if (activities != null) "activities": activities,
       if (timestamp != null) "timestamp": timestamp,
+      if (periodicActivity != null) "periodicActivity": periodicActivity,
     };
   }
 
@@ -231,6 +243,8 @@ ActivitiesClass({this.description,this.emotions,this.activities,this.timestamp})
       description = message['query'];
     } catch (e) {}
   }
+
+  fromPeriodicActivity(){}
 
 }
 
@@ -590,6 +604,21 @@ class SupportClass {
     } catch (e) {
       value = "help";
     }
+  }
+
+}
+
+class ShowDailyActivity{
+  ActivitiesClass? activity;
+  ShowDailyActivity({this.activity});
+
+  fromMessage(message){
+    try{
+      activity= message['activity'] as ActivitiesClass;
+    }catch(e){
+
+    }
+    
   }
 }
 

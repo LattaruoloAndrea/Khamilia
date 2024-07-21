@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gemini_app/services/db_service.dart';
 
@@ -22,6 +23,7 @@ enum WeekDays {
 }
 
 class PeriodicyDataClass {
+  String? docId = "";
   List<String>? monday;
   List<String>? tuesday;
   List<String>? wednesday;
@@ -29,7 +31,52 @@ class PeriodicyDataClass {
   List<String>? friday;
   List<String>? saturday;
   List<String>? sunday;
-  PeriodicyDataClass(dynamic message) {
+
+  PeriodicyDataClass(
+      {this.monday,
+      this.tuesday,
+      this.wednesday,
+      this.thursday,
+      this.friday,
+      this.saturday,
+      this.sunday});
+
+  // ignore: empty_constructor_bodies
+  factory PeriodicyDataClass.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return PeriodicyDataClass(
+        monday: List<String>.from(
+            data?['monday'] == Null ? [] : data?['monday'] as List),
+        tuesday: List<String>.from(
+            data?['tuesday'] == Null ? [] : data?['tuesday'] as List),
+        wednesday: List<String>.from(
+            data?['wednesday'] == Null ? [] : data?['wednesday'] as List),
+        thursday: List<String>.from(
+            data?['thursday'] == Null ? [] : data?['thursday'] as List),
+        friday: List<String>.from(
+            data?['friday'] == Null ? [] : data?['friday'] as List),
+        saturday: List<String>.from(
+            data?['saturday'] == Null ? [] : data?['saturday'] as List),
+        sunday: List<String>.from(
+            data?['sunday'] == Null ? [] : data?['sunday'] as List));
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (monday != null) "monday": monday,
+      if (tuesday != null) "tuesday": tuesday,
+      if (wednesday != null) "wednesday": wednesday,
+      if (thursday != null) "thursday": thursday,
+      if (friday != null) "friday": friday,
+      if (saturday != null) "saturday": saturday,
+      if (sunday != null) "sunday": sunday,
+    };
+  }
+
+  fromMessage(dynamic message) {
     monday = [];
     tuesday = [];
     wednesday = [];
@@ -107,14 +154,70 @@ class PeriodicyDataClass {
 
   setActivity(String day, String activity) {}
 
-  removeActivity(String day, String activity) {}
+  removeActivity(String day, String activity) {
+    var lowecaseDay = day.toLowerCase();
+    if (lowecaseDay == 'monday') {
+      monday?.remove(activity);
+    }
+    if (lowecaseDay == 'tuesday') {
+      tuesday?.remove(activity);
+    }
+    if (lowecaseDay == 'wednesday') {
+      wednesday?.remove(activity);
+    }
+    if (lowecaseDay == 'thursday') {
+      thursday?.remove(activity);
+    }
+    if (lowecaseDay == 'friday') {
+      friday?.remove(activity);
+    }
+    if (lowecaseDay == 'saturday') {
+      saturday?.remove(activity);
+    }
+    if (lowecaseDay == 'sunday') {
+      sunday?.remove(activity);
+    }
+  }
+
+  List<String> getDay(String day) {
+    var lowecaseDay = day.toLowerCase();
+    if (lowecaseDay == 'monday') {
+      monday ??= [];
+      return monday!;
+    }
+    if (lowecaseDay == 'tuesday') {
+      tuesday ??= [];
+      return tuesday!;
+    }
+    if (lowecaseDay == 'wednesday') {
+      wednesday ??= [];
+      return wednesday!;
+    }
+    if (lowecaseDay == 'thursday') {
+      thursday ??= [];
+      return thursday!;
+    }
+    if (lowecaseDay == 'friday') {
+      friday ??= [];
+      return friday!;
+    }
+    if (lowecaseDay == 'saturday') {
+      saturday ??= [];
+      return saturday!;
+    }
+    if (lowecaseDay == 'sunday') {
+      sunday ??= [];
+      return sunday!;
+    }
+    return [];
+  }
 }
 
 class SetPeriodicyComponent extends StatefulWidget {
   // final
   final Future<PeriodicyDataClass> periodicData;
 
-  SetPeriodicyComponent({super.key,required this.periodicData });
+  SetPeriodicyComponent({super.key, required this.periodicData});
 
   @override
   State<SetPeriodicyComponent> createState() => _SetPeriodicyComponentState();
@@ -152,6 +255,7 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
 
   removeActivity(String day, String activity) {
     setState(() {
+      currentData.then((x) => {x.removeActivity(day, activity)});
       removed = true;
     });
   }
@@ -174,7 +278,8 @@ class _SetPeriodicyComponentState extends State<SetPeriodicyComponent> {
       modify = !modify;
       if (removed || added) {
         currentData.then((x) => {oldData = x});
-        db.savePeriodicy();
+        currentData.then((x) => {db.savePeriodicy(x)});
+
         added = false;
         removed = false;
         ScaffoldMessenger.of(context)

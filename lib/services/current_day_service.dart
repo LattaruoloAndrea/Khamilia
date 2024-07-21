@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class CurrentDayService {
   DateTime currentDate() {
     return DateTime.now();
@@ -41,4 +43,17 @@ class CurrentDayService {
   DateTime fromTimestapToDateTime(int timestamp){
     return DateTime.fromMillisecondsSinceEpoch(timestamp);
   }
+
+  String getDayOfTheWeek(){
+    DateTime day = currentDate();
+    String d = DateFormat('EEEE').format(day);
+    return d.toLowerCase();
+  }
+
+  int getTimeForPeriodicService(){
+    DateTime date = currentDate();
+    var dayEnd = DateTime(date.year, date.month, date.day,12,11,11);
+    return dayEnd.millisecondsSinceEpoch;
+  }
+
 }
