@@ -5,6 +5,7 @@ import 'package:gemini_app/pages/activities_page.dart';
 import 'package:gemini_app/pages/login.dart';
 import 'package:gemini_app/pages/periodic_activities.dart';
 import 'package:gemini_app/pages/register_page.dart';
+import 'package:gemini_app/services/current_day_service.dart';
 import 'package:gemini_app/services/db_service.dart';
 
 class ActivitiesOrPeriodicPage extends StatefulWidget {
@@ -17,6 +18,7 @@ class ActivitiesOrPeriodicPage extends StatefulWidget {
 class _ActivitiesOrPeriodicPage extends State<ActivitiesOrPeriodicPage> {
   bool showActivities = true;
   DbService db = DbService();
+  CurrentDayService dayService = CurrentDayService();
   late Future<PeriodicyDataClass> dataPeriodic = db.loadPeriodicy();
   late Future<ActivitiesClass> dataActivities = db.queryFromTo(getTodayDate(), getTodayDate());
   // late String startDate;
@@ -38,7 +40,7 @@ class _ActivitiesOrPeriodicPage extends State<ActivitiesOrPeriodicPage> {
   }
 
   String getTodayDate() {
-    return "13-06-2024";
+    return dayService.toStringDate(dayService.currentDate());
   }
 
   @override
