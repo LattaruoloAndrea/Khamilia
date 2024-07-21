@@ -162,7 +162,7 @@ class _DailyActivitiesMessageState extends State<DailyActivitiesMessage> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                      "If you want to add a periodic ativity for a day go on the activities page end then select periodic activities."),
+                      "You removed all your periodic activities for today, but next weak it will be present. If you want to delete this activity from the periodic activities go to the activity page and clik on the periodic button!"),
                 ),
               ])),
         SizedBox(

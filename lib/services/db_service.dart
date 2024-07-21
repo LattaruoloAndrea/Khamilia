@@ -109,19 +109,25 @@ class DbService {
             toFirestore: (PeriodicyDataClass activity, _) =>
                 activity.toFirestore())
         .get();
-        if(querySnapshot.docs.isNotEmpty){
-          var id = querySnapshot.docs.first.id;
-          PeriodicyDataClass l = querySnapshot.docs.first.data();
-          l.docId = id;
-          return l;
-        }else{
-            PeriodicyDataClass l =PeriodicyDataClass(monday: [],tuesday: [],wednesday: [],thursday: [],friday: [],saturday: [],sunday: []);
-            String id = await savePeriodicy(l);
-            l.docId = id;
-            return l;
-        }
-        }
-
+    if (querySnapshot.docs.isNotEmpty) {
+      var id = querySnapshot.docs.first.id;
+      PeriodicyDataClass l = querySnapshot.docs.first.data();
+      l.docId = id;
+      return l;
+    } else {
+      PeriodicyDataClass l = PeriodicyDataClass(
+          monday: [],
+          tuesday: [],
+          wednesday: [],
+          thursday: [],
+          friday: [],
+          saturday: [],
+          sunday: []);
+      String id = await savePeriodicy(l);
+      l.docId = id;
+      return l;
+    }
+  }
 
   Future<String> savePeriodicy(PeriodicyDataClass data) async {
     if (data.docId!.isEmpty) {
@@ -210,46 +216,51 @@ class DbService {
 
   getData(timestampStart, timestampEnd) {}
 
-
-  Future<String> savePeriodicActivityOnce(ActivitiesClass activiy) async{
+  Future<String> savePeriodicActivityOnce(ActivitiesClass activiy) async {
     var path = "usersData/${getUserUIDD()}/activities";
     String createdId = await periodicyDailyAlreadySaved(activiy.timestamp!);
-    if(createdId.isNotEmpty){
-      //update already existing
-      updateDailyActivitiesActivities(createdId,activiy.activities!);
+    if (createdId.isEmpty) {
+      //create new data
+      String docId = await saveDailyOccurence(activiy);
+      createdId = docId;
     }
-  else{
-    //create new data
-    String docId =await saveDailyOccurence(activiy);
-    createdId =docId;
-  }
-  return createdId;
-
+    return createdId;
   }
 
-    Future<String> periodicyDailyAlreadySaved(int timestamp) async {
-    DateTime date = timeService.fromTimestapToDateTime(timestamp);
-    int timestampStart = timeService.getdateStartDay(date);
-    int timestampEnd = timeService.getdateEndDay(date);
+  Future<String> periodicyDailyAlreadySaved(int timestamp) async {
+    //DateTime date = timeService.fromTimestapToDateTime(timestamp);
+    //int timestampStart = timeService.getdateStartDay(date);
+    //int timestampEnd = timeService.getdateEndDay(date);
     var path = "usersData/${getUserUIDD()}/activities";
     var querySnapshot = await db
         .collection(path)
-        .where("timestamp", isGreaterThan: timestampStart)
-        .where("timestamp", isLessThan: timestampEnd)
+        .where("timestamp", isEqualTo: timestamp)
+        //.where("timestamp", isLessThan: timestampEnd)
         //.where("periodicActivity", isEqualTo: true)
-        .orderBy("timestamp",descending: true)
+        .orderBy("timestamp", descending: true)
         .limit(1)
         .withConverter(
             fromFirestore: ActivitiesClass.fromFirestore,
             toFirestore: (ActivitiesClass activity, _) =>
                 activity.toFirestore())
         .get();
-    if(querySnapshot.docs.isEmpty){
+    if (querySnapshot.docs.isEmpty) {
       return "";
-    }else{
+    } else {
       return querySnapshot.docs.first.id;
     }
   }
 
-
+  Future<ActivitiesClass> getActivityFromDocId(String docId) async{
+    var path = "usersData/${getUserUIDD()}/activities";
+    var act = await db
+        .collection(path)
+        .doc(docId)
+        .withConverter(
+            fromFirestore: ActivitiesClass.fromFirestore,
+            toFirestore: (ActivitiesClass activity, _) =>
+                activity.toFirestore())
+        .get();
+    return act.data()!;
+  }
 }

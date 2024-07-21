@@ -205,9 +205,9 @@ ActivitiesClass({this.description,this.emotions,this.activities,this.periodicAct
     final data = snapshot.data();
     return ActivitiesClass(
       description: data?['description'] as String,
-      emotions: List<String>.from(data?['emotions'] == Null? [] : data?['emotions']  as List) ,
-      activities: List<String>.from(data?['activities'] == Null? [] : data?['activities']  as List),
-      periodicActivity: data?['periodicActivity']== Null? false: data?['periodicActivity'] as bool,
+      emotions: List<String>.from((data?['emotions']?? [])   as List) ,
+      activities: List<String>.from((data?['activities']?? [])   as List),
+      periodicActivity: (data?['periodicActivity']?? false) as bool,
       timestamp: data?['timestamp'] as int
     );
   }
@@ -223,6 +223,7 @@ ActivitiesClass({this.description,this.emotions,this.activities,this.periodicAct
   }
 
   fromMessage(dynamic message) {
+    periodicActivity= false;
     emotions = [];
     activities = [];
     try {

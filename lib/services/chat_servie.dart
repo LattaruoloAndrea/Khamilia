@@ -118,27 +118,39 @@ class ChatService {
 
   getDailyPeriodicActivities() async {
     if (singletonMessages.messages.isEmpty) {
-      PeriodicyDataClass periodicy = await db.loadPeriodicy();
       String day = timeService.getDayOfTheWeek();
-      List<String> activitiesPerToday = periodicy.getDay(day);
       final DateTime date = timeService.currentDate();
       int timestampPerDb = timeService.getTimeForPeriodicService();
-      ActivitiesClass periodicActivity = ActivitiesClass(
-          activities: activitiesPerToday,
-          emotions: [],
-          timestamp: timestampPerDb,
-          description: "",
-          periodicActivity: true);
-      String id = await db.savePeriodicActivityOnce(periodicActivity);
-      periodicActivity.docId = id;
-      Map<String, dynamic> k = {};
-      k['sender'] = false;
-      k['type'] = 'dailyActivity';
-      k['timestamp'] = date;
-      k['activity'] = periodicActivity;
-      MessageClass message = MessageClass(k);
-      singletonMessages.add(message);
-      current_message.add(singletonMessages.get());
+      String createdId = await db.periodicyDailyAlreadySaved(timestampPerDb);
+      ActivitiesClass periodicActivity = ActivitiesClass();
+      if (createdId.isEmpty) {
+        // First time
+        PeriodicyDataClass periodicy = await db.loadPeriodicy();
+        List<String> activitiesPerToday = periodicy.getDay(day);
+        ActivitiesClass periodicActivity = ActivitiesClass(
+            activities: activitiesPerToday,
+            emotions: [],
+            timestamp: timestampPerDb,
+            description: "",
+            periodicActivity: true);
+        String id = await db.savePeriodicActivityOnce(periodicActivity);
+        periodicActivity.docId = id;
+      } else {
+        //already created
+        periodicActivity = await db.getActivityFromDocId(createdId);
+        periodicActivity.docId = createdId;
+      }
+      List l = periodicActivity.activities ?? [];
+      if (l.isNotEmpty) {
+        Map<String, dynamic> k = {};
+        k['sender'] = false;
+        k['type'] = 'dailyActivity';
+        k['timestamp'] = date;
+        k['activity'] = periodicActivity;
+        MessageClass message = MessageClass(k);
+        singletonMessages.add(message);
+        current_message.add(singletonMessages.get());
+      }
     }
   }
 }
