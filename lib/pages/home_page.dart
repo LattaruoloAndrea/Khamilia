@@ -151,17 +151,13 @@ class _HomePage extends State<HomePage> {
             return ListView(
               controller: _scrollController,
               children: p.map((el) => _buildMessagesItem(el)).toList(),
-              // .toList(),
             );
-            //_scrollToBottom();
           } else {
-            //return ListView();
             List<MessageClass> p = _chatService.singletonMessages.messages;
             return ListView(
-              reverse: true,
+              reverse:  _chatService.singletonMessages.messages.length>1?  true: false,
               controller: _scrollController,
               children: p.map((el) => _buildMessagesItem(el)).toList().reversed.toList(),
-              // .toList(),
             );
           }
         });

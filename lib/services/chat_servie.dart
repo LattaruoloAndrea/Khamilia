@@ -116,24 +116,29 @@ class ChatService {
     return current_message.stream;
   }
 
-  getDailyPeriodicActivities() async{
-    PeriodicyDataClass periodicy =  await db.loadPeriodicy();
-    String day = timeService.getDayOfTheWeek();
-    List<String> activitiesPerToday = periodicy.getDay(day);
-    final DateTime date = timeService.currentDate();
-    int timestampPerDb = timeService.getTimeForPeriodicService();
-    ActivitiesClass periodicActivity = ActivitiesClass(activities: activitiesPerToday,emotions: [],timestamp: timestampPerDb,description: "",periodicActivity: true);
-    String id = await db.savePeriodicActivityOnce(periodicActivity);
-    periodicActivity.docId = id;
-    Map<String, dynamic> k = {};
-    k['sender'] = false;
-    k['type'] = 'dailyActivity';
-    k['timestamp'] = date;
-    k['activity'] = periodicActivity;
-    MessageClass message = MessageClass(k);
-    singletonMessages.add(message);
-    current_message.add(singletonMessages.get());
-    
+  getDailyPeriodicActivities() async {
+    if (singletonMessages.messages.isEmpty) {
+      PeriodicyDataClass periodicy = await db.loadPeriodicy();
+      String day = timeService.getDayOfTheWeek();
+      List<String> activitiesPerToday = periodicy.getDay(day);
+      final DateTime date = timeService.currentDate();
+      int timestampPerDb = timeService.getTimeForPeriodicService();
+      ActivitiesClass periodicActivity = ActivitiesClass(
+          activities: activitiesPerToday,
+          emotions: [],
+          timestamp: timestampPerDb,
+          description: "",
+          periodicActivity: true);
+      String id = await db.savePeriodicActivityOnce(periodicActivity);
+      periodicActivity.docId = id;
+      Map<String, dynamic> k = {};
+      k['sender'] = false;
+      k['type'] = 'dailyActivity';
+      k['timestamp'] = date;
+      k['activity'] = periodicActivity;
+      MessageClass message = MessageClass(k);
+      singletonMessages.add(message);
+      current_message.add(singletonMessages.get());
+    }
   }
-
 }
