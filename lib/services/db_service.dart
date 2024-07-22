@@ -36,7 +36,7 @@ class DbService {
       ActivitiesClass temp = el.data();
       activities.addAll(temp.activities!);
       emotions.addAll(temp.emotions!);
-      description += "${temp.description!}*@#@@#*";
+      description += "${temp.description!}*@#@@#*"; //TODO add timestemp to see to wich description belong each day 
     }
     ActivitiesClass result = ActivitiesClass(activities: activities,description: description,emotions: emotions);
     return result;
@@ -88,7 +88,6 @@ class DbService {
   }
 
   Future<ActivitiesClass> getTodayPeriodicyItem(int timestamp) async {
-    //TODO
     var path = "usersData/${getUserUIDD()}/activities";
     var querySnapshot = await db
         .collection(path)

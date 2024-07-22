@@ -35,32 +35,40 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
   DbService db = DbService();
   CurrentDayService dayService = CurrentDayService();
   //CurrentDayService dayService = CurrentDayService();
-  late Future<ActivitiesClass>
-      data; // TODO change ActivitiesClass with message Class we also need the description of the day if it's a signle day or add to activities class
+  late Future<ActivitiesClass> data;
   bool isLoading = true;
   TextEditingController dateFrom = TextEditingController();
   TextEditingController dateTo = TextEditingController();
   String currentDateStart = "";
   String currentDateEnd = "";
 
+  swapDayMonthAndViceVersa(String s) {
+    var a = s.split('-');
+    return "${a[0]}-${a[2]}-${a[1]}";
+  }
+
   @override
   void initState() {
     data = widget.activities;
     // data = db.queryFromTo(widget.startDate, widget.endDate);
-    dateFrom.text = widget.startDate;
-    dateTo.text = widget.endDate;
-    currentDateStart = widget.startDate;
-    currentDateEnd = widget.endDate;
+    var s = swapDayMonthAndViceVersa(widget.startDate);
+    var e = swapDayMonthAndViceVersa(widget.endDate);
+    dateFrom.text = s;
+    dateTo.text = e;
+    currentDateStart = s;
+    currentDateEnd = e;
     dateFrom.addListener(changeDates);
     dateTo.addListener(changeDates);
   }
 
   changeDates() {
     if (currentDateStart != dateFrom.text || currentDateEnd != dateTo.text) {
-      var s_p = dateFrom.text.split('-');
-      var e_p = dateTo.text.split('-');
-      var s = dayService.toStringDate(dayService.fromString("${s_p[0]}-${s_p[2]}-${s_p[1]}"));
-      var e = dayService.toStringDate(dayService.fromString("${e_p[0]}-${e_p[2]}-${e_p[1]}"));
+      var s_p = swapDayMonthAndViceVersa(dateFrom.text);
+      var e_p = swapDayMonthAndViceVersa(dateTo.text);
+      var s = dayService.toStringDate(
+          dayService.fromString(s_p)); //create date with format yyyy-dd-MM
+      var e = dayService.toStringDate(
+          dayService.fromString(e_p)); //create date with format yyyy-dd-MM
       data = db.queryFromTo(s, e);
       currentDateStart = dateFrom.text;
       currentDateEnd = dateTo.text;

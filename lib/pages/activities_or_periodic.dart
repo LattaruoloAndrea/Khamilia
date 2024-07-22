@@ -19,18 +19,18 @@ class _ActivitiesOrPeriodicPage extends State<ActivitiesOrPeriodicPage> {
   bool showActivities = true;
   DbService db = DbService();
   CurrentDayService dayService = CurrentDayService();
-  late Future<PeriodicyDataClass> dataPeriodic = db.loadPeriodicy();
-  late Future<ActivitiesClass> dataActivities = db.queryFromTo(getTodayDate(), getTodayDate());
+  late Future<PeriodicyDataClass> dataPeriodic;// = db.loadPeriodicy();
+  late Future<ActivitiesClass> dataActivities;// = db.queryFromTo(getTodayDate(), getTodayDate());
   // late String startDate;
   // late String endDate;
 
   @override
   void initState() {
     super.initState();
-    // startDate = getTodayDate();
-    // endDate = getTodayDate();
-    // Future<PeriodicyDataClass> dataPeriodic = db.loadPeriodicy();
-    // Future<ActivitiesClass> dataActivities = db.queryFromTo(startDate, endDate);
+    var startDate = getTodayDate();
+    var endDate = getTodayDate();
+    dataPeriodic = db.loadPeriodicy();
+    dataActivities = db.queryFromTo(startDate, endDate);
   }
 
   void togglePages() {

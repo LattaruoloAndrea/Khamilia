@@ -123,8 +123,8 @@ class _HomePage extends State<HomePage> {
                       : SizedBox(),
                   UserInputChat(
                       controller: _messageController,
-                      onPressed: sendMessage,
-                      onPressedMic: sendMessage),
+                      onPressed: sendMessage,),
+                      //onPressedMic: sendMessage),
                   SizedBox(height: 40),
                 ],
               ),

@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class UserInputChat extends StatefulWidget {
+class UserInputChatMic extends StatefulWidget {
   final TextEditingController controller;
   final onPressed;
+  final onPressedMic;
 
-  UserInputChat(
+  UserInputChatMic(
       {super.key,
       required this.controller,
-      required this.onPressed});
+      required this.onPressed,
+      required this.onPressedMic});
 
   @override
-  State<UserInputChat> createState() => _UserInputChatState();
+  State<UserInputChatMic> createState() => _UserInputChatMicState();
 }
 
-class _UserInputChatState extends State<UserInputChat> {
-  bool validText = true;
+class _UserInputChatMicState extends State<UserInputChatMic> {
+  bool showMic = true;
 
   sendText() {
     setState(() {
-      validText = true;
+      showMic = true;
     });
     widget.onPressed();
+  }
+
+  sendVocal(){
+    setState(() {
+      showMic = true;
+      
+    });
+    widget.onPressedMic();
   }
 
   @override
@@ -34,10 +44,10 @@ class _UserInputChatState extends State<UserInputChat> {
           child: TextField(
             controller: widget.controller,
             onChanged: (value) => setState(() {
-              if (widget.controller.text.isEmpty) {
-                validText = false;
+              if (widget.controller.text.isNotEmpty) {
+                showMic = false;
               } else {
-                validText = true;
+                showMic = true;
               }
             }),
             decoration: InputDecoration(
@@ -56,9 +66,15 @@ class _UserInputChatState extends State<UserInputChat> {
           ),
           margin: EdgeInsets.only(right: 20),
           child: Center(
-              child: IconButton(
-                      onPressed: validText?  ()=>sendText() : null,
-                      disabledColor: Colors.grey,
+              child: showMic
+                  ? IconButton(
+                      onPressed: () => sendVocal(),
+                      icon: Icon(
+                        Icons.mic,
+                        color: Colors.white,
+                      ))
+                  : IconButton(
+                      onPressed: ()=>sendText(),
                       icon: Icon(
                       Icons.arrow_upward,
                       color: Colors.white,
