@@ -45,7 +45,7 @@ class ChatService {
   addInput(user_input) {
     final DateTime timestamp = DateTime.now();
     singletonMessages.add(MessageClass({
-      'type': 'ai-text',
+      'type': 'text',
       'query': user_input['type'],
       'sender': true,
       'timestamp': timestamp

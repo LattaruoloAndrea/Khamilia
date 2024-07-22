@@ -5,21 +5,18 @@ class UserInputChat extends StatefulWidget {
   final TextEditingController controller;
   final onPressed;
 
-  UserInputChat(
-      {super.key,
-      required this.controller,
-      required this.onPressed});
+  UserInputChat({super.key, required this.controller, required this.onPressed});
 
   @override
   State<UserInputChat> createState() => _UserInputChatState();
 }
 
 class _UserInputChatState extends State<UserInputChat> {
-  bool validText = true;
+  bool _isButtonNotDisabled = false;
 
   sendText() {
     setState(() {
-      validText = true;
+      _isButtonNotDisabled = false;
     });
     widget.onPressed();
   }
@@ -33,11 +30,13 @@ class _UserInputChatState extends State<UserInputChat> {
           padding: EdgeInsets.symmetric(horizontal: 25.0),
           child: TextField(
             controller: widget.controller,
+            maxLength: 500,
+            maxLines: 1,
             onChanged: (value) => setState(() {
               if (widget.controller.text.isEmpty) {
-                validText = false;
+                _isButtonNotDisabled = false;
               } else {
-                validText = true;
+                _isButtonNotDisabled = true;
               }
             }),
             decoration: InputDecoration(
@@ -51,18 +50,18 @@ class _UserInputChatState extends State<UserInputChat> {
         )),
         Container(
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: _isButtonNotDisabled? Colors.pink[300] : Colors.grey,
             shape: BoxShape.circle,
           ),
           margin: EdgeInsets.only(right: 20),
           child: Center(
               child: IconButton(
-                      onPressed: validText?  ()=>sendText() : null,
-                      disabledColor: Colors.grey,
-                      icon: Icon(
-                      Icons.arrow_upward,
-                      color: Colors.white,
-                    ))),
+                  onPressed:_isButtonNotDisabled?  ()=>sendText() : null,
+                  disabledColor: Colors.grey,
+                  icon: Icon(
+                    Icons.send,
+                    color: Colors.black,
+                  ))),
         )
       ],
     );
