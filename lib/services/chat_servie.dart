@@ -127,7 +127,7 @@ class ChatService {
         // First time
         PeriodicyDataClass periodicy = await db.loadPeriodicy();
         List<String> activitiesPerToday = periodicy.getDay(day);
-        ActivitiesClass periodicActivity = ActivitiesClass(
+        periodicActivity = ActivitiesClass(
             activities: activitiesPerToday,
             emotions: [],
             timestamp: timestampPerDb,
@@ -140,17 +140,14 @@ class ChatService {
         periodicActivity = await db.getActivityFromDocId(createdId);
         periodicActivity.docId = createdId;
       }
-      List l = periodicActivity.activities ?? [];
-      if (l.isNotEmpty) {
-        Map<String, dynamic> k = {};
-        k['sender'] = false;
-        k['type'] = 'dailyActivity';
-        k['timestamp'] = date;
-        k['activity'] = periodicActivity;
-        MessageClass message = MessageClass(k);
-        singletonMessages.add(message);
-        current_message.add(singletonMessages.get());
-      }
+      Map<String, dynamic> k = {};
+      k['sender'] = false;
+      k['type'] = 'dailyActivity';
+      k['timestamp'] = date;
+      k['activity'] = periodicActivity;
+      MessageClass message = MessageClass(k);
+      singletonMessages.add(message);
+      current_message.add(singletonMessages.get());
     }
   }
 }

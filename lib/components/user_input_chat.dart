@@ -53,7 +53,7 @@ class _UserInputChatState extends State<UserInputChat> {
             color: _isButtonNotDisabled? Colors.pink[300] : Colors.grey,
             shape: BoxShape.circle,
           ),
-          margin: EdgeInsets.only(right: 20),
+          margin: EdgeInsets.only(right: 20, bottom: 20),
           child: Center(
               child: IconButton(
                   onPressed:_isButtonNotDisabled?  ()=>sendText() : null,

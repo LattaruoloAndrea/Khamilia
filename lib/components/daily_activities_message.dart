@@ -48,6 +48,40 @@ class _DailyActivitiesMessageState extends State<DailyActivitiesMessage> {
   Widget build(BuildContext context) {
     var currentDay = CurrentDayService().currentDate();
     day = currentDay.toString().substring(0, 10);
+    if (widget.activitiesClass.activities!.isEmpty){
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Today periodic activities",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Icon(
+              Icons.auto_awesome_sharp,
+              size: 40,
+            )
+          ],
+        ),
+        Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            child: Divider(
+              thickness: 2,
+              color: Colors.black,
+            )),
+        SizedBox(
+          height: 3,
+        ),
+        Text("You don't have any periodic activities for today!")
+      ],
+    );
+    }else{
     return Column(
       children: [
         Row(
@@ -170,5 +204,7 @@ class _DailyActivitiesMessageState extends State<DailyActivitiesMessage> {
         ),
       ],
     );
+    }
+
   }
 }

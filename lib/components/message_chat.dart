@@ -98,11 +98,11 @@ class MessageChat extends StatelessWidget {
     return RichText(
       text: TextSpan(
         children: [
-
           TextSpan(
             text: message.input!,
             style: TextStyle(color: Colors.black),
-          ),          WidgetSpan(
+          ),
+          WidgetSpan(
             child: Icon(Icons.auto_awesome_sharp, size: 35),
           )
         ],
@@ -112,7 +112,6 @@ class MessageChat extends StatelessWidget {
 
   Widget _ActivitiesMessage(MessageClass message) {
     return ActivitiMessageClass(activitiesClass: message.activitiesClass!);
-
   }
 
   Widget _GroupMessage(MessageClass message) {
@@ -121,7 +120,9 @@ class MessageChat extends StatelessWidget {
 
   Widget _QueryMessage(MessageClass message) {
     // return Text("sdadsada");
-    return MessageForActivityComponent(queryForMessage: message.queryClassToMessage!,);
+    return MessageForActivityComponent(
+      queryForMessage: message.queryClassToMessage!,
+    );
   }
 
   Widget _TimeMessage(MessageClass message) {
@@ -136,8 +137,10 @@ class MessageChat extends StatelessWidget {
     return SupportChatComponent(message: message.supportClass!);
   }
 
-    Widget _DailyPeriodicActivityMessage(MessageClass message) {
-    return DailyActivitiesMessage(activitiesClass: message.showDailyActivity!.activity!,);
+  Widget _DailyPeriodicActivityMessage(MessageClass message) {
+    return DailyActivitiesMessage(
+      activitiesClass: message.showDailyActivity!.activity!,
+    );
   }
 
   Widget _AddActivityMessage(MessageClass message) {

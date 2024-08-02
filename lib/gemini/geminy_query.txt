@@ -31,6 +31,8 @@ SPOKEN  NATURAL LANGUAGE EXAMPLES
 
 - Give me 20 examples of asking to add to today or yesterday activities and emotions to a list a description: output format: {"quey": "#query_info","type": "add-activities","activities": ["activity1", "activity2", "activity3",..], "emotions": ["emotion1","emotion2",...],"time":"yesterday or today"}
 
+- give me me 20 examples of descriptions on exercises that you did these different sports like gym,swimming,running with the following the next example the number of parameters can change: { "query": "example today at the gym I did bench press 8 reps 4 sets with 80kg","type":"progression", "category": "gym", "task": "bench press","parameter1":{"name":"reps","value'':"8"},...,"parameter3":{"name":"sets","value'':"4"},"result":"80","mesureUnit":"kg" }
+
 - (NOT TO DO YET) Give me 25 examples of asking to set a notification on a specific type of the day in the format time format 24h: {"query": "#query_info","type": "set-time", "time":"time"}
 
 

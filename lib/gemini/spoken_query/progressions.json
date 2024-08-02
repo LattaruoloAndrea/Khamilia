@@ -1,0 +1,209 @@
+[ {
+    "query": "example today at the gym I did bench press 8 reps 4 sets with 80kg",
+    "type":"progression",
+    "category": "gym",
+    "task": "bench press",
+    "parameter1": {"name": "reps", "value": "8"},
+    "parameter2": {"name": "sets", "value": "4"},
+    "parameter3": {"name": "weight", "value": "80"},
+    "result": "80",
+    "mesureUnit": "kg"
+  },
+  {
+    "query": "I swam 20 laps in the pool today, each lap is 50 meters freestyle",
+    "type":"progression",
+    "category": "swimming",
+    "task": "laps",
+    "parameter1": {"name": "distance", "value": "50"},
+    "parameter2": {"name": "total", "value": "20"},
+    "parameter3": {"name": "style", "value": "freestyle"},
+    "result": "1000",
+    "mesureUnit": "meters"
+  },
+  {
+    "query": "I ran 5km this morning at a pace of 6 minutes per kilometer on a flat course",
+    "type":"progression",
+    "category": "running",
+    "task": "distance",
+    "parameter1": {"name": "pace", "value": "6"},
+    "parameter2": {"name": "terrain", "value": "flat"},
+    "result": "5",
+    "mesureUnit": "km" 
+  },
+  {
+    "query": "I did 3 sets of 12 reps on the leg press machine with 200 lbs",
+    "type":"progression",
+    "category": "gym",
+    "task": "leg press",
+    "parameter1": {"name": "sets", "value": "3"},
+    "parameter2": {"name": "reps", "value": "12"},
+    "parameter3": {"name": "weight", "value": "200"},
+    "result": "200",
+    "mesureUnit": "lbs"
+  },
+  {
+    "query": "I did 20 minutes of interval training in the pool today, alternating between freestyle sprints and easy swimming",
+    "type":"progression",
+    "category": "swimming",
+    "task": "interval training",
+    "parameter1": {"name": "duration", "value": "20"},
+    "parameter2": {"name": "intervals", "value": "8"},
+    "parameter3": {"name": "sprint distance", "value": "25"},
+    "result": "20",
+    "mesureUnit": "minutes"
+  },
+  {
+    "query": "I ran a 10k race today in 50 minutes, finishing in the top 10% of my age group",
+    "type":"progression",
+    "category": "running",
+    "task": "race",
+    "parameter1": {"name": "distance", "value": "10"},
+    "parameter2": {"name": "time", "value": "50"},
+    "parameter3": {"name": "placement", "value": "top 10%"},
+    "result": "10",
+    "mesureUnit": "km"
+  },
+  {
+    "query": "I did 3 sets of 10 reps of barbell squats with 100kg",
+    "type":"progression",
+    "category": "gym",
+    "task": "barbell squats",
+    "parameter1": {"name": "sets", "value": "3"},
+    "parameter2": {"name": "reps", "value": "10"},
+    "parameter3": {"name": "weight", "value": "100"},
+    "result": "100",
+    "mesureUnit": "kg"
+  },
+  {
+    "query": "I swam 400 meters of butterfly today",
+    "type":"progression",
+    "category": "swimming",
+    "task": "distance",
+    "parameter1": {"name": "style", "value": "butterfly"},
+    "result": "400",
+    "mesureUnit": "meters"
+  },
+  {
+    "query": "I ran 6 miles today at an average pace of 8 minutes per mile",
+    "type":"progression",
+    "category": "running",
+    "task": "distance",
+    "parameter1": {"name": "pace", "value": "8"},
+    "result": "6",
+    "mesureUnit": "miles" 
+  },
+  {
+    "query": "I did 3 sets of 15 reps of deadlifts with 60kg",
+    "type":"progression",
+    "category": "gym",
+    "task": "deadlifts",
+    "parameter1": {"name": "sets", "value": "3"},
+    "parameter2": {"name": "reps", "value": "15"},
+    "parameter3": {"name": "weight", "value": "60"},
+    "result": "60",
+    "mesureUnit": "kg"
+  },
+  {
+    "query": "I completed a 1500 meter swim today, which is the equivalent of 30 laps",
+    "type":"progression",
+    "category": "swimming",
+    "task": "distance",
+    "parameter1": {"name": "laps", "value": "30"},
+    "result": "1500",
+    "mesureUnit": "meters"
+  },
+  {
+    "query": "I ran a 5k race today, finishing in 25 minutes",
+    "type":"progression",
+    "category": "running",
+    "task": "race",
+    "parameter1": {"name": "time", "value": "25"},
+    "result": "5",
+    "mesureUnit": "km" 
+  },
+  {
+    "query": "I did 4 sets of 10 reps of overhead press with 40kg dumbbells",
+    "type":"progression",
+    "category": "gym",
+    "task": "overhead press",
+    "parameter1": {"name": "sets", "value": "4"},
+    "parameter2": {"name": "reps", "value": "10"},
+    "parameter3": {"name": "weight", "value": "40"},
+    "result": "40",
+    "mesureUnit": "kg"
+  },
+  {
+    "query": "I did 30 minutes of easy swimming today, focusing on technique",
+    "type":"progression",
+    "category": "swimming",
+    "task": "duration",
+    "parameter1": {"name": "intensity", "value": "easy"},
+    "parameter2": {"name": "focus", "value": "technique"},
+    "result": "30",
+    "mesureUnit": "minutes"
+  },
+  {
+    "query": "I ran 3 miles today on a hilly trail, with a total elevation gain of 500 feet",
+    "type":"progression",
+    "category": "running",
+    "task": "distance",
+    "parameter1": {"name": "elevation gain", "value": "500"},
+    "parameter2": {"name": "terrain", "value": "hilly"},
+    "result": "3",
+    "mesureUnit": "miles" 
+  },
+  {
+    "query": "I did 3 sets of 15 reps of pull-ups, using a band for assistance",
+    "type":"progression",
+    "category": "gym",
+    "task": "pull-ups",
+    "parameter1": {"name": "sets", "value": "3"},
+    "parameter2": {"name": "reps", "value": "15"},
+    "parameter3": {"name": "assistance", "value": "band"},
+    "result": null,
+    "mesureUnit": ""
+  },
+  {
+    "query": "I did 10 x 50 meter sprints with 10 seconds rest in between",
+    "type":"progression",
+    "category": "swimming",
+    "task": "sprints",
+    "parameter1": {"name": "distance", "value": "50"},
+    "parameter2": {"name": "total", "value": "10"},
+    "parameter3": {"name": "rest", "value": "10"},
+    "result": "50",
+    "mesureUnit": "meters"
+  },
+  {
+    "query": "I ran a half marathon today in 2 hours and 15 minutes",
+    "type":"progression",
+    "category": "running",
+    "task": "race",
+    "parameter1": {"name": "distance", "value": "21.1"},
+    "parameter2": {"name": "time", "value": "135"},
+    "result": "21.1",
+    "mesureUnit": "km" 
+  },
+  {
+    "query": "I did 3 sets of 20 reps of bicep curls with 15kg dumbbells",
+    "type":"progression",
+    "category": "gym",
+    "task": "bicep curls",
+    "parameter1": {"name": "sets", "value": "3"},
+    "parameter2": {"name": "reps", "value": "20"},
+    "parameter3": {"name": "weight", "value": "15"},
+    "result": "15",
+    "mesureUnit": "kg"
+  },
+  {
+    "query": "I completed a 100 meter freestyle in 1 minute and 10 seconds",
+    "type":"progression",
+    "category": "swimming",
+    "task": "time",
+    "parameter1": {"name": "style", "value": "freestyle"},
+    "parameter2": {"name": "distance", "value": "100"},
+    "result": "70",
+    "mesureUnit": "seconds"
+  }
+
+]

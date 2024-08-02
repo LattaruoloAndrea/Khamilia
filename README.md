@@ -41,8 +41,10 @@ apps](https://flutter.dev/docs/development/accessibility-and-localization/intern
 - add firebase db
 - refine UI
 - LOGO
-- video
+- video  https://klingai.com/
 - tutorial
 
+cd Documents/android-studio/bin
+sh studio.sh
 ## later 
 - add evaluation time spent on activitis (not for now)
