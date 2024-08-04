@@ -25,6 +25,7 @@ dependencies:
   syncfusion_flutter_charts: ^26.1.35
   localstorage: ^5.0.0
   flutter_native_splash: ^2.4.1
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gemini_app/pages/activities_or_periodic.dart';
 import 'package:gemini_app/pages/activities_page.dart';
+import 'package:gemini_app/pages/data_analysis.dart';
 import 'package:gemini_app/pages/home_page.dart';
+import 'package:gemini_app/pages/progression_page.dart';
 import 'package:gemini_app/pages/setting_page.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -38,6 +40,20 @@ class MyDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => ActivitiesOrPeriodicPage()));
+                }),
+            ListTile(
+                leading: Icon(Icons.query_stats),
+                title: Text("Progressions"),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProgressionPage()));
+                }),
+            ListTile(
+                leading: Icon(Icons.insights),
+                title: Text("Data analysis"),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => DataAnalysisPage()));
                 }),
             ListTile(
                 leading: Icon(Icons.settings),
