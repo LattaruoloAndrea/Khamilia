@@ -94,7 +94,7 @@ class _HomePage extends State<HomePage> {
               child: Column(
                 children: [
                   SizedBox(height: 10),
-                  Center(child: Text(AppLocalizations.of(context)!.title)),
+                  //Center(child: Text(AppLocalizations.of(context)!.title)),
                   Expanded(child: _buildMessageList()),
                   SizedBox(
                     height: 15,

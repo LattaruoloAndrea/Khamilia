@@ -1,0 +1,12 @@
+#Run the following command if modify this file
+# flutter pub get
+# flutter pub run flutter_launcher_icons
+
+dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "lib/images/logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21

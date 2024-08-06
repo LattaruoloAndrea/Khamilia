@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:gemini_app/pages/tutorial_page.dart';
 import 'package:lottie/lottie.dart';
 
-class SupportChatComponent extends StatelessWidget {
+class SupportChatComponent extends StatefulWidget {
   final SupportClass message;
-  const SupportChatComponent({super.key, required this.message});
+  SupportChatComponent({required this.message});
+
+  @override
+  State<SupportChatComponent> createState() => _SupportChatComponentState();
+}
+
+class _SupportChatComponentState extends State<SupportChatComponent> {
+  
 
   openTutorial() {
     //TODO add tutorial
+        Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => TutorialPage()));
   }
 
   @override
@@ -33,7 +43,6 @@ class SupportChatComponent extends StatelessWidget {
           child: Text("""These is the list of the things I can do for you:\n
 - Provide a description of today or yesterday and we'll sort your activites and emotions\n
 - Asks for specific data of a single day or in a between of days or visit the page activities\n
-- Set periodic activities that no ones wants to fill every day\n
 - Add activies after you provided a description you can add activities for today or yesterday\n
 \n
 If you have still doubs you can check the tutorial on the button below!

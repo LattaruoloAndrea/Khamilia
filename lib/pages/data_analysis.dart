@@ -22,13 +22,13 @@ class DataAnalysisPage extends StatelessWidget {
             backgroundColor: Colors.pink[300]),
         drawer: MyDrawer(),
         body: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                alignment: Alignment.center,
-                image: AssetImage("lib/images/analysis.png"),
-                // fit: BoxFit.cover,
-              ),
-            ),
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     alignment: Alignment.center,
+            //     image: AssetImage("lib/images/analysis.png"),
+            //     // fit: BoxFit.cover,
+            //   ),
+            // ),
             child: SafeArea(
                 child: ListView(
               children: [
@@ -51,10 +51,11 @@ class DataAnalysisPage extends StatelessWidget {
                   child: Text(
                     'In this page it will be possible for you to analyze if there is any correlations between your activies and your emotions, maybe some activities might have a slight influence on some of your emotions!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),
                   
                   ),
                 ),
+                Image.asset("lib/images/analysis.png"),
                 Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 20,
