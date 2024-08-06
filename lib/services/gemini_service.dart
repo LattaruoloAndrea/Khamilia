@@ -1,7 +1,7 @@
 import 'package:gemini_app/components/message_class.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'dart:io';
-const apiKey = "AIzaSyDGyDL2iX5lmySpjU4WUMwR2gRCRiFIMBA";
+const apiKey = "AIzaSyDGyDL2iX5lmySpjU4WUMwR2gRCRiFIMBA"; // I know it should not go here but it was a demo and for now it's fine
 
 class GeminyService {
   final model = GenerativeModel(
