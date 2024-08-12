@@ -21,6 +21,8 @@ class ChatService {
 
   Map<String, dynamic> processInput(userInput) {
     //TODO add geminy call here
+    dynamic res = geminyService.callToGeminy(userInput);
+    // Today I went to buy groceries hededto the gym and I left a bit numb and sad
     //var res = {'type': 'text','query':userInput['type']};
     // var res = {
     //   "query":
@@ -36,10 +38,11 @@ class ChatService {
     //   "time": "today"
     // };
     // var res  ={ "query": "Get the number of new leads generated between August 1st, 2024 and August 10th, 2024.", "type": "query","start": "2024-08-01","end": "2024-08-10","sender":false};
-    var res  = {"type":"error","sender":false};
+    //var res  = {"type":"error","sender":false};
     //var res  = {"query":"Could you help me install this software?", "type":"support","sender":false};
     //geminyService.processUserInput(res);
-    return res;
+    print(res);
+    return {};
   }
 
   addInput(user_input) {

@@ -1,30 +1,42 @@
 import 'package:gemini_app/components/message_class.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'dart:io';
-const apiKey = "AIzaSyDGyDL2iX5lmySpjU4WUMwR2gRCRiFIMBA"; // I know it should not go here but it was a demo and for now it's fine
+import 'dart:convert';
+
+const apiKey =
+    "AIzaSyA5SfQlETg7RI4f_8IwXosLQXhN-MwG5Po"; // I know it should not go here but it was a demo and for now it's fine
 
 class GeminyService {
-  final model = GenerativeModel(
-    model: 'gemini-1.5-flash', // here goes the ID of the tuned model
-    apiKey: apiKey,
-    // safetySettings: Adjust safety settings
-    // See https://ai.google.dev/gemini-api/docs/safety-settings
-    generationConfig: GenerationConfig(
-      temperature: 1,
-      topK: 64,
-      topP: 0.95,
-      maxOutputTokens: 8192,
-      responseMimeType: 'text/plain',
-    ),
-  );
-
-  callToGeminy(input) async{
-      final content = [Content.text(input)];
-      final response = await model.generateContent([input]);
-  // https://www.youtube.com/watch?v=VwpDvvNjN2I
-      return response.text;
+  
+  callToGeminy(String input) async{
+    final model = GenerativeModel(
+      model:
+          //'gemini-1.5-flash',
+          'tunedModels/khamiliav01-rrqdl4gzetgb', // here goes the ID of the tuned model gemini-1.5-flash
+      apiKey: apiKey,
+      // safetySettings: Adjust safety settings
+      // See https://ai.google.dev/gemini-api/docs/safety-settings
+      generationConfig: GenerationConfig(
+        temperature: 1,
+        topK: 64,
+        topP: 0.95,
+        maxOutputTokens: 8192,
+        responseMimeType: 'text/plain',
+      ),
+    );
+    //final tokenCount = await model.countTokens([Content.text('prompt')]);
+    //print('Token count: ${tokenCount.totalTokens}');
+    //final content = Content.text(input);
+    final content = [Content.text('Write a story about a magic backpack.')];
+    try {
+      final response = await model.generateContent(content);
+      // https://www.youtube.com/watch?v=VwpDvvNjN2I
+      return json.decode(response.text!);
+    } catch (e) {
+      print(e);
+    }
+    return {};
   }
-
 
   Future<dynamic> processUserInput(dynamic input) {
     //TODO this is the call to geminy AI
@@ -33,9 +45,10 @@ class GeminyService {
 
   Future<EmotionCategorizeClass> categolizeListOfEmotions(
       List<String> emotions) async {
-        String input = ' Given a list of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion: ###input:${emotions.toList()}### ###output: [{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}] ###';
-    
-        dynamic res = callToGeminy(input);
+    String input =
+        ' Given a list of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion: ###input:${emotions.toList()}### ###output: [{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}] ###';
+    dynamic res = {};
+    //dynamic res = callToGeminy(input);
     // await Future.delayed(const Duration(seconds: 2));
     // var ll = {
     //   "input": [
@@ -103,29 +116,25 @@ class GeminyService {
   }
 
   Future<GroupClass> groupActivities(List<String> activities) async {
-    String input ='group together this list of activities  ###${activities.toString()}### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}';
-    dynamic res = callToGeminy(input);
+    String input =
+        'group together this list of activities  ###${activities.toString()}### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}';
+    //dynamic res = callToGeminy(input);
     // await Future.delayed(const Duration(seconds: 2));
-    // var ll = {
-    //   // "input": [
-    //   //   "Go to a museum",
-    //   //   "Learn about history",
-    //   //   "Admire the art",
-    //   //   "Take photos"
-    //   // ],
-    //   // "type": "group-activities",
-    //   "Physical Activities": [],
-    //   "Entertainment": ["Go to a museum", "Admire the art"],
-    //   "Learning & Development": ["Learn about history"],
-    //   "Work & Chores": [],
-    //   "Social & Personal": ["Take photos"]
-    // };
+    var res = {
+      // "input": [
+      //   "Go to a museum",
+      //   "Learn about history",
+      //   "Admire the art",
+      //   "Take photos"
+      // ],
+      // "type": "group-activities",
+      "Physical Activities": [],
+      "Entertainment": ["Go to a museum", "Admire the art"],
+      "Learning & Development": ["Learn about history"],
+      "Work & Chores": [],
+      "Social & Personal": ["Take photos"]
+    };
     GroupClass b = GroupClass(res);
     return b;
   }
-
-
-
-
 }
-

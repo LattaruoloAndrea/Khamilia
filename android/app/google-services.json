@@ -1,81 +1,37 @@
 {
   "project_info": {
-    "project_number": "637805349115",
-    "project_id": "test-gemini-c7b7c",
-    "storage_bucket": "test-gemini-c7b7c.appspot.com"
+    "project_number": "473828294205",
+    "project_id": "khamilia-dev",
+    "storage_bucket": "khamilia-dev.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:637805349115:android:24819bd138c15e48cdc85e",
+        "mobilesdk_app_id": "1:473828294205:android:4a49eb849a5882aa52f454",
         "android_client_info": {
-          "package_name": "com.example.gemini_app"
+          "package_name": "com.lattaruolo.android.khamilia"
         }
       },
       "oauth_client": [
         {
-          "client_id": "637805349115-9gjk79plbjt26gomkuatn224m6lh9pjr.apps.googleusercontent.com",
+          "client_id": "473828294205-2l25qi43khf8v2t3d5jraii5mgj4mi6c.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC7TSS5vBvRqrT04L2EfjIA210jKfStk0k"
+          "current_key": "AIzaSyBMu23E7ThRmJU5WYOHPmzWgFul2lOcOTs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "637805349115-9gjk79plbjt26gomkuatn224m6lh9pjr.apps.googleusercontent.com",
+              "client_id": "473828294205-2l25qi43khf8v2t3d5jraii5mgj4mi6c.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "637805349115-j94i9ivenehmmadpbr9kf44avfif5aj3.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.geminiApp"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:637805349115:android:5d28e45dd80978f2cdc85e",
-        "android_client_info": {
-          "package_name": "gemini.app.test"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "637805349115-jac5a7gqhkea0cpq6sipusla1kbg4r4g.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "gemini.app.test",
-            "certificate_hash": "65d42b0bd4c5556430763f9622b75bf50e7e8cfe"
-          }
-        },
-        {
-          "client_id": "637805349115-9gjk79plbjt26gomkuatn224m6lh9pjr.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC7TSS5vBvRqrT04L2EfjIA210jKfStk0k"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "637805349115-9gjk79plbjt26gomkuatn224m6lh9pjr.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "637805349115-j94i9ivenehmmadpbr9kf44avfif5aj3.apps.googleusercontent.com",
+              "client_id": "473828294205-3vrtlb6c443cpps79g24p7a9d4kmfbmh.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.example.geminiApp"

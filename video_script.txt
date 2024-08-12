@@ -1,14 +1,59 @@
-Style cartoon, two puppets talking to each other in intervals.
-They use the following dialogue
-puppet-1 : “Hello Blair, how is it going lately?”
-puppet-2: “Hi Ezekiel, I have been busy lately so many things to do that I feel like I could explode”
-puppet-1: “Have you ever tried using a manager for scheduling your activities?”
-puppet-2: “I tried a few options but they were all lacking of something and tidius to use!”
-puppet-1: “Have you ever tried Kamilia? It's a software that helps you to track your activities. it's a simple as to send a message to one of your friends. It can help you also to track your emotions. it is simple to use and can provide useful information on your lifestyle. For example if you give a description of your day it will extract the activities and your emotions, this with some time can be used to inference if some activities are involved with a specific emotion!”
-puppet-2: “Sounds like magic!”
-puppet-1: “Well you know it is powered by GeminyAI, and it can do more stuff, for example I have been going to the gym lately and I am tracking my gym progression by just sending a message! as simple as that”
-puppet-2:"That would be great for my swimming! Do you reckon I can send my swimming progression? "
-puppet-1: "From what I understood the progression can be applied to any activity that allow a progression for example I usually send hey kami today at the gym I have been squatting 80kg 5 sets of 8 rep each, and I can see the graph of the squat exercice"
-puppet-2: “That seem very helpful indeed. I will give it a try how did you call it again Kamilia was it?”
-puppet-1 “That's right Kamilia, your journal assistant.”
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Hello, welcome to the khamilia app showcase, khami for friends.
+
+Khamilia is your journal personal assistant and it's aimed to improve your quality of life.
+To put it in simple terms Khami is a smarter version of the diary you used to have if you did.
+
+It's a chat based application in which you provide a description of your day
+and khami, powered by GeminyAI, will extract the main informations.
+It was tought to be as simple as to write your friend what you did today which we might usually do.
+But how does khami work then? Well you provided your daily description then informations as the activies and emotions/moods are extracted. 
+
+Have you ever wonder if there are activities that makes us fell in a certain way?
+With khami you can now get a better understanding of what is going on in your life. By collecting daily entry Khami will try to track the cause and effect between activities and emotions.
+
+If you are wondering I am not sure if it the right app for me. Well it can be used by anyone for any reason, to keep track of your activities, or maybe you just want a journal or what if I am following a rehabilitation path and I want get a better understanding of myself,
+every user can decide what information to give. 
+
+What if I don't feel like putting my emotions and moods on this app but still wanted to use it? Well it's simple you will get the list of activities 
+but without emotions it will not be possible to do any correlations between activites and mood.
+
+Not conviced yet? We are exeprimenting also a section for progression activies which mainy are the sports.
+If you do sports you know that you have different exercises with many different variations to that exercise.
+By providing the exercise description in the khami chat the main parameters will be extracted and you will keep track of your progressions.
+
+Ready to try it Khamilia will try to make it easier!
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Welcome to the Khamilia app Showcase, where Khami
+is your personal journal assistant powered by Gemini AI,
+Khami is a chat based app that reveals the patterns between what you do and how you feel. It helps you understand yourself better 
+by finding the cause and effect between activities and emotions, 
+track your progress in sports and improve
+your quality of live effortlessy.
+Wheter you want to journal your daily life,keep track of activities or enhance self awareness khamilia is 
+here for you.
+
+Ready to simplify your journaling experience?
+Try khamilia today
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+https://artlist.io/voice-over everyday female voice
+
+Welcome to the Khamilia app Showcase.
+Khami it’s your journal personal assistant, powered by Geminy AI that can improve your life!
+Imagine chatting with a friend about your day. Simple, right?
+Just type out your day, and Khami extracts key info.
+Activities, moods, emotions—Khami tracks it all!
+Ever wonder why some days feel better than others?
+Khami reveals the patterns between what you do and how you feel.
+Worried it’s not for you?
+Whether you want to track activities, journaling, or even provide depth during a psychotherapy journey, Khami’s got you covered.
+Not keen on sharing emotions? No problem!
+Khami still helps with activities. Still not convinced?
+We’re adding a sports progression section!
+Track your exercises and watch your progress soar.
+Ready to simplify your journaling experience?
+Try khamilia today

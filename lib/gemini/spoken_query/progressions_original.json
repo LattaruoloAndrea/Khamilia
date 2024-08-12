@@ -164,15 +164,15 @@
     "mesureUnit": ""
   },
   {
-    "query": "I did 10 x 50 meter sprints with 10 seconds rest in between",
+    "query": "I did 10 x 50 meter sprints with 10 seconds rest in between in 5 minutes",
     "type":"progression",
     "category": "swimming",
     "task": "sprints",
     "parameter1": {"name": "distance", "value": "50"},
     "parameter2": {"name": "total", "value": "10"},
     "parameter3": {"name": "rest", "value": "10"},
-    "result": "50",
-    "mesureUnit": "meters"
+    "result": "5",
+    "mesureUnit": "minutes"
   },
   {
     "query": "I ran a half marathon today in 2 hours and 15 minutes",

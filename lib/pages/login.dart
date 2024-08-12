@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gemini_app/components/my_button.dart';
 import 'package:gemini_app/components/my_textfield.dart';
 import 'package:gemini_app/components/squere_tile.dart';
@@ -96,6 +97,62 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  showTermsConditions() async{
+    String t = await rootBundle.loadString('lib/assets/terms_conditions.txt');
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Terms and conditions'),
+            content: SafeArea(child:  Text(
+              t,
+            ),),
+            actions: <Widget>[
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+  }
+
+  forgotPassword(){
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Forgot password'),
+            content: Column(children: [
+              Text("Send reset email to,"),
+                MyTextfield(
+                  controller: emailController,
+                  hintText: 'Email',
+                  obscureText: false,
+                ),
+            ],),
+            actions: <Widget>[
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('Send email'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,14 +164,19 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
-                Icon(Icons.lock, size: 100),
+                Container(
+                    child: Image.asset(
+                  'lib/images/logo.png',
+                  width: 180,
+                  height: 180,
+                )),
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 Text(
-                  'Welcome back you\'ve benn missed!',
+                  'Welcome to Khamilia',
                   style: TextStyle(color: Colors.grey[700], fontSize: 16),
                 ),
                 SizedBox(
@@ -139,21 +201,47 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Padding(
                         padding: EdgeInsets.symmetric(horizontal: 25.0),
-                        child: Text(
-                          'Forgot password?',
-                          style: TextStyle(color: Colors.grey[600]),
+                        child: GestureDetector(
+                          onTap: forgotPassword,
+                          child: Text(
+                            'Forgot password?',
+                            style: TextStyle(
+                                color: Colors.blue[400],
+                                fontWeight: FontWeight.bold),
+                          ),
                         ))
                   ],
                 ),
                 SizedBox(
                   height: 25,
                 ),
-                MyButton(
-                  onTap: signUserIn,
-                  text: 'Sign in'
+                MyButton(onTap: signUserIn, text: 'Sign in'),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'By sign in you agree to the',
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    GestureDetector(
+                      onTap: showTermsConditions,
+                      child: Text(
+                        'Terms and conditions',
+                        style: TextStyle(
+                            color: Colors.blue[400],
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -181,7 +269,9 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SquereTile(imagePath: 'lib/images/google.png', onTap: () => AuthService().signInWithGoogle()),
+                    SquereTile(
+                        imagePath: 'lib/images/google.png',
+                        onTap: () => AuthService().signInWithGoogle()),
                     // SizedBox(width: 25),
                     // SquereTile(imagePath: 'lib/images/apple.png', onTap: () => AuthService().signInWithGoogle())
                   ],
@@ -191,7 +281,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not A member?',
+                      'Not a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(

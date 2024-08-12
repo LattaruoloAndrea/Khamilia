@@ -1,4 +1,4 @@
-package com.example.gemini_app
+package com.lattaruolo.android.khamilia
 
 import io.flutter.embedding.android.FlutterActivity
 

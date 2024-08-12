@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gemini_app/components/my_button.dart';
 import 'package:gemini_app/components/my_textfield.dart';
 import 'package:gemini_app/components/squere_tile.dart';
@@ -53,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
       );
     }
 
-      passwordMismatch() {
+    passwordMismatch() {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -79,20 +80,44 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     try {
-      if(confirmPasswordController.text == passwordController.text){
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
+      if (confirmPasswordController.text == passwordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text);
         Navigator.pop(context);
-      }else{
+      } else {
         Navigator.pop(context);
         passwordMismatch();
       }
-
-      
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       wrongRegister(e.code);
     }
+  }
+
+  showTermsConditions() async{
+    String t = await rootBundle.loadString('lib/assets/terms_conditions.txt');
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Terms and conditions'),
+            content: SafeArea(child:  Text(
+              t,
+            ),),
+            actions: <Widget>[
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
   }
 
   @override
@@ -108,16 +133,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Icon(Icons.lock, size: 50),
+                Container(
+                    child: Image.asset(
+                  'lib/images/logo.png',
+                  width: 110,
+                  height: 110,
+                )),
                 SizedBox(
-                  height: 25,
+                  height: 5,
                 ),
                 Text(
-                  'Welcome back you\'ve benn missed!',
+                  'Welcome to Khamilia',
                   style: TextStyle(color: Colors.grey[700], fontSize: 16),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 MyTextfield(
                   controller: emailController,
@@ -142,12 +172,33 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 25,
                 ),
-                MyButton(
-                  onTap: signUserUp,
-                  text: 'Sign up'
+                MyButton(onTap: signUserUp, text: 'Sign up'),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'By sign up  you agree to the',
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    GestureDetector(
+                      onTap: showTermsConditions,
+                      child: Text(
+                        'Terms and conditions',
+                        style: TextStyle(
+                            color: Colors.blue[400],
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -175,7 +226,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SquereTile(imagePath: 'lib/images/google.png', onTap: () => AuthService().signInWithGoogle()),
+                    SquereTile(
+                        imagePath: 'lib/images/google.png',
+                        onTap: () => AuthService().signInWithGoogle()),
                     // SizedBox(width: 25),
                     // SquereTile(imagePath: 'lib/images/apple.png', onTap: () => AuthService().signInWithGoogle())
                   ],

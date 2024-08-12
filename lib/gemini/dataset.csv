@@ -148,72 +148,6 @@
 "Show me the sales figures for March 15th, 2024."; {"type": "query", "start": "2024-03-15", "end": "2024-03-15" }
 "What was the total revenue generated between July 1st, 2024 and July 15th, 2024?"; {"type": "query", "start": "2024-07-01", "end": "2024-07-15" }
 "Get the customer service interactions from August 10th, 2024 to August 20th, 2024."; {"type": "query", "start": "2024-08-10", "end": "2024-08-20" }
-"Set a reminder for 08:00"; {"type": "set-time", "time": "08:00" }
-"Remind me at 09:00"; {"type": "set-time", "time": "9:00" }
-"Set an alarm for 10:00"; {"type": "set-time", "time": "10:00" }
-"Notify me at 11:00"; {"type": "set-time", "time": "11:00" }
-"Set a reminder for 12:00"; {"type": "set-time", "time": "12:00" }
-"Remind me at 13:00"; {"type": "set-time", "time": "13:00" }
-"Set an alarm for 14:00"; {"type": "set-time", "time": "14:00" }
-"Notify me at 15:00"; {"type": "set-time", "time": "15:00" }
-"Set a reminder for 16:00"; {"type": "set-time", "time": "16:00" }
-"Remind me at 17:00"; {"type": "set-time", "time": "17:00" }
-"Set an alarm for 18:00"; {"type": "set-time", "time": "18:00" }
-"Notify me at 19:00"; {"type": "set-time", "time": "19:00" }
-"Set a reminder for 20:00"; {"type": "set-time", "time": "20:00" }
-"Remind me at 21:00"; {"type": "set-time", "time": "21:00" }
-"Set an alarm for 22:00"; {"type": "set-time", "time": "22:00" }
-"Notify me at 23:00"; {"type": "set-time", "time": "23:00" }
-"Set a reminder for 00:00"; {"type": "set-time", "time": "00:00" }
-"Remind me at 01:00"; {"type": "set-time", "time": "01:00" }
-"Set an alarm for 02:00"; {"type": "set-time", "time": "02:00" }
-"Notify me at 03:00"; {"type": "set-time", "time": "03:00" }
-"Set a reminder for 04:00"; {"type": "set-time", "time": "04:00" }
-"Remind me at 05:00"; {"type": "set-time", "time": "05:00" }
-"Set an alarm for 06:00"; {"type": "set-time", "time": "06:00" }
-"Notify me at 07:00"; {"type": "set-time", "time": "07:00" }
-"Set a reminder for 08:30"; {"type": "set-time", "time": "08:30" }
-"Add 'Go for a walk' to my routine every Monday"; {"type": "set-periodicy", "data": [{"kind": "add", "monday": ["Go for a walk"]}]}
-"Remove 'Grocery shopping' from my Wednesday routine"; {"type": "set-periodicy", "data": [{"kind": "remove", "wednesday": ["Grocery shopping"]}]}
-"Add 'Yoga class' and 'Meal prep' to my Saturday routine"; {"type": "set-periodicy", "data": [{"kind": "add", "saturday": ["Yoga class", "Meal prep"]}]}
-"Remove 'Clean the house' and 'Do laundry' from my Sunday routine"; {"type": "set-periodicy", "data": [{"kind": "remove", "sunday": ["Clean the house", "Do laundry"]}]}
-"Add 'Read a book' to my Tuesday routine"; {"type": "set-periodicy", "data": [{"kind": "add", "tuesday": ["Read a book"]}]}
-"Remove 'Attend a meeting' from my Thursday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "thursday": ["Attend a meeting"]}]}
-"Add 'Workout' and 'Cook dinner' to my Friday routine";{"type": "set-periodicy", "data": [{"kind": "add", "friday": ["Workout", "Cook dinner"]}]}
-"Remove 'Go to the library' from my Monday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "monday": ["Go to the library"]}]}
-"Add 'Write a blog post' to my Wednesday routine";{"type": "set-periodicy", "data": [{"kind": "add", "wednesday": ["Write a blog post"]}]}
-"Remove 'Catch up with friends' and 'Go to a concert' from my Saturday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "saturday": ["Catch up with friends", "Go to a concert"]}]}
-"Add 'Spend time with family' to my Sunday routine";{"type": "set-periodicy", "data": [{"kind": "add", "sunday": ["Spend time with family"]}]}
-"Remove 'Go to the gym' from my Tuesday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "tuesday": ["Go to the gym"]}]}
-"Add 'Learn a new skill' and 'Prepare for a presentation' to my Thursday routine";{"type": "set-periodicy", "data": [{"kind": "add", "thursday": ["Learn a new skill", "Prepare for a presentation"]}]}
-"Remove 'Volunteer at the animal shelter' from my Friday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "friday": ["Volunteer at the animal shelter"]}]}
-"Add 'Go for a hike' to my Monday routine";{"type": "set-periodicy", "data": [{"kind": "add", "monday": ["Go for a hike"]}]}
-"Remove 'Clean the bathroom' from my Wednesday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "wednesday": ["Clean the bathroom"]}]}
-"Add 'Attend a book club meeting' and 'Cook a healthy meal' to my Saturday routine";{"type": "set-periodicy", "data": [{"kind": "add", "saturday": ["Attend a book club meeting", "Cook a healthy meal"]}]}
-"Remove 'Do laundry' and 'Pay bills' from my Sunday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "sunday": ["Do laundry", "Pay bills"]}]}
-"Add 'Practice a musical instrument' to my Tuesday routine";{"type": "set-periodicy", "data": [{"kind": "add", "tuesday": ["Practice a musical instrument"]}]}
-"Remove 'Meet with a mentor' from my Thursday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "thursday": ["Meet with a mentor"]}]}
-"Add 'Go to the movies' and 'Have dinner with friends' to my Friday routine";{"type": "set-periodicy", "data": [{"kind": "add", "friday": ["Go to the movies", "Have dinner with friends"]}]}
-"Remove 'Go to the park' from my Monday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "monday": ["Go to the park"]}]}
-"Add 'Write a journal entry' to my Wednesday routine";{"type": "set-periodicy", "data": [{"kind": "add", "wednesday": ["Write a journal entry"]}]}
-"Remove 'Go to a concert' and 'Have a picnic' from my Saturday routine";{"type": "set-periodicy", "data": [{"kind": "remove", "saturday": ["Go to a concert", "Have a picnic"]}]}
-"I want to add from monday to friday work"; {"type": "set-periodicy", "data": [{"kind": "add","monday":["work"],"tuesday":["work"],"wednesday":["work"],"thursday":["work"],"friday":["work"]}]}
-"on tuesday and thursday I have gym"; {"type": "set-periodicy", "data": [{"kind": "add","tuesday":["gym"],"thursday":["gym"]}]}
-"On the weekend I have a volleball match"; {"type": "set-periodicy", "data": [{"kind": "add","saturday": ["volleball match"],"sunday":["volleball match"] }]}
-"During the whole week I go to work"; {"type": "set-periodicy", "data": [{"kind": "add","monday":["work"],"tuesday":["work"],"wednesday":["work"],"thursday":["work"],"friday":["work"]}]}
-"During the whole week I go to baseball practice"; {"type": "set-periodicy", "data": [{"kind": "add","monday":["baseball practice"],"tuesday":["baseball practice"],"wednesday":["baseball practice"],"thursday":["baseball practice"],"friday":["baseball practice"]}]}
-"From monday to wednesday I go dancing"; {"type": "set-periodicy", "data": [{"kind": "add","monday":["dancing"],"tuesday":["dancing"],"wednesday":["dancing"]}]}
-"I don't go anymore to work from monday to friday but from wednesday to sunday"; {"type": "set-periodicy", "data": [{"kind": "remove","monday":["work"],"tuesday":["work"],"wednesday":["work"],"thursday":["work"],"friday":["work"]},{"kind": "add","wednesday":["work"],"thursday":["work"],"friday":["work"],"saturday":["work"],"sunday":["work"]}]}
-"I don't go to frisbee on monday but on tuesday"; {"type": "set-periodicy", "data": [{"kind": "remove","monday":["frisbee"]},{"kind": "add","tuesday":["frisbee"]}]}
-"I stopped playing volleball"; {"type": "set-periodicy", "data": [{"kind": "remove","monday":["volleball"],"tuesday":["volleball"],"wednesday":["volleball"],"thursday":["volleball"],"friday":["volleball"],"saturday": ["volleball"],"sunday":["volleball"]}]}
-"I quitted my job"; {"type": "set-periodicy", "data": [{"kind": "remove","monday":["work"],"tuesday":["work"],"wednesday":["work"],"thursday":["work"],"friday":["work"],"saturday": ["work"],"sunday":["work"] }]}
-"I always do babisitting during the week"; {"type": "set-periodicy", "data": [{"kind": "add","monday":["babisitting"],"tuesday":["babisitting"],"wednesday":["babisitting"],"thursday":["babisitting"],"friday":["babisitting"]}]}
-"On the weekend I stopped going to the lake"; {"type": "set-periodicy", "data": [{"kind": "remove","saturday": ["going to the lake"],"sunday":["going to the lake"]}]}
-"I started taking piano lessons on fridays"; {"type": "set-periodicy", "data": [{"kind": "add","friday":[piano lessons]}]}
-"I stopped taking guitar lessons on thursday and saturday"; {"type": "set-periodicy", "data": [{"kind": "remove","thursday":["guitar lessons"],"saturday": ["guitar lessons"]}]}
-"Remove the periodic activity for rugby"; {"type": "set-periodicy", "data": [{"kind": "remove","monday":["rugby"],"tuesday":["rugby"],"wednesday":["rugby"],"thursday":["rugby"],"friday":["rugby"],"saturday": ["rugby"],"sunday":["rugby"] }]}
-"Add the periodic activity for taking the dog out during the weekend"; {"type": "set-periodicy", "data": [{"kind": "add","saturday": ["taking the dog out"],"sunday":["taking the dog out"] }]}
-"On monday and sunday I usually practive swimming"; {"type": "set-periodicy", "data": [{"kind": "add","monday":["swimming"],"sunday":["swimming"] }]}
 "Woke up early, felt energized. Had a productive morning working on a project, then a relaxing afternoon reading in the park. Ended the day feeling satisfied."; { "type":"activities", "activities": ["woke up", "worked on a project", "reading in the park"], "emotions": ["energized", "satisfied"]}
 "A day filled with errands and chores. Felt overwhelmed at times, but accomplished everything on my list. Ended with a sense of relief and accomplishment."; { "type":"activities", "activities": ["errands", "chores"], "emotions": ["overwhelmed", "relief", "accomplishment"]}
 "A lazy Sunday morning spent browsing the internet and catching up on my favorite shows. Relaxed and content, enjoyed the quiet time."; { "type":"activities", "activities": ["browsing the internet", "watching shows"], "emotions": ["relaxed", "content"]}
@@ -298,3 +232,21 @@
 "I don't know how to make something can you help me"; {"type": "support", "value": "help"}
 "help"; {"type": "support", "value": "help"}
 "tutorial"; {"type": "support", "value": "tutorial"}
+"today at the gym I did bench press 8 reps 4 sets with 80kg"; {"type":"progression","category": "gym","task": "bench press","parameter1": {"name": "reps", "value": "8"},"parameter2": {"name": "sets", "value": "4"},"parameter3": {"name": "weight", "value": "80"},"result": "80","mesureUnit": "kg"}
+"I swam 20 laps in the pool today, each lap is 50 meters freestyle in 20 minutes"; {"type":"progression","category": "swimming","task": "freestyle","parameter1": {"name": "distance", "value": "50"},"parameter2": {"name": "laps", "value": "20"},"result": "20","mesureUnit": "minutes"}
+"I did 3 sets of 12 reps on the leg press machine with 200 lbs"; {"type":"progression","category": "gym","task": "leg press","parameter1": {"name": "sets", "value": "3"},"parameter2": {"name": "reps", "value": "12"},"result": "200","mesureUnit": "lbs"}
+"I did 20 minutes of interval training in the pool today, alternating between freestyle sprints and easy swimming"; {"type":"progression","category": "swimming","task": "interval training","parameter1": {"name": "duration", "value": "20"},"parameter2": {"name": "intervals", "value": "8"},"parameter3": {"name": "sprint distance", "value": "25"},"result": "20","mesureUnit": "minutes"}
+"I ran a 10k race today in 50 minutes, finishing in the top 10% of my age group"; {"type":"progression","category": "running","task": "race","parameter1": {"name": "km", "value": "10"},"parameter3": {"name": "placement", "value": "top 10%"},"result": "50","mesureUnit": "minutes"}
+"I did 3 sets of 10 reps of barbell squats with 100kg"; {"type":"progression","category": "gym","task": "barbell squats","parameter1": {"name": "sets", "value": "3"},"parameter2": {"name": "reps", "value": "10"},"parameter3": {"name": "weight", "value": "100"},"result": "100","mesureUnit": "kg"}
+"I swam 400 meters of butterfly today in 6 minutes and 10 seconds"; {"type":"progression","category": "swimming","task": "butterfly","parameter1": {"name": "meters", "value": "400"},"result": "370","mesureUnit": "seconds"}
+"I ran 6 miles today in 48 minutes"; {"type":"progression","category": "running","task": "running","parameter1": {"name": "miles", "value": "6"},"result": "48","mesureUnit": "minutes"}
+"I did 3 sets of 15 reps of deadlifts with 60kg"; {"type":"progression","category": "gym","task": "deadlifts","parameter1": {"name": "sets", "value": "3"},"parameter2": {"name": "reps", "value": "15"},"parameter3": {"name": "weight", "value": "60"},"result": "60","mesureUnit": "kg"}
+"I completed a 1500 meter freestyle swim today in 58 minutes"; {"type":"progression","category": "swimming","freestyle": "distance","parameter1": {"name": "meters", "value": "1500"},"result": "58","mesureUnit": "minutes"}
+"I ran a 5k race today, finishing in 25 minutes"; {"type":"progression","category": "running","task": "race","parameter1": {"name": "km", "value": "5"},"result": "25","mesureUnit": "minutes"}
+"I did 4 sets of 10 reps of overhead press with 40kg dumbbells"; {"type":"progression","category": "gym","task": "overhead press","parameter1": {"name": "sets", "value": "4"},"parameter2": {"name": "reps", "value": "10"},"parameter3": {"name": "weight", "value": "40"},"result": "40","mesureUnit": "kg"}
+"I did 3 sets of 15 reps of pull-ups, using a band for assistance"; {"type":"progression","category": "gym","task": "pull-ups","parameter1": {"name": "sets", "value": "3"},"parameter2": {"name": "reps", "value": "15"},"parameter3": {"name": "assistance", "value": "band"},"result": null,"mesureUnit": ""}
+"I did 10 x 50 meter sprints with 10 seconds rest in between in 5 minutes"; {"type":"progression","category": "swimming","task": "sprints","parameter1": {"name": "distance", "value": "50"},"parameter2": {"name": "total", "value": "10"},"parameter3": {"name": "rest", "value": "10"},"result": "5","mesureUnit": "minutes"}
+"I ran a half marathon today in 2 hours and 15 minutes"; {"type":"progression","category": "running","task": "maraton","parameter1": {"name": "km", "value": "21.1"},"result": "135","mesureUnit": "minutes"}
+"I did 3 sets of 20 reps of bicep curls with 15kg dumbbells"; {"type":"progression","category": "gym","task": "bicep curls","parameter1": {"name": "sets", "value": "3"},"parameter2": {"name": "reps", "value": "20"},"parameter3": {"name": "weight", "value": "15"},"result": "15","mesureUnit": "kg"}
+"I completed a 100 meter freestyle in 1 minute and 10 seconds"; {"type":"progression","category": "swimming","task": "freestyle","parameter1": {"name": "distance", "value": "100"},"result": "70","mesureUnit": "seconds"}
+

@@ -44,10 +44,10 @@ class _HomePage extends State<HomePage> {
         typing = true;
       });
       var message_text = {'type': text, 'sender': false};
-      var message_test = {"query": "today I woke up early, had breakfast, went for a run, and worked on a project.", "type": "activities", "emotions": [], "activities": ["woke up early", "had breakfast", "went for a run", "worked on a project"]};
+      //var message_test = {"query": "today I woke up early, had breakfast, went for a run, and worked on a project.", "type": "activities", "emotions": [], "activities": ["woke up early", "had breakfast", "went for a run", "worked on a project"]};
       //await Future.delayed(const Duration(seconds: 2));
       await _chatService.addInput(message_text);
-      var response = await _chatService.sendMessage(message_test);
+      var response = await _chatService.sendMessage(text);
      
       setState(() {
       typing = false;
