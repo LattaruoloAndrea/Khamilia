@@ -22,7 +22,7 @@ class ChatService {
   Map<String, dynamic> processInput(userInput) {
     //TODO add geminy call here
     dynamic res = geminyService.callToGeminy(userInput);
-    // Today I went to buy groceries hededto the gym and I left a bit numb and sad
+    // Today I went to buy groceries heded to the gym and I left a bit numb and sad
     //var res = {'type': 'text','query':userInput['type']};
     // var res = {
     //   "query":

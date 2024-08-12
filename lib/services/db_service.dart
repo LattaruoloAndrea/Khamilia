@@ -204,4 +204,15 @@ class DbService {
         .get();
     return act.data()!;
   }
+
+
+  Future<dynamic> deleteAllDataFromAccount() async{
+    var path = "usersData";
+    var docId = getUserUIDD();
+    db.collection(path).doc(docId).delete().then(
+          (doc) => print("Data for account deleted!"),
+          onError: (e) => print("Error on deleting account $e"),
+        );
+  }
+
 }

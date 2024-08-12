@@ -7,9 +7,7 @@ const apiKey =
     "AIzaSyA5SfQlETg7RI4f_8IwXosLQXhN-MwG5Po"; // I know it should not go here but it was a demo and for now it's fine
 
 class GeminyService {
-  
-  callToGeminy(String input) async{
-    final model = GenerativeModel(
+      final model = GenerativeModel(
       model:
           //'gemini-1.5-flash',
           'tunedModels/khamiliav01-rrqdl4gzetgb', // here goes the ID of the tuned model gemini-1.5-flash
@@ -24,10 +22,13 @@ class GeminyService {
         responseMimeType: 'text/plain',
       ),
     );
+    
+  callToGeminy(String input) async{
+
     //final tokenCount = await model.countTokens([Content.text('prompt')]);
     //print('Token count: ${tokenCount.totalTokens}');
     //final content = Content.text(input);
-    final content = [Content.text('Write a story about a magic backpack.')];
+    final content = [Content.text(input)];
     try {
       final response = await model.generateContent(content);
       // https://www.youtube.com/watch?v=VwpDvvNjN2I
@@ -118,22 +119,22 @@ class GeminyService {
   Future<GroupClass> groupActivities(List<String> activities) async {
     String input =
         'group together this list of activities  ###${activities.toString()}### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}';
-    //dynamic res = callToGeminy(input);
+    dynamic res = callToGeminy(input);
     // await Future.delayed(const Duration(seconds: 2));
-    var res = {
-      // "input": [
-      //   "Go to a museum",
-      //   "Learn about history",
-      //   "Admire the art",
-      //   "Take photos"
-      // ],
-      // "type": "group-activities",
-      "Physical Activities": [],
-      "Entertainment": ["Go to a museum", "Admire the art"],
-      "Learning & Development": ["Learn about history"],
-      "Work & Chores": [],
-      "Social & Personal": ["Take photos"]
-    };
+    // var res = {
+    //   // "input": [
+    //   //   "Go to a museum",
+    //   //   "Learn about history",
+    //   //   "Admire the art",
+    //   //   "Take photos"
+    //   // ],
+    //   // "type": "group-activities",
+    //   "Physical Activities": [],
+    //   "Entertainment": ["Go to a museum", "Admire the art"],
+    //   "Learning & Development": ["Learn about history"],
+    //   "Work & Chores": [],
+    //   "Social & Personal": ["Take photos"]
+    // };
     GroupClass b = GroupClass(res);
     return b;
   }
