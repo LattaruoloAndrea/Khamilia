@@ -73,10 +73,10 @@ class _DatePickerComponentState extends State<DatePickerComponent>
       setState(() {
         _selectedDate!.value = newSelectedDate;
         widget.controller.text = '${_selectedDate!.value.year}-${_selectedDate!.value.month}-${_selectedDate!.value.day}';
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-              'Selected: ${_selectedDate!.value.year}-${_selectedDate!.value.month}-${_selectedDate!.value.day}'),
-        ));
+        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //   content: Text(
+        //       'Selected: ${_selectedDate!.value.year}-${_selectedDate!.value.month}-${_selectedDate!.value.day}'),
+        // ));
       });
     }
   }

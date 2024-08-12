@@ -22,8 +22,10 @@ class _DeleteAccountComponentState extends State<DeleteAccountComponent> {
   deleteAccount() async{
       try {
         await dbService.deleteAllDataFromAccount();
-        await FirebaseAuth.instance.currentUser!.delete();
-
+        var user = FirebaseAuth.instance.currentUser!;
+        await FirebaseAuth.instance.signOut();
+        await user.delete();
+  
   } on FirebaseAuthException catch (e) {
 
     if (e.code == "requires-recent-login") {

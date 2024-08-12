@@ -9,7 +9,7 @@ import 'package:gemini_app/pages/setting_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
-
+  static const version = "v1.0.0";
   void signOutUser() {
     FirebaseAuth.instance.signOut();
   }
@@ -22,9 +22,15 @@ class MyDrawer extends StatelessWidget {
         child: ListView(
           children: [
             DrawerHeader(
-                child: Center(
-              child: Text("LOGO"),
-            )),
+                child: Column(children: [
+              Container(
+                  child: Image.asset(
+                'lib/images/logo.png',
+                width: 100,
+                height: 100,
+              )),
+              Text('Khamilia ${version}',textAlign: TextAlign.left,),
+            ])),
             ListTile(
                 leading: Icon(Icons.home),
                 title: Text("Home"),
@@ -45,15 +51,15 @@ class MyDrawer extends StatelessWidget {
                 leading: Icon(Icons.query_stats),
                 title: Text("Progressions"),
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ProgressionPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProgressionPage()));
                 }),
             ListTile(
                 leading: Icon(Icons.insights),
                 title: Text("Data analysis"),
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => DataAnalysisPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => DataAnalysisPage()));
                 }),
             ListTile(
                 leading: Icon(Icons.settings),

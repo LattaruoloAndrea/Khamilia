@@ -69,9 +69,23 @@ class _ActivityPageComponentState extends State<ActivityPageComponent> {
           dayService.fromString(s_p)); //create date with format yyyy-dd-MM
       var e = dayService.toStringDate(
           dayService.fromString(e_p)); //create date with format yyyy-dd-MM
-      data = db.queryFromTo(s, e);
-      currentDateStart = dateFrom.text;
-      currentDateEnd = dateTo.text;
+      if (dayService.fromString(s_p).isAfter(dayService.fromString(e_p))) {
+                ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Start day shoud come before end date! Change it to retrieve the data!'),
+            action: SnackBarAction(
+              label: 'Close',
+              onPressed: () {
+                // Code to execute.
+              },
+            ),
+          ),
+        );
+      } else {
+        data = db.queryFromTo(s, e);
+        currentDateStart = dateFrom.text;
+        currentDateEnd = dateTo.text;
+      }
     }
   }
 

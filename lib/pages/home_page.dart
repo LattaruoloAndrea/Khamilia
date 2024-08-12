@@ -73,7 +73,7 @@ class _HomePage extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
             title: Text(
-              "Kamilia",
+              "Khamilia",
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
