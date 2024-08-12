@@ -14,8 +14,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "473828294205-2l25qi43khf8v2t3d5jraii5mgj4mi6c.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "473828294205-b63vv7h2nk0apo59nmhpn1q69onolre6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lattaruolo.android.khamilia",
+            "certificate_hash": "65d42b0bd4c5556430763f9622b75bf50e7e8cfe"
+          }
         }
       ],
       "api_key": [
@@ -25,19 +29,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "473828294205-2l25qi43khf8v2t3d5jraii5mgj4mi6c.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "473828294205-3vrtlb6c443cpps79g24p7a9d4kmfbmh.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.geminiApp"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

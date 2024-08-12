@@ -129,14 +129,14 @@ class _LoginPageState extends State<LoginPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Forgot password'),
-            content: Column(children: [
+            content: SafeArea(child: Column(children: [
               Text("Send reset email to,"),
                 MyTextfield(
                   controller: emailController,
                   hintText: 'Email',
                   obscureText: false,
                 ),
-            ],),
+            ],),),
             actions: <Widget>[
               TextButton(
                 style: TextButton.styleFrom(
@@ -156,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.pink[100],
         body: SafeArea(
           child: Center(
               child: SingleChildScrollView(
