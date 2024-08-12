@@ -19,9 +19,9 @@ class ChatService {
   // List<MessageClass> messages = [];
   SignletonMessages singletonMessages = SignletonMessages.instance;
 
-  Map<String, dynamic> processInput(userInput) {
+  Future<Map<String, dynamic>> processInput(userInput) async{
     //TODO add geminy call here
-    dynamic res = geminyService.callToGeminy(userInput);
+    Map<String, dynamic> res = await geminyService.callToGeminy(userInput);
     // Today I went to buy groceries heded to the gym and I left a bit numb and sad
     //var res = {'type': 'text','query':userInput['type']};
     // var res = {
@@ -57,7 +57,7 @@ class ChatService {
   }
 
   sendMessage(userInput) async {
-    Map<String, dynamic> k = processInput(userInput);
+    Map<String, dynamic> k = await processInput(userInput);
     k['sender'] = false;
     final DateTime date = timeService.currentDate();
     k['timestamp'] = date;

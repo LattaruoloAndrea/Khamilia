@@ -4,7 +4,9 @@ import 'dart:io';
 import 'dart:convert';
 
 const apiKey =
-    "AIzaSyA5SfQlETg7RI4f_8IwXosLQXhN-MwG5Po"; // I know it should not go here but it was a demo and for now it's fine
+    "AIzaSyABuw9itBZM0GJJx9Q32337IoKjdNpuwXU"; // I know it should not go here but it was a demo and for now it's fine
+
+// https://ai.google.dev/gemini-api/docs/oauth
 
 class GeminyService {
       final model = GenerativeModel(
@@ -22,21 +24,35 @@ class GeminyService {
         responseMimeType: 'text/plain',
       ),
     );
-    
-  callToGeminy(String input) async{
+
+  Future<Map<String, dynamic>> callToGeminy(String input) async{
 
     //final tokenCount = await model.countTokens([Content.text('prompt')]);
     //print('Token count: ${tokenCount.totalTokens}');
     //final content = Content.text(input);
-    final content = [Content.text(input)];
+    var content = [Content.text(input)];
+    var geminyResponse = "{'error': 'timeout'}"; // initialize as timeout
     try {
-      final response = await model.generateContent(content);
+      model.generateContent(content).then((response)=>
+        geminyResponse = response.text! 
+      );
       // https://www.youtube.com/watch?v=VwpDvvNjN2I
-      return json.decode(response.text!);
     } catch (e) {
+      geminyResponse = "{'error': 'geminy service: $e'}";
       print(e);
     }
-    return {};
+    var counter = 0;
+    while(geminyResponse.isEmpty && counter<=20){
+      //await max 20 seconds then timeout error
+      await Future.delayed(const Duration(seconds: 1));
+      counter+=1;
+    }
+    try{
+    Map<String, dynamic> bResponse = json.decode(geminyResponse);
+    return bResponse;
+    }catch (e){
+      return {'error': 'message not json convertable'};
+    }
   }
 
   Future<dynamic> processUserInput(dynamic input) {
@@ -119,7 +135,7 @@ class GeminyService {
   Future<GroupClass> groupActivities(List<String> activities) async {
     String input =
         'group together this list of activities  ###${activities.toString()}### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}';
-    dynamic res = callToGeminy(input);
+    dynamic res = await callToGeminy(input);
     // await Future.delayed(const Duration(seconds: 2));
     // var res = {
     //   // "input": [
