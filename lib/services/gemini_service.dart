@@ -68,8 +68,8 @@ class GeminyService {
         ' Given a list of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion: ###input:${emotions.toList()}### ###output: [{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}] ###';
     Map<String, dynamic> res = {};
     //Map<String, dynamic> res = callToGeminy(input);
-        if (res.containsKey('error')){
-      res = {};
+    if (res.containsKey('error')) {
+      res = {"output": []};
     }
     // await Future.delayed(const Duration(seconds: 2));
     // var ll = {
@@ -141,8 +141,14 @@ class GeminyService {
     String input =
         'group together this list of activities  ###${activities.toString()}### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}';
     Map<String, dynamic> res = await callToGeminy(input);
-    if (res.containsKey('error')){
-      res = {};
+    if (res.containsKey('error')) {
+      res = {
+        "Physical Activities": [],
+        "Entertainment": [],
+        "Learning & Development": [],
+        "Work & Chores": [],
+        "Social & Personal": []
+      };
     }
     // await Future.delayed(const Duration(seconds: 2));
     // var res = {

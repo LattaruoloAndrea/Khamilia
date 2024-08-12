@@ -49,7 +49,7 @@ class DataAnalysisPage extends StatelessWidget {
                     vertical: 10,
                   ),
                   child: Text(
-                    'In this page it will be possible for you to analyze if there is any correlations between your activies and your emotions, maybe some activities might have a slight influence on some of your emotions!',
+                    'In this page it will be possible for you to analyse if there is any correlations between your activies and your emotions, maybe some activities might have a slight influence on some of your emotions!',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),
                   
@@ -59,10 +59,10 @@ class DataAnalysisPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 20,
-                    vertical: 10,
+                    vertical: 20,
                   ),
                   child: Text(
-                    'We need to collect more information about your activities and emotions before giving some valuable results, keep logging your activities and emotions regurarly to speed up the process!',
+                    'We first need to collect more information about your activities and emotions before giving some valuable results, keep logging your activities and emotions regurarly to speed up the process!',
                     textAlign: TextAlign.center,
                   
                   ),
