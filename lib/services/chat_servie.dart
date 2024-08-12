@@ -42,7 +42,7 @@ class ChatService {
     //var res  = {"query":"Could you help me install this software?", "type":"support","sender":false};
     //geminyService.processUserInput(res);
     print(res);
-    return {};
+    return res;
   }
 
   addInput(user_input) {

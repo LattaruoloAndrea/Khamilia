@@ -9,49 +9,51 @@ const apiKey =
 // https://ai.google.dev/gemini-api/docs/oauth
 
 class GeminyService {
-      final model = GenerativeModel(
-      model:
-          //'gemini-1.5-flash',
-          'tunedModels/khamiliav01-rrqdl4gzetgb', // here goes the ID of the tuned model gemini-1.5-flash
-      apiKey: apiKey,
-      // safetySettings: Adjust safety settings
-      // See https://ai.google.dev/gemini-api/docs/safety-settings
-      generationConfig: GenerationConfig(
-        temperature: 1,
-        topK: 64,
-        topP: 0.95,
-        maxOutputTokens: 8192,
-        responseMimeType: 'text/plain',
-      ),
-    );
+  final model = GenerativeModel(
+    model:
+        //'gemini-1.5-flash',
+        'tunedModels/khamiliav01-rrqdl4gzetgb', // here goes the ID of the tuned model gemini-1.5-flash
+    apiKey: apiKey,
+    // safetySettings: Adjust safety settings
+    // See https://ai.google.dev/gemini-api/docs/safety-settings
+    generationConfig: GenerationConfig(
+      temperature: 1,
+      topK: 64,
+      topP: 0.95,
+      maxOutputTokens: 8192,
+      responseMimeType: 'text/plain',
+    ),
+  );
 
-  Future<Map<String, dynamic>> callToGeminy(String input) async{
-
+  Future<Map<String, dynamic>> callToGeminy(String input) async {
     //final tokenCount = await model.countTokens([Content.text('prompt')]);
     //print('Token count: ${tokenCount.totalTokens}');
     //final content = Content.text(input);
     var content = [Content.text(input)];
-    var geminyResponse = "{'error': 'timeout'}"; // initialize as timeout
-    try {
-      model.generateContent(content).then((response)=>
-        geminyResponse = response.text! 
-      );
-      // https://www.youtube.com/watch?v=VwpDvvNjN2I
-    } catch (e) {
-      geminyResponse = "{'error': 'geminy service: $e'}";
-      print(e);
-    }
+    var geminyResponse = "";
+    model
+        .generateContent(content)
+        .then((response) => geminyResponse = response.text!)
+        .catchError((onError) =>
+            geminyResponse = "{'error': 'geminy service: $onError'}");
+    // https://www.youtube.com/watch?v=VwpDvvNjN2I
     var counter = 0;
-    while(geminyResponse.isEmpty && counter<=20){
+    while (geminyResponse.isEmpty && counter <= 20) {
       //await max 20 seconds then timeout error
       await Future.delayed(const Duration(seconds: 1));
-      counter+=1;
+      counter += 1;
     }
-    try{
-    Map<String, dynamic> bResponse = json.decode(geminyResponse);
-    return bResponse;
-    }catch (e){
-      return {'error': 'message not json convertable'};
+    if (counter >= 20) {
+      geminyResponse = "{'error': 'timeout'}"; // timeout error
+    }
+    try {
+      Map<String, dynamic> bResponse = json.decode(geminyResponse);
+      return bResponse;
+    } catch (e) {
+      return {
+        'error':
+            'message not json convertable. Message from geminy: "$geminyResponse"'
+      };
     }
   }
 
@@ -64,8 +66,11 @@ class GeminyService {
       List<String> emotions) async {
     String input =
         ' Given a list of emotions provide a number between 1 to 10 where 1 means a negative emotion 5 in a neutral emotion an 10 is a positive emotion: ###input:${emotions.toList()}### ###output: [{"emotion":"emotion1","evaluation":"value for emotion1","decription":"emotion description","category":"Emotion1 category" },{"emotion":"emotion3","evaluation":"value for emotion3","decription":"emotion description","category":"Emotion3 category"},{"emotion":"emotion2","evaluation":"value for emotion2","decription":"emotion description","category":"Emotion2 category"}] ###';
-    dynamic res = {};
-    //dynamic res = callToGeminy(input);
+    Map<String, dynamic> res = {};
+    //Map<String, dynamic> res = callToGeminy(input);
+        if (res.containsKey('error')){
+      res = {};
+    }
     // await Future.delayed(const Duration(seconds: 2));
     // var ll = {
     //   "input": [
@@ -135,7 +140,10 @@ class GeminyService {
   Future<GroupClass> groupActivities(List<String> activities) async {
     String input =
         'group together this list of activities  ###${activities.toString()}### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}';
-    dynamic res = await callToGeminy(input);
+    Map<String, dynamic> res = await callToGeminy(input);
+    if (res.containsKey('error')){
+      res = {};
+    }
     // await Future.delayed(const Duration(seconds: 2));
     // var res = {
     //   // "input": [
