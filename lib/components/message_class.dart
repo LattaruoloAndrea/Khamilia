@@ -88,6 +88,7 @@ class MessageClass {
   PeriodicyClass? periodicyClass;
   EmotionCategorizeClass? emotionCategorizeClass;
   SupportClass? supportClass;
+  ProgressionClass? progressionClass;
   ShowDailyActivity? showDailyActivity;
   ErrorType? errorType;
 
@@ -163,6 +164,12 @@ class MessageClass {
       case 'emotion-categorize':
         try {
           emotionCategorizeClass = EmotionCategorizeClass(message);
+        } on ErrorType catch (e) {
+          errorType = e;
+        }
+      case 'progression':
+        try {
+          progressionClass = ProgressionClass(message);
         } on ErrorType catch (e) {
           errorType = e;
         }
@@ -607,6 +614,53 @@ class SupportClass {
     }
   }
 
+}
+
+
+class ProgressionClass {
+  String? category;
+  int? dayTimestamp;
+  List<String> allCategories = [];
+  Map<String,List<String>> exercisesPerCategory = {};
+  ExerciseProgressionClass? exercise;
+  ProgressionClass(dynamic message) {
+    try {
+      category = message['category'];
+      exercise = ExerciseProgressionClass(message);
+    } catch (e) {
+    }
+  }
+
+  addAllCategories(List<String> categoriesFromDb){
+    allCategories = categoriesFromDb;
+  }
+
+  addExercisesForCategory(String category,List<String> exercises){
+    exercisesPerCategory[category] = exercises;
+  }
+
+}
+
+class ExerciseProgressionClass{
+  String? name;
+  List<Map<String, dynamic>> params=[];
+  String? result;
+  String? resultUnitMeasure;
+  ExerciseProgressionClass(Map<String, dynamic> message){
+    try{
+      name = message['task'];
+      result = message['result'];
+      resultUnitMeasure= message['mesureUnit'];
+      for(var key in  message.keys){
+        if(key.startsWith("parameter")){
+          // add all parameters to the list
+          params.add(message[key]);
+        }
+      }
+    }catch (e){
+
+    }
+  }
 }
 
 class ShowDailyActivity{

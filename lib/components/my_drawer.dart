@@ -6,11 +6,15 @@ import 'package:gemini_app/pages/data_analysis.dart';
 import 'package:gemini_app/pages/home_page.dart';
 import 'package:gemini_app/pages/progression_page.dart';
 import 'package:gemini_app/pages/setting_page.dart';
+import 'package:gemini_app/services/signleton_messages.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
   static const version = "v1.0.0";
+  
   void signOutUser() {
+    SignletonMessages messages = SignletonMessages();
+    messages.reset();
     FirebaseAuth.instance.signOut();
   }
 

@@ -8,6 +8,7 @@ import 'package:gemini_app/components/activity_page_component.dart';
 import 'package:gemini_app/components/daily_activities_message.dart';
 import 'package:gemini_app/components/error_chat_component.dart';
 import 'package:gemini_app/components/message_class.dart';
+import 'package:gemini_app/components/progression_message_component.dart';
 import 'package:gemini_app/components/query_message_component.dart';
 import 'package:gemini_app/components/support_chat_component.dart';
 import 'package:intl/intl.dart';
@@ -57,6 +58,8 @@ class MessageChat extends StatelessWidget {
           return _PeriodicyMessage(message);
         case 'support':
           return _SupportMessage(message);
+        case 'progression':
+          return _ProgressionMessage(message);
         case 'dailyActivity':
           return _DailyPeriodicActivityMessage(message);
         case 'loading':
@@ -153,6 +156,10 @@ class MessageChat extends StatelessWidget {
     return Text('Error',
         style: TextStyle(
             backgroundColor: const Color.fromARGB(255, 54, 238, 244)));
+  }
+
+    Widget _ProgressionMessage(MessageClass message) {
+    return ProgressionMessageComponent(progressionClass: message.progressionClass!);
   }
 
   Widget _ErrorMessage(MessageClass message) {

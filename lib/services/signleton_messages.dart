@@ -12,4 +12,8 @@ class SignletonMessages {
     return messages;
   }
 
+  reset(){
+    messages = [];
+  }
+
 }

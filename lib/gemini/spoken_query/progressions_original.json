@@ -199,7 +199,7 @@
     "query": "I completed a 100 meter freestyle in 1 minute and 10 seconds",
     "type":"progression",
     "category": "swimming",
-    "task": "time",
+    "task": "freestyle",
     "parameter1": {"name": "style", "value": "freestyle"},
     "parameter2": {"name": "distance", "value": "100"},
     "result": "70",

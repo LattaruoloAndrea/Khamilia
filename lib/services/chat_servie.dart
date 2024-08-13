@@ -21,7 +21,7 @@ class ChatService {
 
   Future<Map<String, dynamic>> processInput(userInput) async{
     //TODO add geminy call here
-    Map<String, dynamic> res = await geminyService.callToGeminy(userInput);
+    //Map<String, dynamic> res = await geminyService.callToGeminy(userInput);
     // Today I went to buy groceries heded to the gym and I left a bit numb and sad
     //var res = {'type': 'text','query':userInput['type']};
     // var res = {
@@ -40,6 +40,7 @@ class ChatService {
     // var res  ={ "query": "Get the number of new leads generated between August 1st, 2024 and August 10th, 2024.", "type": "query","start": "2024-08-01","end": "2024-08-10","sender":false};
     //var res  = {"type":"error","sender":false};
     //var res  = {"query":"Could you help me install this software?", "type":"support","sender":false};
+    var res =   {"query": "I completed a 100 meter freestyle in 1 minute and 10 seconds","type":"progression",    "category": "swimming",    "task": "freestyle",  "parameter1": {"name": "style", "value": "freestyle"},    "parameter2": {"name": "distance", "value": "100"},    "result": "70",    "mesureUnit": "seconds"};
     //geminyService.processUserInput(res);
     print(res);
     return res;
@@ -91,6 +92,9 @@ class ChatService {
       p.queryClassEasy = null;
       p.queryClassToMessage = queryClass;
     }
+    if(p.type =='progression'){
+      // TODO fetch data
+    }
     return p;
   }
 
@@ -105,6 +109,9 @@ class ChatService {
       p.activitiesClass!.timestamp = correctTimestamp;
       String id = await db.saveDailyOccurence(p.activitiesClass!);
       return id;
+    }
+    if(p.type =='progressions'){
+      
     }
     return "";
   }

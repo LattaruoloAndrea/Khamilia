@@ -24,10 +24,21 @@ class _DatePickerComponentState extends State<DatePickerComponent>
   @override
   void initState() {
     if(widget.controller.text.isNotEmpty){
-        _selectedDate = RestorableDateTime(DateTime.parse(widget.controller.text));
-        initialTime = DateTime.parse(widget.controller.text);
-        print(widget.controller.text);
+        _selectedDate = RestorableDateTime(DateTime.parse(correctValue(widget.controller.text)));
+        initialTime = DateTime.parse(correctValue(widget.controller.text));
+        //print(widget.controller.text);
     }
+  }
+
+  String correctValue(String input){
+    List<String> splitted = input.split('-');
+    if(splitted[1].length==1){
+      splitted[1] = "0${splitted[1]}";
+    }
+    if(splitted[2].length==1){
+      splitted[2] = "0${splitted[2]}";
+    }
+    return "${splitted[0]}-${splitted[1]}-${splitted[2]}";
   }
 
 

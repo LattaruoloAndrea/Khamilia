@@ -13,6 +13,8 @@ class GeminyService {
     model:
         //'gemini-1.5-flash',
         'tunedModels/khamiliav01-rrqdl4gzetgb', // here goes the ID of the tuned model gemini-1.5-flash
+        // com.lattaruolo.gemini.khamilia
+        // 84:3C:09:35:A3:C4:AB:E3:60:38:86:D4:16:18:B6:8F:3D:17:1E:B6
     apiKey: apiKey,
     // safetySettings: Adjust safety settings
     // See https://ai.google.dev/gemini-api/docs/safety-settings
@@ -140,7 +142,8 @@ class GeminyService {
   Future<GroupClass> groupActivities(List<String> activities) async {
     String input =
         'group together this list of activities  ###${activities.toString()}### across these categories: ["Physical Activities","Entertainment","Learning & Development", "Work & Chores", Social & Personal]. The format of the grouping is {"input":["activity1","activity2","activity3",....],"type":"group-activities","Physical Activities":["activity1"],"Entertainment": [], "Learning & Development":["activity2","activity3"],"Work & Chores":[],"Social & Personal":["activity4","activity5"]}';
-    Map<String, dynamic> res = await callToGeminy(input);
+    //Map<String, dynamic> res = await callToGeminy(input);
+    Map<String, dynamic> res = {'error':'Not implemented yet'};
     if (res.containsKey('error')) {
       res = {
         "Physical Activities": [],

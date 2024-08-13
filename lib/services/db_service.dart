@@ -205,6 +205,8 @@ class DbService {
     return act.data()!;
   }
 
+  
+
 
   Future<dynamic> deleteAllDataFromAccount() async{
     var path = "usersData";
