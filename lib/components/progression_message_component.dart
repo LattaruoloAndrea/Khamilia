@@ -32,16 +32,13 @@ class _ProgressionMessageComponentState
   TextEditingController resultUnitMeausureController = TextEditingController();
   List<List<TextEditingController>> paramsListController = [];
   List<String> allExercises = [];
+  bool newExerciseAdded = false;
+  bool newCategoryAdded = false;
 
   @override
   void initState() {
     allExercises = widget.progressionClass
-                            //   'backstroke',
-                            //   'freestyle',
-                            //   'breaststroke',
-                            //   'butterfly'
-                            // ], //widget.progressionClass.allCategories!
-        .exercisesPerCategory![widget.progressionClass.category!]!;
+        .findExercisePerCategory(widget.progressionClass.category!);
     widget.progressionClass.dayTimestamp =
         dayService.getdateHalfDay(dayService.currentDate());
     resultValueController.text = widget.progressionClass.exercise!.result!;
@@ -79,30 +76,50 @@ class _ProgressionMessageComponentState
     });
   }
 
+  discardChanges() {
+    setState(() {
+      modify = false;
+      actualModifyActivity = false;
+      if (newCategoryAdded) {
+        widget.progressionClass.allCategories
+            .removeAt(widget.progressionClass.allCategories.length - 1);
+      }
+      if (newExerciseAdded) {
+        allExercises.removeAt(allExercises.length - 1);
+      }
+      newCategoryAdded = false;
+      newExerciseAdded = false;
+    });
+  }
+
   addCategory() {
     setState(() {
-      var newCategory = addCategoryController.text;
-      widget.progressionClass.allCategories.add(newCategory);
-      controllerCategory.text = newCategory;
-      addCategoryController.text = "";
-      actualModifyActivity = true;
+      if (addCategoryController.text.isNotEmpty) {
+        var newCategory = addCategoryController.text;
+        widget.progressionClass.allCategories.add(newCategory);
+        controllerCategory.text = newCategory;
+        addCategoryController.text = "";
+        actualModifyActivity = true;
+        newCategoryAdded = true;
+      }
     });
   }
 
   addExercise() {
     setState(() {
-      var newExercise = addExerciseController.text;
-      allExercises = widget
-          .progressionClass.exercisesPerCategory[controllerCategory.text]!;
-      allExercises.add(newExercise);
-      controllerExercise.text = newExercise;
-      addExerciseController.text = "";
-      actualModifyActivity = true;
+      if (addExerciseController.text.isNotEmpty) {
+        var newExercise = addExerciseController.text;
+        //allExercises = widget.progressionClass.findExercisePerCategory(controllerCategory.text);
+        allExercises.add(newExercise);
+        controllerExercise.text = newExercise;
+        addExerciseController.text = "";
+        actualModifyActivity = true;
+        newExerciseAdded = true;
+      }
     });
   }
 
   deleteParam(param) {
-    // TODO
     setState(() {
       paramsListController.remove(param);
       actualModifyActivity = true;
@@ -339,31 +356,38 @@ class _ProgressionMessageComponentState
                 SizedBox(
                   height: 10,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 6,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: TextField(
-                            obscureText: false,
-                            controller: addCategoryController,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Add new category',
-                            ),
-                          ),
-                        )),
-                    //Expanded(flex: 1, child: SizedBox()),
-                    Expanded(
-                        flex: 1,
-                        child: IconButton.filledTonal(
-                            onPressed: addCategory,
-                            icon: Icon(Icons.add),
-                            color: Colors.black)),
-                    //Expanded(flex: 1, child: SizedBox()),
-                  ],
-                ),
+                !newCategoryAdded
+                    ? Row(
+                        children: [
+                          Expanded(
+                              flex: 6,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: TextField(
+                                  obscureText: false,
+                                  controller: addCategoryController,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Add new category',
+                                  ),
+                                ),
+                              )),
+                          //Expanded(flex: 1, child: SizedBox()),
+                          Expanded(
+                              flex: 1,
+                              child: IconButton.filledTonal(
+                                  onPressed:
+                                      !newCategoryAdded ? addCategory : null,
+                                  icon: Icon(Icons.add),
+                                  color: Colors.black)),
+                          //Expanded(flex: 1, child: SizedBox()),
+                        ],
+                      )
+                    : Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                            'You can add just one category or select one of the already created, if the one detected is wrong!'),
+                      ),
                 SizedBox(
                   height: 15,
                 ),
@@ -407,7 +431,8 @@ class _ProgressionMessageComponentState
                 SizedBox(
                   height: 10,
                 ),
-                Row(
+                !newExerciseAdded?
+                 Row(
                   children: [
                     Expanded(
                         flex: 6,
@@ -426,12 +451,16 @@ class _ProgressionMessageComponentState
                     Expanded(
                         flex: 1,
                         child: IconButton.filledTonal(
-                            onPressed: addExercise,
+                            onPressed: !newExerciseAdded? addExercise: null,
                             icon: Icon(Icons.add),
                             color: Colors.black)),
                     //Expanded(flex: 1, child: SizedBox()),
                   ],
-                ),
+                ) : Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                            'You can add just one exercise or select one of the already created, if the one detected is wrong!'),
+                      ),
                 SizedBox(
                   height: 15,
                 ),

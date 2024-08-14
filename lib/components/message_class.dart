@@ -179,7 +179,7 @@ class MessageClass {
         } on ErrorType catch (e) {
           errorType = e;
         }
-        case 'dailyActivity':
+      case 'dailyActivity':
         try {
           var l = ShowDailyActivity();
           l.fromMessage(message);
@@ -200,23 +200,27 @@ class ActivitiesClass {
   bool yesterday = false; //if false it refers to today
   bool? periodicActivity = false;
   int? timestamp;
-  String docId="";
+  String docId = "";
 
-ActivitiesClass({this.description,this.emotions,this.activities,this.periodicActivity,this.timestamp});
+  ActivitiesClass(
+      {this.description,
+      this.emotions,
+      this.activities,
+      this.periodicActivity,
+      this.timestamp});
 
-    // ignore: empty_constructor_bodies
-    factory ActivitiesClass.fromFirestore(
+  // ignore: empty_constructor_bodies
+  factory ActivitiesClass.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
     SnapshotOptions? options,
   ) {
     final data = snapshot.data();
     return ActivitiesClass(
-      description: data?['description'] as String,
-      emotions: List<String>.from((data?['emotions']?? [])   as List) ,
-      activities: List<String>.from((data?['activities']?? [])   as List),
-      periodicActivity: (data?['periodicActivity']?? false) as bool,
-      timestamp: data?['timestamp'] as int
-    );
+        description: data?['description'] as String,
+        emotions: List<String>.from((data?['emotions'] ?? []) as List),
+        activities: List<String>.from((data?['activities'] ?? []) as List),
+        periodicActivity: (data?['periodicActivity'] ?? false) as bool,
+        timestamp: data?['timestamp'] as int);
   }
 
   Map<String, dynamic> toFirestore() {
@@ -230,7 +234,7 @@ ActivitiesClass({this.description,this.emotions,this.activities,this.periodicAct
   }
 
   fromMessage(dynamic message) {
-    periodicActivity= false;
+    periodicActivity = false;
     emotions = [];
     activities = [];
     try {
@@ -252,8 +256,7 @@ ActivitiesClass({this.description,this.emotions,this.activities,this.periodicAct
     } catch (e) {}
   }
 
-  fromPeriodicActivity(){}
-
+  fromPeriodicActivity() {}
 }
 
 class AddActivitiesClass {
@@ -613,68 +616,94 @@ class SupportClass {
       value = "help";
     }
   }
-
 }
-
 
 class ProgressionClass {
   String? category;
   int? dayTimestamp;
   List<String> allCategories = [];
-  Map<String,List<String>> exercisesPerCategory = {};
+  Map<String, List<String>> exercisesPerCategory = {};
   ExerciseProgressionClass? exercise;
   ProgressionClass(dynamic message) {
     try {
       category = message['category'];
       exercise = ExerciseProgressionClass(message);
-    } catch (e) {
+      if (category!.isNotEmpty) {
+        allCategories.add(category!);
+        if (exercise!.name!.isNotEmpty) {
+          addExercisesForCategory(category!, [exercise!.name!]);
+        }
+      }
+    } catch (e) {}
+  }
+
+  addAllCategories(List<String> categoriesFromDb) {
+    if (categoriesFromDb.isNotEmpty) {
+      if (allCategories.isEmpty) {
+        allCategories = categoriesFromDb;
+      } else {
+        allCategories.addAll(categoriesFromDb);
+        allCategories.sort();
+        // remove duplucate
+      }
     }
   }
 
-  addAllCategories(List<String> categoriesFromDb){
-    allCategories = categoriesFromDb;
+  addExercisesForCategory(String category, List<String> exercises) {
+    if (exercises.isNotEmpty) {
+      if (exercisesPerCategory.containsKey(category)) {
+        // category already inside
+        if (exercisesPerCategory[category]!.isEmpty) {
+          exercisesPerCategory[category] = exercises;
+        } else {
+          exercisesPerCategory[category]!.addAll(exercises);
+          exercisesPerCategory[category]!.sort();
+          // remove duplicate
+        }
+      }else{
+        //create the category
+        exercisesPerCategory[category] = exercises;
+      }
+    }
   }
 
-  addExercisesForCategory(String category,List<String> exercises){
-    exercisesPerCategory[category] = exercises;
+  List<String> findExercisePerCategory(String category) {
+    if (exercisesPerCategory.containsKey(category)) {
+      if (exercisesPerCategory[category]!.isNotEmpty) {
+        return exercisesPerCategory[category]!;
+      }
+    }
+    return [];
   }
-
 }
 
-class ExerciseProgressionClass{
+class ExerciseProgressionClass {
   String? name;
-  List<Map<String, dynamic>> params=[];
+  List<Map<String, dynamic>> params = [];
   String? result;
   String? resultUnitMeasure;
-  ExerciseProgressionClass(Map<String, dynamic> message){
-    try{
+  ExerciseProgressionClass(Map<String, dynamic> message) {
+    try {
       name = message['task'];
       result = message['result'];
-      resultUnitMeasure= message['mesureUnit'];
-      for(var key in  message.keys){
-        if(key.startsWith("parameter")){
+      resultUnitMeasure = message['mesureUnit'];
+      for (var key in message.keys) {
+        if (key.startsWith("parameter")) {
           // add all parameters to the list
           params.add(message[key]);
         }
       }
-    }catch (e){
-
-    }
+    } catch (e) {}
   }
 }
 
-class ShowDailyActivity{
+class ShowDailyActivity {
   ActivitiesClass? activity;
   ShowDailyActivity({this.activity});
 
-  fromMessage(message){
-    try{
-      activity= message['activity'] as ActivitiesClass;
-    }catch(e){
-
-    }
-    
+  fromMessage(message) {
+    try {
+      activity = message['activity'] as ActivitiesClass;
+    } catch (e) {}
   }
 }
-
-
