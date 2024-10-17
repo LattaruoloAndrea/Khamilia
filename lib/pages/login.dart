@@ -97,60 +97,89 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  showTermsConditions() async{
+  showTermsConditions() async {
     String t = await rootBundle.loadString('lib/assets/terms_conditions.txt');
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Terms and conditions'),
-            content: SafeArea(child:  Text(
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Terms and conditions'),
+          scrollable: true,
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(
+            textAlign: TextAlign.justify,
               t,
-            ),),
-            actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge,
-                ),
-                child: const Text('Close'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
               ),
-            ],
-          );
-        },
-      );
+              child: const Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
-  forgotPassword(){
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Forgot password'),
-            content: SafeArea(child: Column(children: [
-              Text("Send reset email to,"),
-                MyTextfield(
-                  controller: emailController,
-                  hintText: 'Email',
-                  obscureText: false,
+  forgotPassword() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Forgot password'),
+          content: Builder(
+            builder: (context) {
+              // Get available height and width of the build area of this widget. Make a choice depending on the size.
+              var height = MediaQuery.of(context).size.height;
+              var width = MediaQuery.of(context).size.width;
+
+              return Container(
+                height: 100,
+                width: width - 50,
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Insert the email to receive the reset email!",
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        width: width+50,
+                        child: MyTextfield(
+                          controller: emailController,
+                          hintText: 'Email',
+                          obscureText: false,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-            ],),),
-            actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge,
-                ),
-                child: const Text('Send email'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+              );
+            },
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
               ),
-            ],
-          );
-        },
-      );
+              child: const Text('Send reset email'),
+              onPressed: () {
+                //TODO implement logic to reset email
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

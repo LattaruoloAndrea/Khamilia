@@ -1,5 +1,5 @@
 name: gemini_app
-description: "A new Flutter project."
+description: "Khamilia diary app."
 
 # Prevent accidental publishing to pub.dev.
 publish_to: 'none'

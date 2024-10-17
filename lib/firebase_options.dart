@@ -41,18 +41,18 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDZKAKUkAcBSAi3x0c4moysYekCo3WMTDo',
-    appId: '1:637805349115:web:0a2c8cf75422d5d5cdc85e',
-    messagingSenderId: '637805349115',
-    projectId: 'test-gemini-c7b7c',
-    authDomain: 'test-gemini-c7b7c.firebaseapp.com',
-    storageBucket: 'test-gemini-c7b7c.appspot.com',
-    measurementId: 'G-GS5B2K4VGZ',
+    apiKey: 'AIzaSyBKzYmFagLb3pPfUoRbrGUKRwrv3lDhs3c',
+    appId: '1:473828294205:web:fdd79806cc43694c52f454',
+    messagingSenderId: '473828294205',
+    projectId: 'khamilia-dev',
+    authDomain: 'khamilia-dev.firebaseapp.com',
+    storageBucket: 'khamilia-dev.appspot.com',
+    measurementId: 'G-D82VRRMCT1',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBMu23E7ThRmJU5WYOHPmzWgFul2lOcOTs',
-    appId: '1:473828294205:android:4a49eb849a5882aa52f454',
+    appId: '1:473828294205:android:9d63281001c54b6452f454',
     messagingSenderId: '473828294205',
     projectId: 'khamilia-dev',
     storageBucket: 'khamilia-dev.appspot.com',
@@ -64,30 +64,28 @@ class DefaultFirebaseOptions {
     messagingSenderId: '473828294205',
     projectId: 'khamilia-dev',
     storageBucket: 'khamilia-dev.appspot.com',
-    androidClientId: '473828294205-hlkk6vbgc34phau0fkl2hpi4a16n2pd2.apps.googleusercontent.com',
-    iosClientId: '473828294205-3vrtlb6c443cpps79g24p7a9d4kmfbmh.apps.googleusercontent.com',
+    androidClientId: '473828294205-b63vv7h2nk0apo59nmhpn1q69onolre6.apps.googleusercontent.com',
     iosBundleId: 'com.example.geminiApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDS-V_E1wqhfkJ_mvj_TCYQ9gbQJb66zWA',
-    appId: '1:637805349115:ios:6e740a4e814b4543cdc85e',
-    messagingSenderId: '637805349115',
-    projectId: 'test-gemini-c7b7c',
-    storageBucket: 'test-gemini-c7b7c.appspot.com',
-    androidClientId: '637805349115-jac5a7gqhkea0cpq6sipusla1kbg4r4g.apps.googleusercontent.com',
-    iosClientId: '637805349115-j94i9ivenehmmadpbr9kf44avfif5aj3.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCh00EIYNsRI_G1Drf2CzIH5tM0NttVjZ0',
+    appId: '1:473828294205:ios:23d49bb1ec502b2052f454',
+    messagingSenderId: '473828294205',
+    projectId: 'khamilia-dev',
+    storageBucket: 'khamilia-dev.appspot.com',
+    androidClientId: '473828294205-b63vv7h2nk0apo59nmhpn1q69onolre6.apps.googleusercontent.com',
     iosBundleId: 'com.example.geminiApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDZKAKUkAcBSAi3x0c4moysYekCo3WMTDo',
-    appId: '1:637805349115:web:55f70b67bafdce75cdc85e',
-    messagingSenderId: '637805349115',
-    projectId: 'test-gemini-c7b7c',
-    authDomain: 'test-gemini-c7b7c.firebaseapp.com',
-    storageBucket: 'test-gemini-c7b7c.appspot.com',
-    measurementId: 'G-VKJCG67DMQ',
+    apiKey: 'AIzaSyBKzYmFagLb3pPfUoRbrGUKRwrv3lDhs3c',
+    appId: '1:473828294205:web:86e2785ab711b19f52f454',
+    messagingSenderId: '473828294205',
+    projectId: 'khamilia-dev',
+    authDomain: 'khamilia-dev.firebaseapp.com',
+    storageBucket: 'khamilia-dev.appspot.com',
+    measurementId: 'G-N8EB0X5JRB',
   );
 
 }

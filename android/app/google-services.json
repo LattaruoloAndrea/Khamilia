@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:473828294205:android:9d63281001c54b6452f454",
+        "android_client_info": {
+          "package_name": "com.khamilia.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMu23E7ThRmJU5WYOHPmzWgFul2lOcOTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:473828294205:android:4a49eb849a5882aa52f454",
         "android_client_info": {
           "package_name": "com.lattaruolo.android.khamilia"
