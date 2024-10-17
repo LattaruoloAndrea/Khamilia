@@ -22,10 +22,10 @@ dependencies:
   google_sign_in: ^6.2.1
   lottie: ^3.1.2
   cloud_firestore: ^4.17.5
-  syncfusion_flutter_charts: ^26.1.35
+  syncfusion_flutter_charts: ^27.1.50
   localstorage: ^5.0.0
   flutter_native_splash: ^2.4.1
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   dots_indicator: ^3.0.0
   flutter_launcher_icons: ^0.13.1
   google_generative_ai: ^0.4.4
